@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 hihihihi et la maman de fouad c'est pas gentil hihi
 mdr lolol
 MAINTNENANTNATNANANTNANTANTANTNANT
+=======
+meh
+>>>>>>> ec8ac0ba6702c7abfe2b64ec9a46c1fb29de6a24
+pddpddddd
