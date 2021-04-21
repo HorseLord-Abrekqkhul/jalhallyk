@@ -8,5 +8,6 @@ public class Item {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.name = name;
+		//yolo
 	}
 }
