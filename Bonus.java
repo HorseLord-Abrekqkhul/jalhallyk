@@ -1,4 +1,3 @@
-
 public class Bonus extends Item {
 	private int number;
 	
@@ -11,28 +10,28 @@ public boolean isCaught(){
 	return true;
 }
 
-public void finalyze(){
+public void finalyze(Link l){
 	switch (this.number){
 	case 0: //Heart
-		Link.setLifePoint(Link.getLifePoint()+1); //ATTENTION VIE MAXIMUM
+		l.setLifePoint(l.getLifePoint()+1); //ATTENTION VIE MAXIMUM
 		break;
 	case 1: //Bombplus
-		Link.setNumberBomb(Link.getNumberBomb()+1); //
+		l.setNumberBomb(l.getNumberBomb()+1); //
 		break;
 	case 2: //RangeBomb
-		Link.setRangeBomb(Link.getRangeBomb()+1); //
+		l.setRangeBomb(l.getRangeBomb()+1); //
 		break;
 	case 3: //ArrowPlus
-		Link.setNumberArrow(Link.getNumberArrow()+1); //
+		l.setNumberArrow(l.getNumberArrow()+1); //
 		break;
 	case 4: //Speed
-		Link.setSpeed(Link.getSpeed()+1); //coeff à déterminer
+		l.setSpeed(l.getSpeed()+1); //coeff à déterminer
 		break;
 	case 5: //Gauntlet
-		Link.setGauntlet(true);
+		l.setGauntlet(true);
 		break;
 	case 6: //Key
-		Link.setKey(true);
+		l.setKey(true);
 		break;
 	case 7: //FireStaff
 		//for m in liste monstre
