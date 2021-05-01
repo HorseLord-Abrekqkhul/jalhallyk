@@ -100,37 +100,37 @@ public void moveLeft ()
 	setYPos(xPos - 1);
 }
 
-public setBomb()
+public void setBomb()
 {
 	bomb bomb = new bomb(xPos, yPos) ;
 }
 
-public pushBombUp(bomb bomb)
+public void pushBombUp(bomb bomb)
 {
 	bomb.setYPos(bomb.getYPos() + 1);
 }
 
-public pushBombDown(bomb bomb)
+public void pushBombDown(bomb bomb)
 {
 	bomb.setYPos(bomb.getYPos() - 1);
 }
 
-public pushBombRight(bomb bomb)
+public void pushBombRight(bomb bomb)
 {
 	bomb.setXPos(bomb.getXPos() + 1);
 }
 
-public pushBombLeft(bomb bomb)
+public void pushBombLeft(bomb bomb)
 {
 	bomb.setXPos(bomb.getXPos() - 1);
 }
 
-public fireArrow()
+public void fireArrow()
 {
 	arrow arrow = new arrow(xPos, yPos,direction);
 }
 
-public resetAttributes()
+public void resetAttributes()
 {
 	lifePoint = 3;
 	xPos = 0;
