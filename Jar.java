@@ -28,7 +28,7 @@ public class Jar extends Decor {
 	} 
 	
 	public void changeSkin(boolean broken) {
-		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER
+		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER //pas convaincu 
 	}
 	
 

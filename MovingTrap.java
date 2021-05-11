@@ -7,22 +7,22 @@ public class MovingTrap extends Trap {
 	
 	public void moveUp ()
 	{
-		setYpos(yPos + 1);
+		setYPos(yPos + 1);
 	}
 
 	public void moveDown ()
 	{
-		setYpos(yPos - 1);
+		setYPos(yPos - 1);
 	}
 
 	public void moveRight ()
 	{
-		setxpos(xPos + 1);
+		setXPos(xPos + 1);
 	}
 
 	public void moveLeft ()
 	{
-		setXpos(xPos - 1);
+		setXPos(xPos - 1);
 	}
 
 

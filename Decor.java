@@ -15,11 +15,11 @@ public class Decor {
 	
 	//public boolean IsTouched() {}
 	
-	public int getXpos() {
+	public int getXPos() {
 		return xPos;
 	}
 	
-	public int getYpos() {
+	public int getYPos() {
 		return yPos;		
 	}
 	
@@ -27,11 +27,11 @@ public class Decor {
 		return name;
 	}
 	
-	public void setXpos(int xPos) {
+	public void setXPos(int xPos) {
 		this.xPos=xPos;
 	}
 	
-	public void setYpos(int yPos) {
+	public void setYPos(int yPos) {
 		this.yPos=yPos;
 	}
 	
