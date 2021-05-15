@@ -1,4 +1,3 @@
-
 public class Monster extends Character {
 
 	public Monster (int lifePoint, int xPos, int yPos, int speed,int direction)
@@ -8,22 +7,22 @@ public class Monster extends Character {
 	
 	public void moveUp ()
 	{
-		setYPos(yPos + 1);
+		setYpos(yPos + 1);
 	}
 
 	public void moveDown ()
 	{
-		setYPos(yPos - 1);
+		setYpos(yPos - 1);
 	}
 
 	public void moveRight ()
 	{
-		setYPos(xPos + 1);
+		setXpos(xPos + 1);
 	}
 
 	public void moveLeft ()
 	{
-		setYPos(xPos - 1);
+		setXpos(xPos - 1);
 	}
 	
 	public void dealDamage(Link Link)
