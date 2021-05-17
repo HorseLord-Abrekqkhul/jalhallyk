@@ -1,4 +1,3 @@
-
 public class Decor {
 	
 	protected int xPos;
@@ -37,6 +36,10 @@ public class Decor {
 	
 	public void setName(String name) {
 		this.name=name;
+	}
+	
+	public boolean isTouched(int xPos,int yPos) {
+		return this.xPos==xPos && this.yPos==yPos;	
 	}
 	
 	
