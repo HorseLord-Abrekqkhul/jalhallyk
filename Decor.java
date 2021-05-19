@@ -11,9 +11,6 @@ public class Decor {
 		this.name=name;
 	}
 	
-	
-	//public boolean IsTouched() {}
-	
 	public int getXPos() {
 		return xPos;
 	}
