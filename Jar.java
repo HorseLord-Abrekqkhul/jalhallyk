@@ -1,3 +1,5 @@
+import java.lang.Object;
+import java.util.Random;
 
 public class Jar extends Decor {
 	
@@ -22,10 +24,12 @@ public class Jar extends Decor {
 		
 	}
 	
-	public void randomBonus() {
+	public String randomBonus() {
 		String bonus[]={"Heart","BombPlus","ArrowPlus","RangeBomb","Gauntlet","FireStaff","IceStaff","Key","Speed"};
-		// RANDOM A RAJOUTER
-	} 
+		Random random=new Random();
+		return bonus[random.nextInt(bonus.length)]; 
+	}
+	
 	
 	public void changeSkin(boolean broken) {
 		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER //pas convaincu 
