@@ -1,4 +1,3 @@
-import java.lang.Object;
 import java.util.Random;
 
 public class Jar extends Decor {
