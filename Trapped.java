@@ -3,13 +3,13 @@ public class Trapped extends Monster {
 	
 
 	private String name;
-	private boolean hidden; //j ai rajoute ca( a voir si c est juste)
+	//private boolean hidden; //j ai rajoute ca (a voir si c est juste)
 	
 	public Trapped (int lifePoint, int xPos, int yPos, int speed,int direction,String name, boolean hidden)
 	{
 		super(lifePoint, xPos, yPos,speed, direction);
 		this.name = name;
-		this.hidden = hidden;
+	//	this.hidden = hidden;
 	}
 	
 	public String getName()
@@ -22,7 +22,7 @@ public class Trapped extends Monster {
 		this.name = name;
 	}
 	
-	public boolean getHidden()
+	/*public boolean getHidden()
 	{
 		return hidden;
 	}
@@ -35,6 +35,6 @@ public class Trapped extends Monster {
 	public void appear()
 	{
 		this.hidden = false;
-	}
+	}**/
 
 }

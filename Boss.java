@@ -1,4 +1,6 @@
 
+import java.util.Random;
+
 public class Boss extends Monster{	
 	
 	private String name;
@@ -51,9 +53,12 @@ public class Boss extends Monster{
 		Thunder thunder = new thunder (Link.getXPos(), Link.getYPos());
 	}
 	
-	public void teleportation()
+	public void teleportation(Map map) // dunno
 	{
-		//random pos
+		Random r1 = new Random();
+		Random r2 = new Random();
+		this.xPos = r1.nextInt(map.getXLimit);
+		this.yPos =r2.nextInt(map.getYlimit);
 	}
 	
 	// IA

@@ -83,21 +83,25 @@ public void setKey(boolean key)
 public void moveUp ()
 {
 	setYPos(yPos + 1);
+	direction = 1;
 }
 
 public void moveDown ()
 {
 	setYPos(yPos - 1);
+	direction = 2;
 }
 
 public void moveRight ()
 {
 	setYPos(xPos + 1);
+	direction = 3;
 }
 
 public void moveLeft ()
 {
 	setYPos(xPos - 1);
+	direction = 4;
 }
 
 public void setBomb()

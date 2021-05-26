@@ -31,7 +31,7 @@ public class Underground extends Monster{
 		this.underGround = underGround;
 	}
 	
-	public void disappear()
+	public void disappear(Link Link)
 	{
 		setUnderGround(true);
 	}
@@ -39,6 +39,30 @@ public class Underground extends Monster{
 	public void appear()
 	{
 		setUnderGround(false);
+	}
+	
+	public void IA(Link Link)
+	// jsais pas ou mettre la condition de appear
+	{
+		if( this.xPos < Link.getXPos())
+		{
+			moveRight();
+		}
+		
+		else if (this.xPos > Link.getXPos())
+		{
+			moveLeft();
+		}
+		
+		else if (this.yPos < Link.getYPos())
+		{
+			moveUp();
+		}
+		
+		else if (this.yPos > Link.getYPos())
+		{
+			moveDown();
+		}
 	}
 
 }
