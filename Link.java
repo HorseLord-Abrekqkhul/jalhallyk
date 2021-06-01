@@ -109,29 +109,29 @@ public void setBomb()
 	bomb bomb = new bomb(xPos, yPos) ;
 }
 
-public void pushBombUp(bomb bomb)
+public void pushBombUp(Bomb bomb)
 {
 	bomb.setYPos(bomb.getYPos() + 1);
 }
 
-public void pushBombDown(bomb bomb)
+public void pushBombDown(Bomb bomb)
 {
 	bomb.setYPos(bomb.getYPos() - 1);
 }
 
-public void pushBombRight(bomb bomb)
+public void pushBombRight(Bomb bomb)
 {
 	bomb.setXPos(bomb.getXPos() + 1);
 }
 
-public void pushBombLeft(bomb bomb)
+public void pushBombLeft(Bomb bomb)
 {
 	bomb.setXPos(bomb.getXPos() - 1);
 }
 
 public void fireArrow() //interface?
 {
-	arrow arrow = new arrow(xPos, yPos,direction);
+	arrow arrow = new arrow(xPos, yPos, direction);
 }
 
 public void resetAttributes()
