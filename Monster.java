@@ -29,9 +29,9 @@ public class Monster extends Character {
 		direction = 4;
 	}
 	
-	public void dealDamage(Link Link)
+	public void dealDamage(Link link)
 	{
-		Link.setLifePoint(Link.getLifePoint() - 1);
+		link.setLifePoint(link.getLifePoint() - 1);
 	}
 	
 	//IA
