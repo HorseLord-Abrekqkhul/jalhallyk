@@ -35,8 +35,8 @@ public class Decor {
 		this.name=name;
 	}
 	
-	public boolean isTouched(int xPos,int yPos) {
-		return this.xPos==xPos && this.yPos==yPos;	
+	public boolean isTouched(Character char) {
+		return this.xPos==char.getXPos() && this.yPos==char.getYPos();	
 	}
 	
 	
