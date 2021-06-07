@@ -60,7 +60,6 @@ public class Boss extends Monster{
 		this.xPos = r1.nextInt(map.getXLimit);
 		this.yPos =r2.nextInt(map.getYlimit);
 	}
-	
 	// IA
 }
 
