@@ -19,9 +19,9 @@ public class Ranged extends Monster {
 		this.name = name;
 	}
 	
-	public void fireArrow() // interface?
+	public Arrow fireArrow(int direction) // interface?
 	{
-		arrow arrow = new arrow(xPos, yPos,direction);
+		return Arrow arrow = new arrow(xPos, yPos,direction);
 	}
 	
 	public void IARanged(Link Link)
@@ -31,23 +31,44 @@ public class Ranged extends Monster {
 			if (this.xPos < Link.getXPos() )
 			{
 				moveRight();
+				direction = 3;
 			}
 			
 			else if (this.xPos > Link.getXPos())
 			{
 				moveLeft();
+				direction =4;
 			}
 			
 			else if (this.yPos < Link.getYPos())
 			{
 				moveUp();
+				direction = 1;
 			}
 			
 			else if (this.yPos > Link.getYPos())
 			{
 				moveDown();
+				direction = 2;
+			}
+			else if (this.xPos == Link.getXPos() && this.yPos < Link.getYPos())  // attention aux decors
+			{
+				fireArrow(1);
+			}
+			else if (this.xPos == Link.getXPos() && this.yPos > Link.getYPos())
+			{
+				fireArrow(2);
+			}
+			else if (this.yPos == Link.getYPos() && this.xPos < Link.getXPos())
+			{
+				fireArrow(3);
+			}
+			else if (this.yPos == Link.getYPos() && this.xPos < Link.getXPos())
+			{
+				fireArrow(4);
 			}
 		}
+		
 	}
 
 }

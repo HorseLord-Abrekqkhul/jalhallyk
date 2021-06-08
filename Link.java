@@ -104,9 +104,9 @@ public void moveLeft ()
 	direction = 4;
 }
 
-public void setBomb()
+public Bomb setBomb()
 {
-	bomb bomb = new bomb(xPos, yPos) ;
+	return Bomb bomb = new bomb(xPos, yPos) ;
 }
 
 public void pushBombUp(Bomb bomb)
@@ -129,9 +129,9 @@ public void pushBombLeft(Bomb bomb)
 	bomb.setXPos(bomb.getXPos() - 1);
 }
 
-public void fireArrow() //interface?
+public Arrow fireArrow() //interface?
 {
-	arrow arrow = new arrow(xPos, yPos, direction);
+	return Arrow arrow = new arrow(xPos, yPos, direction);
 }
 
 public void resetAttributes()

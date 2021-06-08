@@ -38,19 +38,19 @@ public class Boss extends Monster{
 		setRage(true);
 	}
 	
-	public void fireBall1(Link Link) // pas sur
+	public FireBall1 fireBall1(Link Link) // pas sur
 	{
-		FireBall1 fireBall1 = new fireBall1(this.xPos, this.yPos, Link.getXPos(),Link.getYPos());
+		return FireBall1 fireBall1 = new fireBall1(this.xPos, this.yPos, Link.getXPos(),Link.getYPos());
 	}
 	
-	public void fireBall2()
+	public Fireball2 fireBall2()
 	{
-		FireBall2 fireBall2 = new fireBall2(this.xPos, this.yPos);
+		return FireBall2 fireBall2 = new fireBall2(this.xPos, this.yPos);
 	}
 	
-	public void thunderBolt(Link Link)
+	public Thunder thunderBolt(Link Link)
 	{
-		Thunder thunder = new thunder (Link.getXPos(), Link.getYPos());
+		 return Thunder thunder = new thunder (Link.getXPos(), Link.getYPos());
 	}
 	
 	public void teleportation(Map map) // dunno
