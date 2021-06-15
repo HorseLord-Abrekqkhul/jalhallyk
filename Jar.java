@@ -1,8 +1,10 @@
 import java.util.Random;
 
+
 public class Jar extends Decor {
 	
 	private boolean broken;
+	private String brokenSkinName="Inconnu";
 	
 	public Jar(int xPos, int yPos, String name, boolean broken) {
 		super(xPos,yPos,name);
@@ -17,9 +19,9 @@ public class Jar extends Decor {
 		return broken;
 	}
 	
-	public void trappedMonster() {
-		String monsters[]={"Melee","Ranged","Bomber","Underground","Trapped"};
-		// RANDOM A RAJOUTER
+	public Trapped trappedMonster(int lifePoint, int xPos, int yPos, int speed,int direction,String name, boolean hidden) {
+		Trapped trapped=new Trapped(lifePoint, xPos, yPos, speed, direction, name);
+		return trapped;
 		
 	}
 	
@@ -31,7 +33,7 @@ public class Jar extends Decor {
 	
 	
 	public void changeSkin(boolean broken) {
-		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER //pas convaincu /la mÃªme
+		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER //pas convaincu /la même
 	}
 	
 

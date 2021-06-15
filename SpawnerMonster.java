@@ -5,7 +5,9 @@ public class SpawnerMonster extends Decor {
 		super(xPos,yPos,name);
 	}
 	
-	public void spawnMonster() {
+	public Monster spawnMonster(int lifePoint, int xPos, int yPos, int speed,int direction) {
+		Monster monster = new Monster(lifePoint, xPos, yPos, speed, direction);
+		return monster;
 		
 	}
 	

@@ -19,27 +19,28 @@ public class Bomber extends Monster {
 		this.name = name;
 	}
 	
-	public Bomb throwBomb()
-	{
-		if (direction == 1)
-		{
-			return Bomb bomb = new bomb (xPos, yPos + 3); // dunno si c est 3
+	public Bomb throwBomb(int xPos, int yPos, String name, int damage, int direction) {
+		
+		Bomb bomb = new Bomb (xPos, yPos, name, damage);
+		
+		if (direction == 1) 	{
+			bomb.setYPos(yPos + 3); // dunno si c est 3
+			
 		}
-		else if (direction == 2)
-		{
-			return Bomb bomb = new bomb (xPos, yPos - 3);
+		else if (direction == 2) 	{
+			bomb.setYPos(yPos - 3);		
 
 		}
-		else if (direction == 3)
-		{
-			return Bomb bomb = new bomb (xPos + 3, yPos);
+		else if (direction == 3) 	{
+			bomb.setXPos(xPos + 3);		
 
 		}
-		else if (direction == 4)
-		{
-			return Bomb bomb = new bomb (xPos - 3, yPos);
+		else if (direction == 4) 	{
+			bomb.setXPos(xPos - 3);		
 
 		}
+		
+		return bomb;
 	}
 	// IA 
 	

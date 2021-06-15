@@ -5,7 +5,7 @@ public class Trapped extends Monster {
 	private String name;
 	//private boolean hidden; //j ai rajoute ca (a voir si c est juste)
 	
-	public Trapped (int lifePoint, int xPos, int yPos, int speed,int direction,String name, boolean hidden)
+	public Trapped (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
 	{
 		super(lifePoint, xPos, yPos,speed, direction);
 		this.name = name;

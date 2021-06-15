@@ -5,7 +5,9 @@ public class SpawnerFireBalls extends Decor {
 		super(xPos,yPos,name);
 	}
 	
-	public void spawnFireBalls() {
+	public FireBall1 spawnFireBalls(int xPos, int yPos,String name, int damage, int direction) {
+		FireBall1 fireBall = new FireBall1(xPos, yPos, name, damage, direction);
+		return fireBall;
 		
 	}
 	

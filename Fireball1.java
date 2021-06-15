@@ -1,17 +1,18 @@
 import java.util.ArrayList;
 
-public class Fireball1 extends Projectile {
-	public Fireball1(int xPos, int yPos,String name, int damage, int direction){
+public class FireBall1 extends Projectile {
+	
+	public FireBall1(int xPos, int yPos,String name, int damage, int direction){
 		super(xPos,yPos,name,damage,direction);
 	}
-	
+
 	private boolean distance(int x, int y,int x2, int y2){
 		int x1 = getXPos();
 		int y1 = getYPos();
 		double dist = ((y1-y2)*x+(x2-x1)*y+x1*y2-x2*y1)/Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
 		return Math.abs(dist) < 0.5;
 	}
-	
+
 	public ArrayList<int[]> FireList(int x2, int y2, int xMax, int yMax){
 		ArrayList<int[]> list = new ArrayList<int[]>();
 		for(int y=0; y<yMax; y++){
@@ -48,7 +49,7 @@ public class Fireball1 extends Projectile {
 			}
 		}
 		return list;
-		
+
 	}
-	
+
 }
