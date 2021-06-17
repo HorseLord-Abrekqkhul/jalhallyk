@@ -5,13 +5,30 @@ public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Fireball1 fire = new Fireball1(20,20,"feu",1,1);
+		Fireball1 fire = new Fireball1(25,25,"feu",1,1);
 		ArrayList<int[]> list = new ArrayList<int[]>();
-		list = fire.FireList(0, 0, 50, 50);
-		int[] tab= new int[2];
+		list = fire.FireList(40, 40, 50, 50);
+		ArrayList<Integer> listposx = new ArrayList<Integer>();
+		ArrayList<Integer> listposy = new ArrayList<Integer>();
 		for(int i = 0; i < list.size(); i++){
-			tab = list.get(i);
-			System.out.println("i:" + i + " x =" + tab[0] + " y =" + tab[1]);
+			listposx.add(list.get(i)[0]);
+			listposy.add(list.get(i)[0]);
+		}
+		int p = 0;
+		for(int i = 0;i < 50; i++){
+			System.out.print("\n");
+			for(int j = 0; j < 50; j++){
+				for(int k = 0; k < listposx.size(); k++){
+					if(listposx.get(k) == i && listposy.get(k) == j){
+						System.out.print("x");
+						p = 1;
+					}
+				}
+				if(p==0){
+					System.out.print(".");
+				}
+				p = 0;
+			}
 		}
 	}
 
