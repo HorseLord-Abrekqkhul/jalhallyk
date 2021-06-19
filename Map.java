@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 public class Map {
 	
@@ -30,11 +35,47 @@ public class Map {
 		this.width = width;
 	}
 	
-	/*public int getMap()
+	public void getMap(FileInputStream fis)// pas sur qu il faille mettre try catch
 	{
-		int map[][] = fopen("tamamaan.txt");
-		return map[][];
-	}*/
-	
+		 try{
+			  byte[] buf = new byte[8];
+			  int i = 0;
+			  int j = 0;
+			  char a = ' ';
+			  int[][] map = new int[6][6];
+			  while (fis.read(buf) >= 0){
+				  for (byte bit : buf){
+					  a = ((char)bit);
+					  	if (bit == 10){
+					  		i++;
+					  		j =0;
+					  	}
+					  
+					  	else if (a != ' '&& a != '\n' &&  java.lang.Character.getNumericValue(a) != -1)
+					  	{
+							map[i][j] = java.lang.Character.getNumericValue(a);
+					  		System.out.println(map[i][j]);
+					  		j++;
+					  	}
+				  }	  
+			  }
+		  } catch(FileNotFoundException e){
+			  e.printStackTrace();
+		  } catch(IOException e){
+			  e.printStackTrace();
+		  }finally{
+			  try{
+				  if(fis != null)
+					  fis.close();
+			  } catch (IOException e){
+				  e.printStackTrace();
+			  }
+			  
+		  }
+		 		 
 
+		 
+		  
+	  }
 }
+

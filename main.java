@@ -1,10 +1,35 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		FileInputStream fis = null;
+		try{
+		fis = new FileInputStream(new File("map.txt"));
+		Map map = new Map(6,2);
+		map.getMap(fis);
+		}catch(FileNotFoundException e){
+			  e.printStackTrace();
+		  } catch(IOException e){
+			  e.printStackTrace();
+		  }finally{
+			  try{
+				  if(fis != null)
+					  fis.close();
+			  } catch (IOException e){
+				  e.printStackTrace();
+			  }
+			  
+		  }
+
+	}
+	/*	// TODO Auto-generated method stub
 		Fireball1 fire = new Fireball1(25,25,"feu",1,1);
 		ArrayList<int[]> list = new ArrayList<int[]>();
 		list = fire.FireList(40, 40, 50, 50);
@@ -31,5 +56,5 @@ public class main {
 			}
 		}
 	}
-
+*/
 }
