@@ -35,14 +35,15 @@ public class Map {
 		this.width = width;
 	}
 	
-	public void getMap(FileInputStream fis)// pas sur qu il faille mettre try catch
+	public int[][] getMap(FileInputStream fis)// pas sur qu il faille mettre try catch
 	{
-		 try{
+		int[][] map = new int[6][6];
+		try{
 			  byte[] buf = new byte[8];
 			  int i = 0;
 			  int j = 0;
 			  char a = ' ';
-			  int[][] map = new int[6][6];
+			  
 			  while (fis.read(buf) >= 0){
 				  for (byte bit : buf){
 					  a = ((char)bit);
@@ -54,11 +55,11 @@ public class Map {
 					  	else if (a != ' '&& a != '\n' &&  java.lang.Character.getNumericValue(a) != -1)
 					  	{
 							map[i][j] = java.lang.Character.getNumericValue(a);
-					  		System.out.println(map[i][j]);
 					  		j++;
 					  	}
 				  }	  
 			  }
+			  return map;
 		  } catch(FileNotFoundException e){
 			  e.printStackTrace();
 		  } catch(IOException e){
@@ -72,10 +73,7 @@ public class Map {
 			  }
 			  
 		  }
-		 		 
-
-		 
-		  
+		return map;		  
 	  }
 }
 

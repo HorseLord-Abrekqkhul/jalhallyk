@@ -13,7 +13,6 @@ public class main {
 		try{
 		fis = new FileInputStream(new File("map.txt"));
 		Map map = new Map(6,2);
-		map.getMap(fis);
 		}catch(FileNotFoundException e){
 			  e.printStackTrace();
 		  } catch(IOException e){
