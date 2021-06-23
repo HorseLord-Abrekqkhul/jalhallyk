@@ -35,9 +35,9 @@ public class Map {
 		this.width = width;
 	}
 	
-	public int[][] getMap(FileInputStream fis)// pas sur qu il faille mettre try catch
+	public int[][] loadMap(FileInputStream fis)// pas sur qu il faille mettre try catch
 	{
-		int[][] map = new int[6][6];
+		int[][] map = new int[length][width];
 		try{
 			  byte[] buf = new byte[8];
 			  int i = 0;
@@ -60,8 +60,6 @@ public class Map {
 				  }	  
 			  }
 			  return map;
-		  } catch(FileNotFoundException e){
-			  e.printStackTrace();
 		  } catch(IOException e){
 			  e.printStackTrace();
 		  }finally{
