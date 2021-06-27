@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class Fireball1 extends Projectile {
-	public Fireball1(int xPos, int yPos,String name, int damage, int direction){
+public class FireBall1 extends Projectile {
+	public FireBall1(int xPos, int yPos,String name, int damage, int direction){
 		super(xPos,yPos,name,damage,direction);
 	}
 	

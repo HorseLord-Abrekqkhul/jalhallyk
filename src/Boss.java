@@ -38,6 +38,7 @@ public class Boss extends Monster{
 		setRage(true);
 	}
 	
+	/*
 	public FireBall1 fireBall1(Link Link) // pas sur
 	{
 		FireBall1 fireBall1 = new FireBall1(this.xPos, this.yPos, Link.getXPos(),Link.getYPos());
@@ -62,6 +63,7 @@ public class Boss extends Monster{
 		this.xPos = r1.nextInt(map.getXLimit);
 		this.yPos =r2.nextInt(map.getYlimit);
 	}
+	*/
 	// IA
 }
 

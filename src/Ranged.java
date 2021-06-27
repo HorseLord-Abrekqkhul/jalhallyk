@@ -54,19 +54,19 @@ public class Ranged extends Monster {
 			}
 			else if (this.xPos == Link.getXPos() && this.yPos < Link.getYPos())  // attention aux decors
 			{
-				fireArrow(1);
+				//fireArrow(1);
 			}
 			else if (this.xPos == Link.getXPos() && this.yPos > Link.getYPos())
 			{
-				fireArrow(2);
+				//fireArrow(2);
 			}
 			else if (this.yPos == Link.getYPos() && this.xPos < Link.getXPos())
 			{
-				fireArrow(3);
+				//fireArrow(3);
 			}
 			else if (this.yPos == Link.getYPos() && this.xPos < Link.getXPos())
 			{
-				fireArrow(4);
+				//fireArrow(4);
 			}
 		}
 		

@@ -12,10 +12,11 @@ public class Bomb extends Decor {
 	public int getDamage() {
 		return damage;
 	}
-	
+	/*
 	public BombDeflagration explosion (int xPos, int yPos, String name) {
 		BombDeflagration bombDeflagration = new BombDeflagration(xPos, yPos, 2, name);
 		return bombDeflagration;
 	}
+	*/
 
 }
