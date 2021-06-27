@@ -9,24 +9,27 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		FileInputStream fis = null;
-		try{
-		fis = new FileInputStream(new File("map.txt"));
-		Map map = new Map(6,2);
-		}catch(FileNotFoundException e){
-			  e.printStackTrace();
-		  } catch(IOException e){
-			  e.printStackTrace();
-		  }finally{
-			  try{
-				  if(fis != null)
-					  fis.close();
-			  } catch (IOException e){
-				  e.printStackTrace();
-			  }
-			  
-		  }
-
+		new Fenetre();
+		
+		if(false)
+		{
+			FileInputStream fis = null;
+			try{
+				fis = new FileInputStream(new File("map.txt"));
+				Map map = new Map(6,2);
+			} catch(FileNotFoundException e){
+				e.printStackTrace();
+			} catch(IOException e){
+				e.printStackTrace();
+			} finally{
+				try{
+					if(fis != null)
+						fis.close();
+				} catch (IOException e){
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	/*	// TODO Auto-generated method stub
 		Fireball1 fire = new Fireball1(25,25,"feu",1,1);
