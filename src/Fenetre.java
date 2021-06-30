@@ -12,7 +12,8 @@ public class Fenetre extends JFrame {
 	public Fenetre() {
 		setVisible(true);
 		setSize(800, 600);
-		panel = new Panel();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		panel = new Panel("res/1.png");
 		getContentPane().add(panel);
 		
 		Timer timer = new Timer(30, new ActionListener() {
@@ -26,7 +27,7 @@ public class Fenetre extends JFrame {
 	}
 	
 	private void wololo() {
-		System.out.println("Hello");
+		System.out.println(panel.x);
 		panel.x += 2;
 		repaint();
 	}
