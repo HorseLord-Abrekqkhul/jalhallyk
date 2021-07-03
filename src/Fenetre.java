@@ -16,6 +16,8 @@ public class Fenetre extends JFrame implements KeyListener {
 	
 	private Panel link;
 	private Link l;
+	private long dephasage;
+	private long time;
 	private int i =0;
 	private int j =0;
 	private int k =0;
@@ -26,10 +28,11 @@ public class Fenetre extends JFrame implements KeyListener {
 	boolean basEnfoncee = false;
 	boolean hautEnfoncee = false;
 	
-	Image img1 = Toolkit.getDefaultToolkit().createImage("res/link1.png");
-	Image img2 = Toolkit.getDefaultToolkit().createImage("res/link2.png");
-	Image img3 = Toolkit.getDefaultToolkit().createImage("res/link3.png");
-	Image img4 = Toolkit.getDefaultToolkit().createImage("res/link4.png");
+	
+	Image linkRunRight = Toolkit.getDefaultToolkit().createImage("res/linkRunRight.png");
+	Image linkRunLeft = Toolkit.getDefaultToolkit().createImage("res/linkRunleft.png");
+	Image linkRunUp = Toolkit.getDefaultToolkit().createImage("res/linkRunUp.png");
+	Image linkRunDown = Toolkit.getDefaultToolkit().createImage("res/linkRunDown.png");
 	Image img5 = Toolkit.getDefaultToolkit().createImage("res/link5.png");
 	Image img6 = Toolkit.getDefaultToolkit().createImage("res/link6.png");
 	Image img7 = Toolkit.getDefaultToolkit().createImage("res/link7.png");
@@ -41,8 +44,9 @@ public class Fenetre extends JFrame implements KeyListener {
 	    setVisible(true) ;
 		setSize(1600, 400);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		l = new Link(0,200,200,0,0,"res/link2.png",0,0,0,false,false);
-		link = new Panel(l.getName(),l.getXPos(),l.getYPos());
+		l = new Link(0,200,200,0,0,"res/linkRunRight.png",0,0,0,false,false);
+		link = new Panel(l.getName(),l.getXPos(),l.getYPos(), "res/1.png",50,50);
+		link.z = 170;
 		getContentPane().add(link);
 		addKeyListener(this);
 		
@@ -56,67 +60,107 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 		});
 		timer.start();
+		
 	}
 	
 	private void wololo() {
 		repaint();
 		if(droiteEnfoncee){
+			link.image = linkRunRight;
+			i += 1;
 	    	l.setXPos(l.getXPos() + 1);
 			link.x = l.getXPos();
-			if (link.x%10 == 0){
-				i += 1;
-				if(i%2 == 0){
-					l.setName("res/link2.png");
-					link.image = img2;
-				}
-				else{
-					l.setName("res/link3.png");
-					link.image = img3;				}
+			if(i == 3){
+				link.z = 140;
 			}
+			else if(i == 6){
+				link.z = 108;
+			}
+			else if(i == 9){
+				link.z = 75;
+			}
+			else if(i == 12){
+				link.z = 45;
+			}
+			else if(i == 15){
+				link.z = 7;
+			}
+			else if(i > 15){
+				i = 0;
+			}
+			
 		}
 		if(gaucheEnfoncee){
-	    	l.setXPos(l.getXPos()-1);
+			link.image = linkRunLeft;
+			i += 1;
+	    	l.setXPos(l.getXPos() - 1);
 			link.x = l.getXPos();
-			if (link.x%10 == 0){
-				j += 1;
-				if(j%2 == 0){
-					l.setName("res/link4.png");
-					link.image = img4;
-				}
-				else{
-					l.setName("res/link5.png");
-					link.image = img5;
-				}
+			if(i == 3){
+				link.z = 30;
+			}
+			else if(i == 6){
+				link.z = 62;
+			}
+			else if(i == 9){
+				link.z = 95;
+			}
+			else if(i == 12){
+				link.z = 125;
+			}
+			else if(i == 15){
+				link.z = 163;
+			}
+			else if(i > 15){
+				i = 0;
 			}
 		}
+		
 		if(basEnfoncee){
+			link.image = linkRunDown;
+			i += 1;
 	    	l.setYPos(l.getYPos()+1);
 			link.y = l.getYPos();
-			if (link.y%10 == 0){
-				k += 1;
-				if(k%2 == 0){
-					l.setName("res/link8.png");
-					link.image = img8;
-				}
-				else{
-					l.setName("res/link9.png");
-					link.image = img9;
-				}
+			if(i == 3){
+				link.z = 30;
+			}
+			else if(i == 6){
+				link.z = 62;
+			}
+			else if(i == 9){
+				link.z = 95;
+			}
+			else if(i == 12){
+				link.z = 125;
+			}
+			else if(i == 15){
+				link.z = 163;
+			}
+			else if(i > 15){
+				i = 0;
 			}
 		}
 		if(hautEnfoncee){
+			link.image = linkRunUp;
+			i += 1;
 	    	l.setYPos(l.getYPos()-1 );
 			link.y = l.getYPos();
-			if (link.y%10 == 0){
-				h += 1;
-				if(h%2 == 0){
-					l.setName("res/link6.png");
-					link.image = img6;
-				}
-				else{
-					l.setName("res/link7.png");
-					link.image = img7;
-				}
+			if(i == 3){
+				link.z = 30;
+			}
+			else if(i == 6){
+				link.z = 62;
+			}
+			else if(i == 9){
+				link.z = 95;
+			}
+			else if(i == 12){
+				link.z = 125;
+			}
+			else if(i == 15){
+				link.z = 163;
+			}
+			else if(i > 15){
+				i = 0;
 			}
 		}
 	}
@@ -140,18 +184,23 @@ public class Fenetre extends JFrame implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		i = 0;
 	    int keyCode = e.getKeyCode();
 	    if (keyCode == KeyEvent.VK_RIGHT){
 	    	droiteEnfoncee = false;
+	    	link.z = 174;
 	    }
     	else if(keyCode == KeyEvent.VK_LEFT){
     		gaucheEnfoncee = false;
+    		link.z = -4;
     	}
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		basEnfoncee = false;
+    		link.z = -4;
     	}
     	else if(keyCode == KeyEvent.VK_UP) {
     		hautEnfoncee = false;
+    		link.z = -4;
     	}
 
 	}
