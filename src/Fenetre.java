@@ -27,16 +27,17 @@ public class Fenetre extends JFrame implements KeyListener {
 	boolean gaucheEnfoncee = false;
 	boolean basEnfoncee = false;
 	boolean hautEnfoncee = false;
+	boolean tireFleche = false;
 	
 	
 	Image linkRunRight = Toolkit.getDefaultToolkit().createImage("res/linkRunRight.png");
 	Image linkRunLeft = Toolkit.getDefaultToolkit().createImage("res/linkRunleft.png");
 	Image linkRunUp = Toolkit.getDefaultToolkit().createImage("res/linkRunUp.png");
 	Image linkRunDown = Toolkit.getDefaultToolkit().createImage("res/linkRunDown.png");
-	Image img5 = Toolkit.getDefaultToolkit().createImage("res/link5.png");
-	Image img6 = Toolkit.getDefaultToolkit().createImage("res/link6.png");
-	Image img7 = Toolkit.getDefaultToolkit().createImage("res/link7.png");
-	Image img8 = Toolkit.getDefaultToolkit().createImage("res/link8.png");
+	Image linkArrowRight = Toolkit.getDefaultToolkit().createImage("res/linkArrowRight.png");
+	Image linkArrowLeft = Toolkit.getDefaultToolkit().createImage("res/linkArrowLeft.png");
+	Image linkArrowUp = Toolkit.getDefaultToolkit().createImage("res/linkArrowUp.png");
+	Image linkArrowDown = Toolkit.getDefaultToolkit().createImage("res/linkArrowDown.png");
 	Image img9 = Toolkit.getDefaultToolkit().createImage("res/link9.png");
 
 	
@@ -64,11 +65,11 @@ public class Fenetre extends JFrame implements KeyListener {
 	}
 	
 	private void wololo() {
-		repaint();
+
 		if(droiteEnfoncee){
 			link.image = linkRunRight;
 			i += 1;
-	    	l.setXPos(l.getXPos() + 1);
+	    	l.moveRight();
 			link.x = l.getXPos();
 			if(i == 3){
 				link.z = 140;
@@ -93,7 +94,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(gaucheEnfoncee){
 			link.image = linkRunLeft;
 			i += 1;
-	    	l.setXPos(l.getXPos() - 1);
+	    	l.moveLeft();
 			link.x = l.getXPos();
 			if(i == 3){
 				link.z = 30;
@@ -118,7 +119,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(basEnfoncee){
 			link.image = linkRunDown;
 			i += 1;
-	    	l.setYPos(l.getYPos()+1);
+	    	l.moveDown();
 			link.y = l.getYPos();
 			if(i == 3){
 				link.z = 30;
@@ -142,7 +143,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(hautEnfoncee){
 			link.image = linkRunUp;
 			i += 1;
-	    	l.setYPos(l.getYPos()-1 );
+	    	l.moveUp();
 			link.y = l.getYPos();
 			if(i == 3){
 				link.z = 30;
@@ -163,6 +164,48 @@ public class Fenetre extends JFrame implements KeyListener {
 				i = 0;
 			}
 		}
+		if(tireFleche){
+			i += 1;
+			switch(l.getDirection()){
+				case 1:
+					link.image = linkArrowUp;
+				case 2:
+					link.image = linkArrowDown;
+				case 3:
+					link.image = linkArrowLeft;
+				case 4:
+					link.image = linkArrowRight;
+					if(i == 1){
+						link.z = -4;
+					}
+					else if(i == 3){
+						link.z = 26;
+					}
+					else if(i == 5){
+						link.z = 55;
+					}
+					else if(i == 7){
+						link.z = 84;
+					}
+					else if(i == 9){
+						link.z = 113;
+					}
+					else if(i == 10){
+						link.z = 142;
+					}
+					else if(i == 12){
+						link.z = 26;
+					}
+					else if(i == 14){
+						link.z = -4;
+						tireFleche = false;
+						Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
+					}
+				
+			}
+			
+		}
+		repaint();
 	}
 
 	@Override
@@ -178,6 +221,9 @@ public class Fenetre extends JFrame implements KeyListener {
     	}
     	else if(keyCode == KeyEvent.VK_UP) {
     		hautEnfoncee = true;
+    	}
+    	else if(keyCode == KeyEvent.VK_X){
+    		tireFleche = true;
     	}
 	}
 

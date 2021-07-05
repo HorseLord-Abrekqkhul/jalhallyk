@@ -82,25 +82,25 @@ public void setKey(boolean key)
 
 public void moveUp ()
 {
-	setYPos(yPos + 1);
+	setYPos(yPos - 1); //panel 
 	direction = 1;
 }
 
 public void moveDown ()
 {
-	setYPos(yPos - 1);
+	setYPos(yPos + 1); //panel
 	direction = 2;
 }
 
 public void moveRight ()
 {
-	setYPos(xPos + 1);
+	setXPos(xPos + 1);
 	direction = 3;
 }
 
 public void moveLeft ()
 {
-	setYPos(xPos - 1);
+	setXPos(xPos - 1);
 	direction = 4;
 }
 
