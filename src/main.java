@@ -11,7 +11,7 @@ public class main {
 		
 		new Fenetre();
 		
-		if(false)
+/*		if(false)
 		{
 			FileInputStream fis = null;
 			try{
@@ -59,4 +59,5 @@ public class main {
 		}
 	}
 */
+}
 }

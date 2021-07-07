@@ -294,7 +294,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			
 		}
 		if(j == 1){
-			link.x3 += 2;
+			link.x3 += 5;
 			System.out.println("kirby bouge à droite, sa position est : " + link.x3);
 			if (link.x3 == 1500){
 				j = 0;
