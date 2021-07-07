@@ -18,13 +18,13 @@ public class Projectile extends Damage {
 	
 	public void moveUp ()
 	{
-		setYPos(getYPos() + 1);
+		setYPos(getYPos() - 1);
 		this.direction = 1;
 	}
 
 	public void moveDown ()
 	{
-		setYPos(getYPos() - 1);
+		setYPos(getYPos() + 1);
 		this.direction = 2;
 	}
 

@@ -38,7 +38,8 @@ public class Fenetre extends JFrame implements KeyListener {
 	Image linkArrowLeft = Toolkit.getDefaultToolkit().createImage("res/linkArrowLeft.png");
 	Image linkArrowUp = Toolkit.getDefaultToolkit().createImage("res/linkArrowUp.png");
 	Image linkArrowDown = Toolkit.getDefaultToolkit().createImage("res/linkArrowDown.png");
-	Image img9 = Toolkit.getDefaultToolkit().createImage("res/link9.png");
+	Image kirby = Toolkit.getDefaultToolkit().createImage("res/2.png");
+	Image vide = Toolkit.getDefaultToolkit().createImage("res/void.png");
 
 	
 	public Fenetre() {
@@ -166,44 +167,139 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		if(tireFleche){
 			i += 1;
-			switch(l.getDirection()){
-				case 1:
-					link.image = linkArrowUp;
-				case 2:
-					link.image = linkArrowDown;
-				case 3:
-					link.image = linkArrowLeft;
-				case 4:
-					link.image = linkArrowRight;
-					if(i == 1){
-						link.z = -4;
+			if(l.getDirection() == 1){
+				link.image = linkArrowUp;
+				//System.out.println("je tire en haut");
+				if(i == 1){
+					link.z = -4;
+				}
+				else if(i == 3){
+					link.z = 26;
+				}
+				else if(i == 5){
+					link.z = 55;
+				}
+				else if(i == 7){
+					link.z = 84;
+				}
+				else if(i == 9){
+					link.z = 113;
+				}
+				else if(i == 10){
+					link.z = 142;
+				}
+				else if(i == 12){
+					link.z = 26;
+				}
+				else if(i == 14){
+					link.z = -4;
+					tireFleche = false;
+					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
 					}
-					else if(i == 3){
-						link.z = 26;
-					}
-					else if(i == 5){
-						link.z = 55;
-					}
-					else if(i == 7){
-						link.z = 84;
-					}
-					else if(i == 9){
-						link.z = 113;
-					}
-					else if(i == 10){
-						link.z = 142;
-					}
-					else if(i == 12){
-						link.z = 26;
-					}
-					else if(i == 14){
-						link.z = -4;
-						tireFleche = false;
-						Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
-					}
-				
+			}
+			if(l.getDirection() == 2){
+				link.image = linkArrowDown;
+				//System.out.println("je tire en bas");
+				if(i == 1){
+					link.z = -4;
+				}
+				else if(i == 3){
+					link.z = 26;
+				}
+				else if(i == 5){
+					link.z = 55;
+				}
+				else if(i == 7){
+					link.z = 84;
+				}
+				else if(i == 9){
+					link.z = 113;
+				}
+				else if(i == 10){
+					link.z = 142;
+				}
+				else if(i == 12){
+					link.z = 26;
+				}
+				else if(i == 14){
+					link.z = -4;
+					tireFleche = false;
+					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
+				}
+			}
+			if(l.getDirection() == 4){
+				link.image = linkArrowLeft;
+				//System.out.println("je tire à gauche");
+				if(i == 1){
+					link.z = -4;
+				}
+				else if(i == 3){
+					link.z = 26;
+				}
+				else if(i == 5){
+					link.z = 55;
+				}
+				else if(i == 7){
+					link.z = 84;
+				}
+				else if(i == 9){
+					link.z = 113;
+				}
+				else if(i == 10){
+					link.z = 142;
+				}
+				else if(i == 12){
+					link.z = 26;
+				}
+				else if(i == 14){
+					link.z = -4;
+					tireFleche = false;
+					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
+				}
+			}
+			if(l.getDirection() == 3){
+				link.image = linkArrowRight;
+				//System.out.println("je tire à droite");
+				if(i == 1){
+					link.z = -4;
+				}
+				else if(i == 3){
+					link.z = 26;
+				}
+				else if(i == 5){
+					link.z = 55;
+				}
+				else if(i == 7){
+					link.z = 84;
+				}
+				else if(i == 9){
+					link.z = 113;
+				}
+				else if(i == 10){
+					link.z = 142;
+				}
+				else if(i == 12){
+					link.z = 26;
+				}
+				else if(i == 14){
+					link.z = -4;
+					tireFleche = false;
+					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
+					link.image3 = kirby;
+					link.x3 = link.x + 13;
+					link.y3 = link.y - 40;
+					j = 1;
+				}
 			}
 			
+		}
+		if(j == 1){
+			link.x3 += 2;
+			System.out.println("kirby bouge à droite, sa position est : " + link.x3);
+			if (link.x3 == 1500){
+				j = 0;
+				link.image3 = vide;
+			}
 		}
 		repaint();
 	}

@@ -13,8 +13,8 @@ import javax.imageio.ImageIO;
 
 
 public class Panel extends JPanel{
-	public int x,y,x2,y2,z;
-	public Image image,image2;
+	public int x,y,x2,y2,z,x3,y3;
+	public Image image,image2,image3;
 	
 	public Panel() {
 		x = 0;   
@@ -28,6 +28,7 @@ public class Panel extends JPanel{
 		y2 = PosY2;
     	image = Toolkit.getDefaultToolkit().createImage(filename);
     	image2 = Toolkit.getDefaultToolkit().createImage(filename2);
+    	image3 = Toolkit.getDefaultToolkit().createImage("res/void.png");
     	/*
         try { image = ImageIO.read(new File(filename)); }
         catch(IOException e) {
@@ -42,7 +43,9 @@ public class Panel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		//g.drawRect(x, 300, 20, 40);
+
 		g.drawImage(image2,x2,y2, null);
+		g.drawImage(image3,x3,y3, null);
 		g.drawImage(image, x, y+30, x+30, y, z, 30, z+30 , 0, null);
 		//g.drawImage(image,x,y, null);
 
