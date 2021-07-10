@@ -46,7 +46,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	    setVisible(true) ;
 		setSize(1600, 400);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		l = new Link(0,200,200,0,0,"res/linkRunRight.png",0,0,0,false,false);
+		l = new Link(0,200,200,0,3,"res/linkRunRight.png",0,0,0,false,false); //penser à utiliser vitesse
 		link = new Panel(l.getName(),l.getXPos(),l.getYPos(), "res/1.png",50,50);
 		link.z = 170;
 		getContentPane().add(link);
@@ -294,9 +294,9 @@ public class Fenetre extends JFrame implements KeyListener {
 			
 		}
 		if(j == 1){
-			link.x3 += 2;
+			link.x3 += 5;
 			System.out.println("kirby bouge à droite, sa position est : " + link.x3);
-			if (link.x3 == 1500){
+			if (link.x3 > 1500){
 				j = 0;
 				link.image3 = vide;
 			}
