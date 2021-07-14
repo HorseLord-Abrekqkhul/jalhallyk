@@ -1,10 +1,11 @@
 
 public class Projectile extends Damage {
 	private int direction;
-	public Projectile(int xPos, int yPos,String name, int damage, int direction){
-		super(xPos,yPos,name,damage);
+	public Projectile(int xPos, int yPos,ImageAnimeDirection IAD,int c, int damage, int direction){
+		super(xPos,yPos,IAD,c,damage);
 		this.direction = direction;
 	}
+	
 	
 	public int getDirection()
 	{ 
@@ -16,27 +17,23 @@ public class Projectile extends Damage {
 		this.direction = direction;
 	}
 	
-	public void moveUp ()
-	{
-		setYPos(getYPos() - 1);
-		this.direction = 1;
-	}
-
-	public void moveDown ()
-	{
-		setYPos(getYPos() + 1);
-		this.direction = 2;
-	}
-
-	public void moveRight ()
-	{
-		setXPos(getXPos() + 1);
-		this.direction = 3;
-	}
-
-	public void moveLeft ()
-	{
-		setXPos(getXPos() - 1);
-		this.direction = 4;
+	public void move(){
+		if(direction == 0){
+			setXPos(getXPos() - 2);
+			tick(getIAD(),getC());
+		}
+		if(direction == 1){
+			setXPos(getXPos() + 2);
+			tick(getIAD(),getC());
+		}
+		if(direction == 2){
+			setYPos(getYPos() - 2); //panel 
+			tick(getIAD(),getC());
+		}
+		if(direction == 3){
+			setYPos(getYPos() + 2); //panel
+			tick(getIAD(),getC());
+		}
 	}
 }
+	

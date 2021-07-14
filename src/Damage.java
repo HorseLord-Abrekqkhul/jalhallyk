@@ -8,8 +8,8 @@
  */
 public class Damage extends Item{
 	private int damage;
-	public Damage(int xPos, int yPos,String name,int damage){
-		super(xPos,yPos,name);
+	public Damage(int xPos, int yPos,ImageAnimeDirection IAD,int c,int damage){
+		super(xPos,yPos,IAD,c);
 		this.damage = damage;
 	}
 	

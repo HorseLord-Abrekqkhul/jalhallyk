@@ -1,33 +1,25 @@
+import java.awt.Image;
+import java.util.List;
 
 public class Link extends Character {
 	
-private String name;
+
 private int numberBomb;
 private int rangeBomb;
 private int numberArrow;
 private boolean gauntlet;
 private boolean key;
 
-public Link (int lifePoint, int xPos, int yPos, int speed,int direction, String name,int numberBomb, int rangeBomb, int numberArrow, boolean gauntlet, boolean key)
+public Link (int lifePoint, int xPos, int yPos, int speed,int direction, ImageAnimeDirection image,int numberBomb, int rangeBomb, int numberArrow, boolean gauntlet, boolean key)
 {
-	super(lifePoint, xPos, yPos, speed, direction);
-	this.name = name;
+	super(lifePoint, xPos, yPos, speed, direction, image);
 	this.numberBomb = numberBomb;
 	this.rangeBomb = rangeBomb;
 	this.numberArrow = numberArrow;
 	this.gauntlet = gauntlet;
-	this.key = key;
-	
-}
-public String getName()
-{
-	return name;
+	this.key = key;	
 }
 
-public void setName(String name)
-{
-	this.name = name;
-}
 
 public int getNumberBomb()
 {
@@ -83,25 +75,29 @@ public void setKey(boolean key)
 public void moveUp ()
 {
 	setYPos(yPos - 2); //panel 
-	direction = 1;
+	direction = 2;
+	tick(getIAD(),5);
 }
 
 public void moveDown ()
 {
 	setYPos(yPos + 2); //panel
-	direction = 2;
+	direction = 3;
+	tick(getIAD(),5);
 }
 
 public void moveRight ()
 {
 	setXPos(xPos + 2);
-	direction = 3;
+	direction = 1;
+	tick(getIAD(),5);
 }
 
 public void moveLeft ()
 {
 	setXPos(xPos - 2);
-	direction = 4;
+	direction = 0;
+	tick(getIAD(),5);
 }
 
 public Bomb setBomb(int xPos, int yPos, String name, int damage)
@@ -130,11 +126,14 @@ public void pushBombLeft(Bomb bomb)
 	bomb.setXPos(bomb.getXPos() - 1);
 }
 
-public Arrow fireArrow(int xPos, int yPos,String name, int damage, int direction) //interface?
-{
-	Arrow arrow = new Arrow(xPos, yPos, name, damage, direction);
-	return arrow;
-}
+public List<Arrow> fireArrow(List<Arrow> liste, ImageAnimeDirection IAD){
+	tick(getIAD(),5);
+	if(getActualFrame() == 6){
+		liste.add(new Arrow(xPos, yPos, IAD, 5, 3, direction));
+	}
+	return liste;
+	 
+	}
 
 public void resetAttributes()
 {
@@ -143,7 +142,6 @@ public void resetAttributes()
 	yPos = 0;
 	speed = 325;
 	direction = 2;
-	name = "link";
 	rangeBomb = 2;
 	numberBomb = 1;
 	numberArrow = 0;

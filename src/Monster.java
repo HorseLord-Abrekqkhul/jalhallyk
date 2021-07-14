@@ -1,8 +1,8 @@
 public class Monster extends Character {
 
-	public Monster (int lifePoint, int xPos, int yPos, int speed,int direction)
+	public Monster (int lifePoint, int xPos, int yPos, int speed,int direction,ImageAnimeDirection image)
 	{
-		super (lifePoint, xPos, yPos, speed, direction);
+		super (lifePoint, xPos, yPos, speed, direction,image);
 	}
 	
 	public void moveUp ()

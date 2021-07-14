@@ -19,9 +19,9 @@ public class Ranged extends Monster {
 		this.name = name;
 	}
 	
-	public Arrow fireArrow(int xPos, int yPos, String name, int damage, int direction) // interface?
+	public Arrow fireArrow(int xPos, int yPos, ImageAnimeDirection IAD, int damage, int direction) // interface?
 	{
-		Arrow arrow = new Arrow(xPos, yPos, name, damage, direction);
+		Arrow arrow = new Arrow(xPos, yPos, IAD, damage, direction);
 		return arrow;
 	}
 	

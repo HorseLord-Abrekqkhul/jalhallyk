@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class FireBall1 extends Projectile {
-	public FireBall1(int xPos, int yPos,String name, int damage, int direction){
-		super(xPos,yPos,name,damage,direction);
+	public FireBall1(int xPos, int yPos,ImageAnimeDirection IAD, int damage, int direction){
+		super(xPos,yPos,IAD,damage,direction);
 	}
 	
 	private boolean distance(int x, int y,int x2, int y2){

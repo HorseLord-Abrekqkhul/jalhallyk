@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,13 +17,16 @@ import java.awt.Image;
 public class Fenetre extends JFrame implements KeyListener {
 	
 	private Panel link;
-	private Link l;
 	private long dephasage;
 	private long time;
 	private int i =0;
 	private int j =0;
 	private int k =0;
 	private int h =0;
+	
+	private List<Link> l;
+	private ArrayList<Link> liste;
+	private ArrayList<Arrow> ar;
 	
 	boolean droiteEnfoncee = false;
 	boolean gaucheEnfoncee = false;
@@ -30,25 +35,33 @@ public class Fenetre extends JFrame implements KeyListener {
 	boolean tireFleche = false;
 	
 	
-	Image linkRunRight = Toolkit.getDefaultToolkit().createImage("res/linkRunRight.png");
-	Image linkRunLeft = Toolkit.getDefaultToolkit().createImage("res/linkRunleft.png");
-	Image linkRunUp = Toolkit.getDefaultToolkit().createImage("res/linkRunUp.png");
-	Image linkRunDown = Toolkit.getDefaultToolkit().createImage("res/linkRunDown.png");
-	Image linkArrowRight = Toolkit.getDefaultToolkit().createImage("res/linkArrowRight.png");
-	Image linkArrowLeft = Toolkit.getDefaultToolkit().createImage("res/linkArrowLeft.png");
-	Image linkArrowUp = Toolkit.getDefaultToolkit().createImage("res/linkArrowUp.png");
-	Image linkArrowDown = Toolkit.getDefaultToolkit().createImage("res/linkArrowDown.png");
-	Image kirby = Toolkit.getDefaultToolkit().createImage("res/2.png");
+	
+	ImageAnimeDirection linkRun = new ImageAnimeDirection("res/LinkRun",6);
+	ImageAnimeDirection linkArrow = new ImageAnimeDirection("res/LinkArrow",6);
+	ImageAnimeDirection arrow = new ImageAnimeDirection("res/Arrow",3);
+	
+	Image kirby = Toolkit.getDefaultToolkit().createImage("res/kirby.png");
 	Image vide = Toolkit.getDefaultToolkit().createImage("res/void.png");
+	
 
 	
 	public Fenetre() {
 	    setVisible(true) ;
 		setSize(1600, 400);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		l = new Link(0,200,200,0,3,"res/linkRunRight.png",0,0,0,false,false); //penser à utiliser vitesse
-		link = new Panel(l.getName(),l.getXPos(),l.getYPos(), "res/1.png",50,50);
-		link.z = 170;
+		liste = new ArrayList<Link>();
+		ar = new ArrayList<Arrow>();
+		rajouteLink(liste,200,200);
+		rajouteLink(liste,200,250);
+		//l = new ArrayList<Link>();
+		//ImageAnimeDirection linkRun = new ImageAnimeDirection("res/LinkRun",6);
+		//ImageAnimeDirection linkRun2 = new ImageAnimeDirection("res/LinkRun",6);
+		//Link l1 = new Link(0,200,200,0,3,linkRun,0,0,0,false,false); //penser ï¿½ utiliser vitesse
+		//Link l2 = new Link(0,250,210,0,3,linkRun2,0,0,0,false,false);
+		
+		
+		
+		link = new Panel(liste,ar);
 		getContentPane().add(link);
 		addKeyListener(this);
 		
@@ -65,240 +78,70 @@ public class Fenetre extends JFrame implements KeyListener {
 		
 	}
 	
-	private void wololo() {
+	private List<Link> rajouteLink(List<Link> liste,int x,int y){
+		
+	  Link link = new Link(0,x,y,0,1,linkRun,0,0,0,false,false);
+	  liste.add(link);
+	  return liste;
+	  
+	}
+	
 
+	
+	private void wololo() {
+		/*
+		if(liste.get(1).getXPos() < 1000){
+			//System.out.println(link.data.get(1).getXPos()); 
+			liste.get(0).setXPos(liste.get(0).getXPos()+2);
+			liste.get(1).setXPos(liste.get(1).getXPos()+2);
+			liste.get(0).tick();
+			//System.out.println(liste.get(0).getIAD().getActualFrame()); 
+			liste.get(1).tick();
+			
+			if(liste.get(1).getXPos() == 500){
+				rajouteLink(liste,liste.get(0).getXPos(),liste.get(0).getYPos());
+			}
+			
+			if(liste.get(1).getXPos() > 500){
+				liste.get(2).setDirection(0);
+				liste.get(2).tick();
+				liste.get(2).setXPos(liste.get(2).getXPos()-2);
+			}
+			
+		}
+		*/
 		if(droiteEnfoncee){
-			link.image = linkRunRight;
-			i += 1;
-	    	l.moveRight();
-			link.x = l.getXPos();
-			if(i == 3){
-				link.z = 140;
-			}
-			else if(i == 6){
-				link.z = 108;
-			}
-			else if(i == 9){
-				link.z = 75;
-			}
-			else if(i == 12){
-				link.z = 45;
-			}
-			else if(i == 15){
-				link.z = 7;
-			}
-			else if(i > 15){
-				i = 0;
-			}
+			liste.get(0).setIAD(linkRun);
+	    	liste.get(0).moveRight();
 			
 		}
 		if(gaucheEnfoncee){
-			link.image = linkRunLeft;
-			i += 1;
-	    	l.moveLeft();
-			link.x = l.getXPos();
-			if(i == 3){
-				link.z = 30;
-			}
-			else if(i == 6){
-				link.z = 62;
-			}
-			else if(i == 9){
-				link.z = 95;
-			}
-			else if(i == 12){
-				link.z = 125;
-			}
-			else if(i == 15){
-				link.z = 163;
-			}
-			else if(i > 15){
-				i = 0;
-			}
+			liste.get(0).setIAD(linkRun);
+	    	liste.get(0).moveLeft();
 		}
 		
 		if(basEnfoncee){
-			link.image = linkRunDown;
-			i += 1;
-	    	l.moveDown();
-			link.y = l.getYPos();
-			if(i == 3){
-				link.z = 30;
-			}
-			else if(i == 6){
-				link.z = 62;
-			}
-			else if(i == 9){
-				link.z = 95;
-			}
-			else if(i == 12){
-				link.z = 125;
-			}
-			else if(i == 15){
-				link.z = 163;
-			}
-			else if(i > 15){
-				i = 0;
-			}
+			liste.get(0).setIAD(linkRun);
+	    	liste.get(0).moveDown();
 		}
 		if(hautEnfoncee){
-			link.image = linkRunUp;
-			i += 1;
-	    	l.moveUp();
-			link.y = l.getYPos();
-			if(i == 3){
-				link.z = 30;
-			}
-			else if(i == 6){
-				link.z = 62;
-			}
-			else if(i == 9){
-				link.z = 95;
-			}
-			else if(i == 12){
-				link.z = 125;
-			}
-			else if(i == 15){
-				link.z = 163;
-			}
-			else if(i > 15){
-				i = 0;
-			}
+			liste.get(0).setIAD(linkRun);
+	    	liste.get(0).moveUp();
 		}
 		if(tireFleche){
-			i += 1;
-			if(l.getDirection() == 1){
-				link.image = linkArrowUp;
-				//System.out.println("je tire en haut");
-				if(i == 1){
-					link.z = -4;
-				}
-				else if(i == 3){
-					link.z = 26;
-				}
-				else if(i == 5){
-					link.z = 55;
-				}
-				else if(i == 7){
-					link.z = 84;
-				}
-				else if(i == 9){
-					link.z = 113;
-				}
-				else if(i == 10){
-					link.z = 142;
-				}
-				else if(i == 12){
-					link.z = 26;
-				}
-				else if(i == 14){
-					link.z = -4;
-					tireFleche = false;
-					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
-					}
+			liste.get(0).setIAD(linkArrow);
+			liste.get(0).fireArrow(ar,arrow);
+			if(liste.get(0).getActualFrame() == 6){
+				tireFleche = false;
 			}
-			if(l.getDirection() == 2){
-				link.image = linkArrowDown;
-				//System.out.println("je tire en bas");
-				if(i == 1){
-					link.z = -4;
-				}
-				else if(i == 3){
-					link.z = 26;
-				}
-				else if(i == 5){
-					link.z = 55;
-				}
-				else if(i == 7){
-					link.z = 84;
-				}
-				else if(i == 9){
-					link.z = 113;
-				}
-				else if(i == 10){
-					link.z = 142;
-				}
-				else if(i == 12){
-					link.z = 26;
-				}
-				else if(i == 14){
-					link.z = -4;
-					tireFleche = false;
-					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
-				}
-			}
-			if(l.getDirection() == 4){
-				link.image = linkArrowLeft;
-				//System.out.println("je tire à gauche");
-				if(i == 1){
-					link.z = -4;
-				}
-				else if(i == 3){
-					link.z = 26;
-				}
-				else if(i == 5){
-					link.z = 55;
-				}
-				else if(i == 7){
-					link.z = 84;
-				}
-				else if(i == 9){
-					link.z = 113;
-				}
-				else if(i == 10){
-					link.z = 142;
-				}
-				else if(i == 12){
-					link.z = 26;
-				}
-				else if(i == 14){
-					link.z = -4;
-					tireFleche = false;
-					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
-				}
-			}
-			if(l.getDirection() == 3){
-				link.image = linkArrowRight;
-				//System.out.println("je tire à droite");
-				if(i == 1){
-					link.z = -4;
-				}
-				else if(i == 3){
-					link.z = 26;
-				}
-				else if(i == 5){
-					link.z = 55;
-				}
-				else if(i == 7){
-					link.z = 84;
-				}
-				else if(i == 9){
-					link.z = 113;
-				}
-				else if(i == 10){
-					link.z = 142;
-				}
-				else if(i == 12){
-					link.z = 26;
-				}
-				else if(i == 14){
-					link.z = -4;
-					tireFleche = false;
-					Arrow arrow = new Arrow(l.getXPos(),l.getYPos(),"res/arrow.png",1,l.getDirection());
-					link.image3 = kirby;
-					link.x3 = link.x + 13;
-					link.y3 = link.y - 40;
-					j = 1;
-				}
-			}
-			
 		}
-		if(j == 1){
-			link.x3 += 5;
-			System.out.println("kirby bouge à droite, sa position est : " + link.x3);
-			if (link.x3 > 1500){
-				j = 0;
-				link.image3 = vide;
+		if(ar.size()>0){
+			for(int p = 0; p < ar.size(); p++){
+				ar.get(p).move();
+				if(ar.get(p).getXPos() > 1600 || ar.get(p).getXPos() < 0 ||
+						ar.get(p).getYPos() > 400 || ar.get(p).getYPos() < 0){
+					ar.remove(p);
+				}
 			}
 		}
 		repaint();
@@ -327,22 +170,23 @@ public class Fenetre extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		i = 0;
+		liste.get(0).setActualFrame(1);
 	    int keyCode = e.getKeyCode();
 	    if (keyCode == KeyEvent.VK_RIGHT){
 	    	droiteEnfoncee = false;
-	    	link.z = 174;
+	    	//link.posZ.set(0, 174);
 	    }
     	else if(keyCode == KeyEvent.VK_LEFT){
     		gaucheEnfoncee = false;
-    		link.z = -4;
+	    	//link.posZ.set(0, -4);
     	}
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		basEnfoncee = false;
-    		link.z = -4;
+	    	//link.posZ.set(0, -4);
     	}
     	else if(keyCode == KeyEvent.VK_UP) {
     		hautEnfoncee = false;
-    		link.z = -4;
+	    	//link.posZ.set(0, -4);
     	}
 
 	}
