@@ -1,27 +1,16 @@
 
 public class Ranged extends Monster {
 	
-	private String name;
 	
-	public Ranged (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
+	public Ranged (int lifePoint, int xPos, int yPos, int speed,int direction,ImageAnimeDirection image)
 	{
-		super(lifePoint, xPos, yPos,speed, direction);
-		this.name = name;
+		super(lifePoint, xPos, yPos,speed, direction,image);
 	}
 	
-	public String getName()
-	{
-		return name;
-	}
 	
-	public void setName(String name)
+	public Arrow fireArrow(int xPos, int yPos, ImageAnimeDirection IAD,int c, int damage, int direction) // interface?
 	{
-		this.name = name;
-	}
-	
-	public Arrow fireArrow(int xPos, int yPos, ImageAnimeDirection IAD, int damage, int direction) // interface?
-	{
-		Arrow arrow = new Arrow(xPos, yPos, IAD, damage, direction);
+		Arrow arrow = new Arrow(xPos, yPos, IAD,c, damage, direction);
 		return arrow;
 	}
 	

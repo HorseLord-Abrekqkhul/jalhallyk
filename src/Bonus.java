@@ -1,8 +1,8 @@
 public class Bonus extends Item {
 	private int number;
 	
-	public Bonus(int xPos, int yPos,String name,int number){
-		super(xPos,yPos,name);
+	public Bonus(int xPos, int yPos,ImageAnimeDirection image,int c,int number){
+		super(xPos,yPos,image,c);
 		this.number = number;
 	}
 
@@ -25,7 +25,7 @@ public void finalyze(Link l){
 		l.setNumberArrow(l.getNumberArrow()+1); //
 		break;
 	case 4: //Speed
-		l.setSpeed(l.getSpeed()+1); //coeff à déterminer
+		l.setSpeed(l.getSpeed()+1); //coeff ï¿½ dï¿½terminer
 		break;
 	case 5: //Gauntlet
 		l.setGauntlet(true);

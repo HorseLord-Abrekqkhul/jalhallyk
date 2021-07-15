@@ -19,19 +19,19 @@ public class Projectile extends Damage {
 	
 	public void move(){
 		if(direction == 0){
-			setXPos(getXPos() - 2);
+			setXPos(getXPos() - 10);
 			tick(getIAD(),getC());
 		}
 		if(direction == 1){
-			setXPos(getXPos() + 2);
+			setXPos(getXPos() + 10);
 			tick(getIAD(),getC());
 		}
 		if(direction == 2){
-			setYPos(getYPos() - 2); //panel 
+			setYPos(getYPos() - 10); //panel 
 			tick(getIAD(),getC());
 		}
 		if(direction == 3){
-			setYPos(getYPos() + 2); //panel
+			setYPos(getYPos() + 10); //panel
 			tick(getIAD(),getC());
 		}
 	}

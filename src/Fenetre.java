@@ -27,23 +27,21 @@ public class Fenetre extends JFrame implements KeyListener {
 	private List<Link> l;
 	private ArrayList<Link> liste;
 	private ArrayList<Arrow> ar;
+	private List<Bomb> b;
 	
 	boolean droiteEnfoncee = false;
 	boolean gaucheEnfoncee = false;
 	boolean basEnfoncee = false;
 	boolean hautEnfoncee = false;
 	boolean tireFleche = false;
+	boolean setBomb = false;
 	
 	
 	
 	ImageAnimeDirection linkRun = new ImageAnimeDirection("res/LinkRun",6);
 	ImageAnimeDirection linkArrow = new ImageAnimeDirection("res/LinkArrow",6);
 	ImageAnimeDirection arrow = new ImageAnimeDirection("res/Arrow",3);
-	
-	Image kirby = Toolkit.getDefaultToolkit().createImage("res/kirby.png");
-	Image vide = Toolkit.getDefaultToolkit().createImage("res/void.png");
-	
-
+	Image bomb = Toolkit.getDefaultToolkit().getImage("res/2.png");
 	
 	public Fenetre() {
 	    setVisible(true) ;
@@ -51,6 +49,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		liste = new ArrayList<Link>();
 		ar = new ArrayList<Arrow>();
+		b = new ArrayList<Bomb>();
 		rajouteLink(liste,200,200);
 		rajouteLink(liste,200,250);
 		//l = new ArrayList<Link>();
@@ -61,7 +60,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		
 		
 		
-		link = new Panel(liste,ar);
+		link = new Panel(liste,ar,b);
 		getContentPane().add(link);
 		addKeyListener(this);
 		
@@ -80,7 +79,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	
 	private List<Link> rajouteLink(List<Link> liste,int x,int y){
 		
-	  Link link = new Link(0,x,y,0,1,linkRun,0,0,0,false,false);
+	  Link link = new Link(0,x,y,0,1,linkRun,5,0,0,false,false);
 	  liste.add(link);
 	  return liste;
 	  
@@ -133,6 +132,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			liste.get(0).fireArrow(ar,arrow);
 			if(liste.get(0).getActualFrame() == 6){
 				tireFleche = false;
+				liste.get(0).setActualFrame(1);
 			}
 		}
 		if(ar.size()>0){
@@ -141,6 +141,22 @@ public class Fenetre extends JFrame implements KeyListener {
 				if(ar.get(p).getXPos() > 1600 || ar.get(p).getXPos() < 0 ||
 						ar.get(p).getYPos() > 400 || ar.get(p).getYPos() < 0){
 					ar.remove(p);
+				}
+			}
+		}
+		if(setBomb){
+			if(b.size()< liste.get(0).getNumberBomb()){
+				liste.get(0).setBomb(b, bomb);
+				
+			}
+			setBomb = false;
+		}
+		if(b.size()>0){
+			for(int p = 0; p < b.size(); p++){
+				b.get(p).tick();
+				if(b.get(p).getTime() == 10){
+					b.remove(p);
+					System.out.println("Kirby explose " + b.size() );
 				}
 			}
 		}
@@ -163,6 +179,9 @@ public class Fenetre extends JFrame implements KeyListener {
     	}
     	else if(keyCode == KeyEvent.VK_X){
     		tireFleche = true;
+    	}
+    	else if(keyCode == KeyEvent.VK_SPACE){
+    		setBomb = true;
     	}
 	}
 

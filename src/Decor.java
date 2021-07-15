@@ -1,14 +1,16 @@
+import java.awt.Image;
+
 public class Decor {
 	
 	protected int xPos;
 	protected int yPos;
-	protected String name;
+	protected Image image;
 	
 
-	public Decor(int xPos, int yPos, String name) {
+	public Decor(int xPos, int yPos, Image image) {
 		this.xPos=xPos;
 		this.yPos=yPos;
-		this.name=name;
+		this.image=image;
 	}
 	
 	public int getXPos() {
@@ -19,10 +21,6 @@ public class Decor {
 		return yPos;		
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
 	public void setXPos(int xPos) {
 		this.xPos=xPos;
 	}
@@ -31,13 +29,20 @@ public class Decor {
 		this.yPos=yPos;
 	}
 	
-	public void setName(String name) {
-		this.name=name;
-	}
-	
 	public boolean isTouched(Character character) {
 		return this.xPos==character.getXPos() && this.yPos==character.getYPos();	
 	}
 	
+	public Image getImage()
+	{
+		return image;
+	}
+
+	public void setImage(Image image)
+	{
+		this.image = image;
+	}
+	
+
 	
 }

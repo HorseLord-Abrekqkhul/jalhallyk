@@ -1,23 +1,12 @@
 
 public class Bomber extends Monster {
 	
-	private String name;
 	
-	public Bomber (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
+	public Bomber (int lifePoint, int xPos, int yPos, int speed,int direction,ImageAnimeDirection image)
 	{
-		super(lifePoint, xPos, yPos,speed, direction);
-		this.name = name;
+		super(lifePoint, xPos, yPos,speed, direction,image);
 	}
 	
-	public String getName()
-	{
-		return name;
-	}
-	
-	public void setName(String name)
-	{
-		this.name = name;
-	}
 	
 	public Bomb throwBomb(int xPos, int yPos, String name, int damage, int direction) {
 		

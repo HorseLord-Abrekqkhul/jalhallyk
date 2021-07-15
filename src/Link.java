@@ -100,10 +100,10 @@ public void moveLeft ()
 	tick(getIAD(),5);
 }
 
-public Bomb setBomb(int xPos, int yPos, String name, int damage)
+public List<Bomb> setBomb(List<Bomb> liste, Image image)
 {
-	Bomb bomb = new Bomb(xPos, yPos, name, damage) ;
-	return bomb;
+	liste.add( new Bomb(xPos, yPos, image, 1)) ;
+	return liste;
 }
 
 public void pushBombUp(Bomb bomb)

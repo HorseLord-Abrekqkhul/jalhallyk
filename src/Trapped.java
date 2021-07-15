@@ -2,25 +2,14 @@
 public class Trapped extends Monster {
 	
 
-	private String name;
 	//private boolean hidden; //j ai rajoute ca (a voir si c est juste)
 	
-	public Trapped (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
+	public Trapped (int lifePoint, int xPos, int yPos, int speed,int direction,ImageAnimeDirection image)
 	{
-		super(lifePoint, xPos, yPos,speed, direction);
-		this.name = name;
+		super(lifePoint, xPos, yPos,speed, direction,image);
 	//	this.hidden = hidden;
 	}
 	
-	public String getName()
-	{
-		return name;
-	}
-	
-	public void setName(String name)
-	{
-		this.name = name;
-	}
 	
 	/*public boolean getHidden()
 	{

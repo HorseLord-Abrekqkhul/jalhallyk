@@ -19,8 +19,8 @@ public class Jar extends Decor {
 		return broken;
 	}
 	
-	public Trapped trappedMonster(int lifePoint, int xPos, int yPos, int speed,int direction,String name, boolean hidden) {
-		Trapped trapped=new Trapped(lifePoint, xPos, yPos, speed, direction, name);
+	public Trapped trappedMonster(int lifePoint, int xPos, int yPos, int speed,int direction,ImageAnimeDirection image, boolean hidden) {
+		Trapped trapped=new Trapped(lifePoint, xPos, yPos, speed, direction, image);
 		return trapped;
 		
 	}
@@ -33,7 +33,7 @@ public class Jar extends Decor {
 	
 	
 	public void changeSkin(boolean broken) {
-		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER //pas convaincu /la même
+		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER //pas convaincu /la mï¿½me
 	}
 	
 

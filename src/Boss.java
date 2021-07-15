@@ -3,24 +3,12 @@ import java.util.Random;
 
 public class Boss extends Monster{	
 	
-	private String name;
 	private boolean rage;
 
-	public Boss (int lifePoint, int xPos, int yPos, int speed,int direction,String name, boolean rage)
+	public Boss (int lifePoint, int xPos, int yPos, int speed,int direction,ImageAnimeDirection image, boolean rage)
 	{
-		super(lifePoint, xPos, yPos,speed, direction);
-		this.name = name;
+		super(lifePoint, xPos, yPos,speed, direction,image);
 		this.rage = rage;
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
 	}
 	
 	public boolean getRage()
