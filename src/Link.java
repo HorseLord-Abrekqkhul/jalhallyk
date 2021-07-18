@@ -1,4 +1,6 @@
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Link extends Character {
@@ -9,6 +11,8 @@ private int rangeBomb;
 private int numberArrow;
 private boolean gauntlet;
 private boolean key;
+
+Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock.png");
 
 public Link (int lifePoint, int xPos, int yPos, int speed,int direction, ImageAnimeDirection image,int numberBomb, int rangeBomb, int numberArrow, boolean gauntlet, boolean key)
 {
@@ -73,29 +77,30 @@ public void setKey(boolean key)
 }
 
 public void moveUp ()
+
 {
-	setYPos(yPos - 2); //panel 
+	setYPos(yPos - 2*touch(new Decor(10*40,10*40,rock))); //panel 
 	direction = 2;
 	tick(getIAD(),5);
 }
 
 public void moveDown ()
 {
-	setYPos(yPos + 2); //panel
+	setYPos(yPos + 2*touch(new Decor(10*40,10*40,rock))); //panel
 	direction = 3;
 	tick(getIAD(),5);
 }
 
 public void moveRight ()
 {
-	setXPos(xPos + 2);
+	setXPos(xPos + 2*touch(new Decor(10*40,10*40,rock)));
 	direction = 1;
 	tick(getIAD(),5);
 }
 
 public void moveLeft ()
 {
-	setXPos(xPos - 2);
+	setXPos(xPos - 2*touch(new Decor(10*40,10*40,rock)));
 	direction = 0;
 	tick(getIAD(),5);
 }
@@ -149,5 +154,6 @@ public void resetAttributes()
 	key = false;
 	
 }
-//touch
+
+	
 }
