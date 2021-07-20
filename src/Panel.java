@@ -11,16 +11,52 @@ public class Panel extends JPanel{
 	public List<Arrow> data2;
 	public List<Bomb> data3;
 	public List<Decor> data4;
+	public List<BombDeflagration> data5;
 	
-	public Panel(List<Link> l, List<Arrow> a, List<Bomb> b, List<Decor> d) {
+	public Panel(List<Link> l, List<Arrow> a, List<Bomb> b, List<Decor> d, List<BombDeflagration> bombDeflagration) {
 		data = l;
 		data2 = a;
 		data3 = b;
 		data4 = d;
+		data5 = bombDeflagration;
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		for(BombDeflagration d : data5) {
+			for(int j = 0; j< d.getUp().size(); j++){
+				if(j==d.getUp().size()-1){
+					g.drawImage(d.getIAD().getImage(2).get(1), d.getXPos(), d.getUp().get(j),null);
+				}
+				else{
+					g.drawImage(d.getIAD().getImage(2).get(0), d.getXPos(), d.getUp().get(j),null);
+				}
+			}
+			for(int j = 0; j< d.getDown().size(); j++){
+				if(j==d.getUp().size()-1){
+					g.drawImage(d.getIAD().getImage(3).get(1), d.getXPos(), d.getDown().get(j),null);
+				}
+				else{
+					g.drawImage(d.getIAD().getImage(3).get(0), d.getXPos(), d.getDown().get(j),null);
+				}
+			}
+			for(int j = 0; j< d.getLeft().size(); j++){
+				if(j==d.getUp().size()-1){
+					g.drawImage(d.getIAD().getImage(0).get(1), d.getLeft().get(j), d.getYPos(),null);
+				}
+				else{
+					g.drawImage(d.getIAD().getImage(0).get(0), d.getLeft().get(j), d.getYPos(),null);
+				}
+			}
+			for(int j = 0; j< d.getRight().size(); j++){
+				if(j==d.getUp().size()-1){
+					g.drawImage(d.getIAD().getImage(1).get(1), d.getRight().get(j), d.getYPos(),null);
+				}
+				else{
+					g.drawImage(d.getIAD().getImage(1).get(0), d.getRight().get(j), d.getYPos(),null);
+				}
+			}
+		}
 		for(Decor d : data4) {
 			g.drawImage(d.getImage(), d.getXPos(), d.getYPos(),null);
 		}

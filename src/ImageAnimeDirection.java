@@ -60,5 +60,30 @@ public class ImageAnimeDirection {
 		}
 	}
 	
+	public List<Image> getImage(int direction){
+		ArrayList<Image> l = new ArrayList<Image>();
+		if(direction == GAUCHE){
+			for(int i=0; i< frames;i++){
+				l.add(liste.get(i));
+			}
+		}
+		else if(direction == DROITE){
+			for(int i=0; i< frames;i++){
+				l.add(liste.get(i + frames));
+			}
+		}
+		else if(direction == HAUT){
+			for(int i=0; i< frames;i++){
+				l.add(liste.get(i + 2*frames));
+			}
+		}
+		else{
+			for(int i=0; i< frames;i++){
+				l.add(liste.get(i + 3*frames));
+			}
+		}
+		return l;
+	}
+	
 }
 	

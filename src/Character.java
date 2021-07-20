@@ -106,25 +106,34 @@ public class Character {
 		if(direction==2) {
 			for(int i=0;i<40;i++) {
 				int posPixel[] ={xPos,yPos+i};
+				int posPixel2[]={xPos-1,yPos+i};
 				listFrontalPixel.add(posPixel);
+				listFrontalPixel.add(posPixel2);
 			}
 		}
 		else if(direction==3) {
 			for(int i=0;i<40;i++) {
 				int posPixel[] ={xPos+40,yPos+i};
+				int posPixel2[] ={xPos+40-1,yPos+i};
 				listFrontalPixel.add(posPixel);
+				listFrontalPixel.add(posPixel2);
 			}			
 		}
 		else if(direction==1) {
 			for(int i=0;i<40;i++) {
 				int posPixel[] ={xPos+i,yPos+40};
+				int posPixel2[] ={xPos+i,yPos+40-1};
 				listFrontalPixel.add(posPixel);
+				listFrontalPixel.add(posPixel2);
 			}			
 		}
 		else {
 			for(int i=0;i<40;i++) {
 				int posPixel[] ={xPos+i,yPos};
+				int posPixel2[] ={xPos+i,yPos-1};
+				
 				listFrontalPixel.add(posPixel);
+				listFrontalPixel.add(posPixel2);
 			}			
 		}
 		
