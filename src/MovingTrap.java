@@ -1,7 +1,9 @@
+import java.awt.Image;
+
 
 public class MovingTrap extends Trap {
 	
-	public MovingTrap(int xPos, int yPos, String name, int damage) {
+	public MovingTrap(int xPos, int yPos, Image name, int damage) {
 		super(xPos,yPos,name,damage);
 	}
 	

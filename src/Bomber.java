@@ -1,3 +1,5 @@
+import java.awt.Image;
+
 
 public class Bomber extends Monster {
 	
@@ -8,7 +10,7 @@ public class Bomber extends Monster {
 	}
 	
 	
-	public Bomb throwBomb(int xPos, int yPos, String name, int damage, int direction) {
+	public Bomb throwBomb(int xPos, int yPos, Image name, int damage, int direction) {
 		
 		Bomb bomb = new Bomb (xPos, yPos, name, damage);
 		

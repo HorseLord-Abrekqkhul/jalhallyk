@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.util.Random;
 
 
@@ -6,7 +7,7 @@ public class Jar extends Decor {
 	private boolean broken;
 	private String brokenSkinName="Inconnu";
 	
-	public Jar(int xPos, int yPos, String name, boolean broken) {
+	public Jar(int xPos, int yPos, Image name, boolean broken) {
 		super(xPos,yPos,name);
 		this.broken=broken;
 	}
@@ -33,7 +34,7 @@ public class Jar extends Decor {
 	
 	
 	public void changeSkin(boolean broken) {
-		if (this.getBroken()) { this.setName(brokenSkinName);} //NOM A DONNER //pas convaincu /la m�me
+		//if (this.getBroken()) { this.setImage(brokenSkinName);} //NOM A DONNER //pas convaincu /la m�me
 	}
 	
 

@@ -24,6 +24,8 @@ public class Panel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		for(BombDeflagration d : data5) {
+			if(d.getUp() == null)
+				System.out.println("UAEBUIEBI");
 			for(int j = 0; j< d.getUp().size(); j++){
 				if(j==d.getUp().size()-1){
 					g.drawImage(d.getIAD().getImage(2).get(1), d.getXPos(), d.getUp().get(j),null);

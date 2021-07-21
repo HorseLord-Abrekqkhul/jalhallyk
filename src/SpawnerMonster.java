@@ -1,7 +1,9 @@
+import java.awt.Image;
+
 
 public class SpawnerMonster extends Decor {
 	
-	public SpawnerMonster(int xPos, int yPos, String name) {
+	public SpawnerMonster(int xPos, int yPos, Image name) {
 		super(xPos,yPos,name);
 	}
 	

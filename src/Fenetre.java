@@ -176,7 +176,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			for(int p = 0; p < b.size(); p++){
 				b.get(p).tick();
 				if(b.get(p).getTime() == 10){
-					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
+					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,3,2));
 					b.remove(p);
 				}
 			}

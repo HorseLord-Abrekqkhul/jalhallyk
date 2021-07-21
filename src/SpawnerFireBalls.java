@@ -1,7 +1,9 @@
+import java.awt.Image;
+
 
 public class SpawnerFireBalls extends Decor {
 	
-	public SpawnerFireBalls(int xPos, int yPos, String name) {
+	public SpawnerFireBalls(int xPos, int yPos, Image name) {
 		super(xPos,yPos,name);
 	}
 	
