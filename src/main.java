@@ -9,14 +9,21 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		new Fenetre();
+		//new Fenetre();
 		
-/*		if(false)
-		{
+
 			FileInputStream fis = null;
 			try{
-				fis = new FileInputStream(new File("map.txt"));
-				Map map = new Map(6,2);
+				fis = new FileInputStream(new File("res/niveau.txt"));
+				char tableau[][];
+				Map map = new Map(16,16);
+				tableau = map.loadMap(fis);
+				for(int i = 0; i<16; i++){
+					for(int j = 0; j<16; j++){
+						System.out.println( tableau[i][j]);
+					}
+				}
+					
 			} catch(FileNotFoundException e){
 				e.printStackTrace();
 			} catch(IOException e){
@@ -59,5 +66,5 @@ public class main {
 		}
 	}
 */
-}
-}
+//}
+//}
