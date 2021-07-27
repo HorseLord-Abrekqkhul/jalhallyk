@@ -3,6 +3,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.lang.Object;
 
 
 public class main {
@@ -13,16 +14,14 @@ public class main {
 		
 
 			FileInputStream fis = null;
-			try{
+			try{				
 				fis = new FileInputStream(new File("res/niveau.txt"));
 				char tableau[][];
 				Map map = new Map(16,16);
 				tableau = map.loadMap(fis);
-				for(int i = 0; i<16; i++){
-					for(int j = 0; j<16; j++){
-						System.out.println( tableau[i][j]);
-					}
-				}
+				ArrayList<Decor> decor = map.mapToListDecor(tableau);
+				ArrayList<Monster> monstre = map.mapToListMonster(tableau);
+				new Fenetre(decor,monstre);				
 					
 			} catch(FileNotFoundException e){
 				e.printStackTrace();
@@ -36,8 +35,9 @@ public class main {
 					e.printStackTrace();
 				}
 			}
-		}
+		}  
 	}
+	
 	/*	// TODO Auto-generated method stub
 		Fireball1 fire = new Fireball1(25,25,"feu",1,1);
 		ArrayList<int[]> list = new ArrayList<int[]>();

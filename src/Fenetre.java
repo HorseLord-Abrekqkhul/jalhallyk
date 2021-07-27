@@ -30,6 +30,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	private List<Bomb> b;
 	private List<Decor> d;
 	private List<BombDeflagration> bombDeflagration;
+	private List<Monster> monster;
 	
 	boolean droiteEnfoncee = false;
 	boolean gaucheEnfoncee = false;
@@ -49,19 +50,21 @@ public class Fenetre extends JFrame implements KeyListener {
 	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
 	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock.png");
 	Image rocks = Toolkit.getDefaultToolkit().getImage("res/Rocks.png");
+	ImageAnimeDirection melee = new ImageAnimeDirection("res/MeleeRun",1);
 	
 	
-	public Fenetre() {
+	public Fenetre(List<Decor> d,List<Monster> monster) {
 	    setVisible(true) ;
 		setSize(15*40, 15*40);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		liste = new ArrayList<Link>();
 		ar = new ArrayList<Arrow>();
 		b = new ArrayList<Bomb>();
-		d = new ArrayList<Decor>();
+		//d = new ArrayList<Decor>();
 		bombDeflagration = new ArrayList<BombDeflagration>();
+		//monster = new ArrayList<Monster>();
 		rajouteLink(liste,200,200);
-		rajouteLink(liste,200,250);
+		//rajouteLink(liste,200,250);
 		//rajouteDecor(d,0,0, rock);
 		rajouteDecor(d,40*10,40*10, rock);
 		//rajouteDecor(d,40*7,40*2, bigTree);
@@ -74,7 +77,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		
 		
 		
-		link = new Panel(liste,ar,b,d,bombDeflagration);
+		link = new Panel(liste,ar,b,d,bombDeflagration,monster);
 		getContentPane().add(link);
 		addKeyListener(this);
 		

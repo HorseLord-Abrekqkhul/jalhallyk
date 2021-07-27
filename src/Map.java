@@ -1,15 +1,26 @@
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.lang.Object;
+import java.util.Random;
 
 
 public class Map {
 	
 	private int length;
 	private int width;
+	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
+	Image littleTree = Toolkit.getDefaultToolkit().getImage("res/LittleTree.png");
+	Image jar = Toolkit.getDefaultToolkit().getImage("res/Jar.png");
+	ImageAnimeDirection melee = new ImageAnimeDirection("res/MeleeRun",1);
+	Image rocks = Toolkit.getDefaultToolkit().getImage("res/Rocks.png");
+	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock.png");
+	Image root = Toolkit.getDefaultToolkit().getImage("res/Root.png");
+	Image obstacles[]={root,rock,rocks,littleTree};
 	
 	public Map(int length, int width)
 	{
@@ -75,110 +86,117 @@ public class Map {
 		  }
 		return map;		  
 	  }
-	public ArrayList<ArrayList<Object>> mapToList(char[][] map){ // changer les nulls
+	
+	public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 		
-		ArrayList<Object> decor = new ArrayList<Object>();	
-		ArrayList<Object> monster = new ArrayList<Object>();
+		ArrayList<Decor> decor = new ArrayList<Decor>();	
 		for (int i = 0; i < map.length; i++){
 			for (int j = 0; j < map[i].length;j++)
 				switch(map[i][j]){
 					case '0':
 						break;
 					case '1':
-						Wall wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,bigTree));
+						break;
 					case '2':
-					    Jar jar = new Jar(40*i,40*j,null, false);
-						decor.add(jar);
+						decor.add(new Jar(40*i,40*j,jar, false));
+						break;
 					case '3':
-						SpawnerFireBalls s = new SpawnerFireBalls(40*i,40*j,null);
-						decor.add(s);
-					case '4':
-						SpawnerMonster sm = new SpawnerMonster(40*i,40*j,null);
-						decor.add(sm);
-					case '5':
-						Door door = new Door(40*i,40*j,null, false);
-						decor.add(door);
+						decor.add(new SpawnerFireBalls(40*i,40*j,null)); //SpawnerFireBall
+						break;
+					case '4':;
+						decor.add(new SpawnerMonster(40*i,40*j,null)); //SpawnerMonster
+						break;
+					case '5':;
+						decor.add(new Door(40*i,40*j,null,false)); //Door
+						break;
 					case '6':
-						Hole hole = new Hole(40*i,40*j,null,1);
-						decor.add(hole);
+						decor.add(new Hole(40*i,40*j,null,1)); //Hole
+						break;
 					case '7':
-						MovingTrap mT = new MovingTrap(40*i,40*j,null,1);
-						decor.add(mT);
+						decor.add(new MovingTrap(40*i,40*j,null,1)); //MovingTrap
+						break;
 					case '8':
-						door = new Door(40*i,40*j,null,false);
-						decor.add(door);
+						decor.add(new Door(40*i,40*j,null,false)); //Door
+						break;
 					case '9':
-					    door = new Door(40*i,40*j,null,false);
-						decor.add(door);
-					//case 'l':
-						//Link link = new Link(3,);
-						//decor.add(wall);
+						decor.add(new Door(40*i,40*j,null,false)); //Exit
+						break;
 					/*case 'a':
-						Wall wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null));
 					case 'b':
-						Wall wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null));
 					case 'c':
-						Wall wall = new Wall(40*i,40*j,null);
-						decor.add(wall);*/
+						decor.add(new Wall(40*i,40*j,null));*/
 					case 'r':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						java.util.Random r=new java.util.Random( ) ; 
+						int random = r.nextInt(3);
+						Image obstacle = obstacles[random];
+						decor.add(new Wall(40*i,40*j,obstacle));
+						break;
 					case 'e':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //Escalier
+						break;
 					case 'b':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //ChestBombPow
+						break;
 					case 'h':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //ButteHaut
+						break;
 					case 'j':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //ButteGauche
+						break;
 					case 'k':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //ButteDroite
+						break;
 					case 'z':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //ButteBas
+						break;
 					case 'u':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //CoinHG
+						break;
 					case 'i':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //CoinHD
+						break;
 					case 'o':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
+						decor.add(new Wall(40*i,40*j,null)); //CoinBG
+						break;
 					case 'p':
-						wall = new Wall(40*i,40*j,null);
-						decor.add(wall);
-					case 'q':
-						Ranged ranged = new Ranged(1,40*i,40*j,2,3,null);
-						monster.add(ranged);
-					case 's':
-						Bomber bomber= new Bomber(1,40*i,40*j,2,3,null);
-						monster.add(bomber);
-					case 'd':
-						Melee melee = new Melee(2,40*i,40*j,2,3,null);
-						monster.add(melee);
-					case 'f':
-						Underground uG = new Underground(1,40*i,40*j,2,3,null,true);
-						monster.add(uG);
+						decor.add(new Wall(40*i,40*j,null)); //CoinBD
+						break;
 					//case 't':
-						//Wall wall = new Wall(40*i,40*j,null);
-						//decor.add(wall);
+						//decor.add(new Wall(40*i,40*j,null));
 					
 						}
 					}
-				
-	ArrayList<ArrayList<Object>> list = new ArrayList<ArrayList<Object>>();
-	list.add(decor);
-	list.add(monster);
-	return list;
+		return decor;
 	
 	}
+	
+	public ArrayList<Monster> mapToListMonster(char[][] map) { // changer les nulls
+			
+		ArrayList<Monster> monster = new ArrayList<Monster>();
+		for (int i = 0; i < map.length; i++){
+			for (int j = 0; j < map[i].length;j++)
+				switch(map[i][j]){
+					//case 'l':
+						//decor.add(new Link(3,(...)));
+					case 'q':
+						monster.add(new Ranged(1,40*i,40*j,2,3,null)); //Ranged
+						break;
+					case 's':
+						monster.add(new Bomber(1,40*i,40*j,2,3,null)); //Bomber
+						break;
+					case 'd':
+						monster.add(new Melee(2,40*i,40*j,2,3,melee));
+						break;
+					case 'f':
+						monster.add(new Underground(1,40*i,40*j,2,3,null,true)); //Underground
+						break;
+					
+						}
+					}
+	return monster;
+}
+	
 }

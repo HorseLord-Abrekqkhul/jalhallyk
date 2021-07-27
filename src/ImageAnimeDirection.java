@@ -45,6 +45,21 @@ public class ImageAnimeDirection {
 		}
 	}
 	
+	public Image getImage(Monster monster){
+		if(monster.getDirection() == GAUCHE){
+			return liste.get(monster.getActualFrame() -1);
+		}
+		else if(monster.getDirection() == DROITE){
+			return liste.get(monster.getActualFrame() + frames-1);
+		}
+		else if(monster.getDirection() == HAUT){
+			return liste.get(monster.getActualFrame() + 2*frames-1);
+		}
+		else{
+			return liste.get(monster.getActualFrame() + 3*frames-1);
+		}
+	}
+	
 	public Image getImage(Arrow a){
 		if(a.getDirection() == GAUCHE){
 			return liste.get(a.getActualFrame() -1);

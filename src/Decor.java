@@ -1,7 +1,8 @@
 import java.awt.Image;
 import java.util.ArrayList;
+import java.lang.Object;
 
-public class Decor {
+public class Decor extends Object {
 	
 	protected int xPos;
 	protected int yPos;
