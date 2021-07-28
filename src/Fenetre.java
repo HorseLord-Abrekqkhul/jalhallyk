@@ -178,14 +178,14 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(b.size()>0){
 			for(int p = 0; p < b.size(); p++){
 				b.get(p).tick();
-				if(b.get(p).getTime() == 10){
-					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,3,2));
+				if(b.get(p).getTime() == 15){
+					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
 					b.remove(p);
 				}
 			}
 		}
 		if(bombDeflagration.size()>0){
-			for(int p = 0; p < d.size(); p++){
+			for(int p = 0; p < bombDeflagration.size(); p++){
 				bombDeflagration.get(p).tick();
 				if(bombDeflagration.get(p).getPortee() < liste.get(0).getRangeBomb()*4+2){
 					bombDeflagration.get(p).appear(liste.get(0).getRangeBomb());
