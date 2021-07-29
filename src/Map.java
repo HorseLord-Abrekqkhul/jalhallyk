@@ -67,7 +67,7 @@ public class Map {
 					  
 					  	else if (a != ' '&& a != '\n' &&  java.lang.Character.getNumericValue(a) != -1)
 					  	{
-							map[i][j] = a;
+							map[j][i] = a;
 					  		j++;
 					  	}
 				  }	  
@@ -130,7 +130,7 @@ public class Map {
 						decor.add(new Wall(40*i,40*j,null));*/
 					case 'r':
 						java.util.Random r=new java.util.Random( ) ; 
-						int random = r.nextInt(3);
+						int random = r.nextInt(4);
 						Image obstacle = obstacles[random];
 						decor.add(new Wall(40*i,40*j,obstacle));
 						break;
