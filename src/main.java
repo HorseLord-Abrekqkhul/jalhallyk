@@ -15,7 +15,7 @@ public class main {
 
 			FileInputStream fis = null;
 			try{				
-				fis = new FileInputStream(new File("res/niveau.txt"));
+				fis = new FileInputStream(new File("res/niveau3.txt"));
 				char tableau[][];
 				Map map = new Map(16,16);
 				tableau = map.loadMap(fis);
