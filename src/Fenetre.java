@@ -162,8 +162,8 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(ar.size()>0){
 			for(int p = 0; p < ar.size(); p++){
 				ar.get(p).move();
-				if(ar.get(p).getXPos() > 1600 || ar.get(p).getXPos() < 0 ||
-						ar.get(p).getYPos() > 400 || ar.get(p).getYPos() < 0){
+				if(ar.get(p).getXPos() > 15*40 || ar.get(p).getXPos() < 0 ||
+						ar.get(p).getYPos() > 15*40 || ar.get(p).getYPos() < 0){
 					ar.remove(p);
 				}
 			}
@@ -178,7 +178,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(b.size()>0){
 			for(int p = 0; p < b.size(); p++){
 				b.get(p).tick();
-				if(b.get(p).getTime() == 15){
+				if(b.get(p).getTime() == 12){
 					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
 					b.remove(p);
 				}

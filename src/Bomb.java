@@ -18,7 +18,7 @@ public class Bomb extends Decor {
 	
 	public void tick(){
 		this.mytick++;
-		if(this.mytick == 20) {
+		if(this.mytick == 10) {
 			this.time++;
 			mytick = 1;
 		}
