@@ -13,8 +13,10 @@ public class Map {
 	
 	private int length;
 	private int width;
-	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
+	private int k =0;
+	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/LittleTree.png");
 	Image littleTree = Toolkit.getDefaultToolkit().getImage("res/LittleTree.png");
+	Image bg = Toolkit.getDefaultToolkit().getImage("res/BackgroundForest.png");
 	Image jar = Toolkit.getDefaultToolkit().getImage("res/Jar.png");
 	ImageAnimeDirection melee = new ImageAnimeDirection("res/MeleeRun",1);
 	Image rocks = Toolkit.getDefaultToolkit().getImage("res/Rocks.png");
@@ -65,7 +67,7 @@ public class Map {
 					  		j =0;
 					  	}
 					  
-					  	else if (a != ' '&& a != '\n' &&  java.lang.Character.getNumericValue(a) != -1)
+					  	else if (a != ' '&& a != '\n')
 					  	{
 							map[j][i] = a;
 					  		j++;
@@ -94,32 +96,41 @@ public class Map {
 			for (int j = 0; j < map[i].length;j++)
 				switch(map[i][j]){
 					case '0':
+						decor.add(new Floor(40*i,40*j,bg));
 						break;
 					case '1':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new Wall(40*i,40*j,bigTree));
 						break;
 					case '2':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new Jar(40*i,40*j,jar, false));
 						break;
 					case '3':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new SpawnerFireBalls(40*i,40*j,null)); //SpawnerFireBall
 						break;
-					case '4':;
+					case '4':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new SpawnerMonster(40*i,40*j,null)); //SpawnerMonster
 						break;
-					case '5':;
+					case '5':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new Door(40*i,40*j,null,false)); //Door
 						break;
 					case '6':
 						decor.add(new Hole(40*i,40*j,null,1)); //Hole
 						break;
 					case '7':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new MovingTrap(40*i,40*j,null,1)); //MovingTrap
 						break;
 					case '8':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new Door(40*i,40*j,null,false)); //Door
 						break;
 					case '9':
+						decor.add(new Floor(40*i,40*j,bg));
 						decor.add(new Door(40*i,40*j,null,false)); //Exit
 						break;
 					/*case 'a':
@@ -129,6 +140,7 @@ public class Map {
 					case 'c':
 						decor.add(new Wall(40*i,40*j,null));*/
 					case 'r':
+						decor.add(new Floor(40*i,40*j,bg));
 						java.util.Random r=new java.util.Random( ) ; 
 						int random = r.nextInt(4);
 						Image obstacle = obstacles[random];
@@ -166,7 +178,18 @@ public class Map {
 						break;
 					//case 't':
 						//decor.add(new Wall(40*i,40*j,null));
-					
+					case 'q':
+						decor.add(new Floor(40*i,40*j,bg));
+						break;
+					case 's':						
+						decor.add(new Floor(40*i,40*j,bg));
+						break;
+					case 'd':
+						decor.add(new Floor(40*i,40*j,bg));
+						break;
+					case 'f':
+						decor.add(new Floor(40*i,40*j,bg));
+						break;
 						}
 					}
 		return decor;

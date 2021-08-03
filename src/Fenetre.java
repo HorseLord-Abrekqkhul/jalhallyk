@@ -66,7 +66,6 @@ public class Fenetre extends JFrame implements KeyListener {
 		rajouteLink(liste,200,200);
 		//rajouteLink(liste,200,250);
 		//rajouteDecor(d,0,0, rock);
-		rajouteDecor(d,40*10,40*10, rock);
 		//rajouteDecor(d,40*7,40*2, bigTree);
 		//rajouteDecor(d,40*9,40*9, rocks);
 		//l = new ArrayList<Link>();

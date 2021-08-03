@@ -14,7 +14,6 @@ public class Panel extends JPanel{
 	public List<BombDeflagration> data5;
 	public List<Monster> data6;
 	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
-	Image bg = Toolkit.getDefaultToolkit().getImage("res/BackgroundForest.png");
 	
 	public Panel(List<Link> l, List<Arrow> a, List<Bomb> b, List<Decor> d, List<BombDeflagration> bombDeflagration, List<Monster> monster) {
 		data = l;
@@ -28,11 +27,15 @@ public class Panel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		for(int i =0; i<15;i++){
-			for(int j=0;j<15;j++) {
-				g.drawImage(bg,i*40,j*40,null);				
+		for(Decor d : data4) {
+			if(d.getImage()==bigTree && (d.getXPos()==0 || d.getYPos()==0 || d.getXPos()==40*15)) {
+				g.drawImage(d.getImage(), d.getXPos()-40, d.getYPos()-40,null);				
 			}
+			else {
+			g.drawImage(d.getImage(), d.getXPos(), d.getYPos(),null);
 		}
+		}
+		
 		for(BombDeflagration d : data5) {
 			if(d.getUp() == null)
 				System.out.println("UAEBUIEBI");
@@ -69,14 +72,7 @@ public class Panel extends JPanel{
 				}
 			}
 		}
-		for(Decor d : data4) {
-			if(d.getImage()==bigTree && (d.getXPos()==0 || d.getYPos()==0 || d.getXPos()==40*15)) {
-				g.drawImage(d.getImage(), d.getXPos()-40, d.getYPos()-40,null);				
-			}
-			else {
-			g.drawImage(d.getImage(), d.getXPos(), d.getYPos(),null);
-		}
-		}
+		
 		for(Bomb b : data3) {
 			g.drawImage(b.getImage(), b.getXPos(), b.getYPos(),null);
 		}
