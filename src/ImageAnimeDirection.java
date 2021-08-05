@@ -60,6 +60,10 @@ public class ImageAnimeDirection {
 		}
 	}
 	
+	public Image getImage(FireBall1 f){
+		return liste.get(0);
+	}
+	
 	public Image getImage(Arrow a){
 		if(a.getDirection() == GAUCHE){
 			return liste.get(a.getActualFrame() -1);

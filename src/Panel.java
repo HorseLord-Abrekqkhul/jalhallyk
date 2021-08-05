@@ -13,29 +13,30 @@ public class Panel extends JPanel{
 	public List<Decor> data4;
 	public List<BombDeflagration> data5;
 	public List<Monster> data6;
-	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
+	public List<FireBall1> data7;
 	
-	public Panel(List<Link> l, List<Arrow> a, List<Bomb> b, List<Decor> d, List<BombDeflagration> bombDeflagration, List<Monster> monster) {
+	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
+	Image bg = Toolkit.getDefaultToolkit().getImage("res/BackgroundForest.png");
+	Image kirby = Toolkit.getDefaultToolkit().getImage("res/2.png");
+	
+	public Panel(List<Link> l, List<Arrow> a, List<Bomb> b, List<Decor> d, List<BombDeflagration> bombDeflagration, List<Monster> monster, List<FireBall1> f) {
 		data = l;
 		data2 = a;
 		data3 = b;
 		data4 = d;
 		data5 = bombDeflagration;
 		data6 = monster;
+		data7 = f;
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		for(Decor d : data4) {
-			if(d.getImage()==bigTree && (d.getXPos()==0 || d.getYPos()==0 || d.getXPos()==40*15)) {
-				g.drawImage(d.getImage(), d.getXPos()-40, d.getYPos()-40,null);				
+		for(int i =0; i<15;i++){
+			for(int j=0;j<15;j++) {
+				g.drawImage(bg,i*40,j*40,null);				
 			}
-			else {
-			g.drawImage(d.getImage(), d.getXPos(), d.getYPos(),null);
 		}
-		}
-		
 		for(BombDeflagration d : data5) {
 			if(d.getUp() == null)
 				System.out.println("UAEBUIEBI");
@@ -72,7 +73,14 @@ public class Panel extends JPanel{
 				}
 			}
 		}
-		
+		for(Decor d : data4) {
+			if(d.getImage()==bigTree && (d.getXPos()==0 || d.getYPos()==0 || d.getXPos()==40*15)) {
+				g.drawImage(d.getImage(), d.getXPos()-40, d.getYPos()-40,null);				
+			}
+			else {
+			g.drawImage(d.getImage(), d.getXPos(), d.getYPos(),null);
+		}
+		}
 		for(Bomb b : data3) {
 			g.drawImage(b.getImage(), b.getXPos(), b.getYPos(),null);
 		}
@@ -85,8 +93,8 @@ public class Panel extends JPanel{
 		for(Monster m : data6) {
 			g.drawImage(m.getIAD().getImage(m), m.getXPos(), m.getYPos(),null);
 		}	
-		
+		for(FireBall1 a : data7) {
+			g.drawImage(kirby, a.getXPos(), a.getYPos(),null);
+		}
 		}
 	}
-
-

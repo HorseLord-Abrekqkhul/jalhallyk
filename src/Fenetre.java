@@ -31,6 +31,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	private List<Decor> d;
 	private List<BombDeflagration> bombDeflagration;
 	private List<Monster> monster;
+	private List<FireBall1> feu;
 	
 	boolean droiteEnfoncee = false;
 	boolean gaucheEnfoncee = false;
@@ -51,6 +52,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock.png");
 	Image rocks = Toolkit.getDefaultToolkit().getImage("res/Rocks.png");
 	ImageAnimeDirection melee = new ImageAnimeDirection("res/MeleeRun",1);
+	ImageAnimeDirection kirby = new ImageAnimeDirection("res/Deflagration.png",1);
 	
 	
 	public Fenetre(List<Decor> d,List<Monster> monster) {
@@ -62,10 +64,12 @@ public class Fenetre extends JFrame implements KeyListener {
 		b = new ArrayList<Bomb>();
 		//d = new ArrayList<Decor>();
 		bombDeflagration = new ArrayList<BombDeflagration>();
+		feu = new ArrayList<FireBall1>();
 		//monster = new ArrayList<Monster>();
 		rajouteLink(liste,200,200);
 		//rajouteLink(liste,200,250);
 		//rajouteDecor(d,0,0, rock);
+		rajouteDecor(d,40*10,40*10, rock);
 		//rajouteDecor(d,40*7,40*2, bigTree);
 		//rajouteDecor(d,40*9,40*9, rocks);
 		//l = new ArrayList<Link>();
@@ -76,7 +80,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		
 		
 		
-		link = new Panel(liste,ar,b,d,bombDeflagration,monster);
+		link = new Panel(liste,ar,b,d,bombDeflagration,monster,feu);
 		getContentPane().add(link);
 		addKeyListener(this);
 		
@@ -161,8 +165,8 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(ar.size()>0){
 			for(int p = 0; p < ar.size(); p++){
 				ar.get(p).move();
-				if(ar.get(p).getXPos() > 15*40 || ar.get(p).getXPos() < 0 ||
-						ar.get(p).getYPos() > 15*40 || ar.get(p).getYPos() < 0){
+				if(ar.get(p).getXPos() > 1600 || ar.get(p).getXPos() < 0 ||
+						ar.get(p).getYPos() > 400 || ar.get(p).getYPos() < 0){
 					ar.remove(p);
 				}
 			}
@@ -177,8 +181,9 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(b.size()>0){
 			for(int p = 0; p < b.size(); p++){
 				b.get(p).tick();
-				if(b.get(p).getTime() == 12){
+				if(b.get(p).getTime() == 10){
 					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
+					feu.add(new FireBall1(b.get(p).getXPos(),b.get(p).getYPos(),kirby,2,2,2,liste.get(0).getXPos(), liste.get(0).getYPos(), 15*40, 15*40));
 					b.remove(p);
 				}
 			}
@@ -192,6 +197,16 @@ public class Fenetre extends JFrame implements KeyListener {
 				else{
 					bombDeflagration.remove(p);
 				}
+			}
+		}
+		if(feu.size()>0){
+			for(int p = 0; p < feu.size(); p++){
+				feu.get(p).tick();
+				feu.get(p).move();
+				System.out.println(feu.get(p).getXPos()+ " " + feu.get(p).getYPos());
+					if(feu.get(p).getList().size() < feu.get(p).getPos()-1){
+						feu.remove(p);
+					}
 			}
 		}
 		repaint();
