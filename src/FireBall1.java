@@ -52,7 +52,7 @@ public class FireBall1 extends Projectile {
 			}
 			else{
 				for(i = 0; i < c; i++){
-				listpos.add(list.get(i));
+				listpos.add(list.get(c-i));
 				}
 			}
 		}
