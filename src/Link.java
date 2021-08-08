@@ -76,31 +76,31 @@ public void setKey(boolean key)
 	
 }
 
-public void moveUp ()
+public void moveUp (ArrayList<ArrayList<int[]>> decor)
 
 {
-	setYPos(yPos - 2*touch(new Decor(10*40,10*40,rock))); //panel 
+	setYPos(yPos - 2*touch(decor)); //panel 
 	direction = 2;
 	tick(getIAD(),5);
 }
 
-public void moveDown ()
+public void moveDown (ArrayList<ArrayList<int[]>> decor)
 {
-	setYPos(yPos + 2*touch(new Decor(10*40,10*40,rock))); //panel
+	setYPos(yPos + 2*touch(decor)); //panel
 	direction = 3;
 	tick(getIAD(),5);
 }
 
-public void moveRight ()
+public void moveRight (ArrayList<ArrayList<int[]>> decor)
 {
-	setXPos(xPos + 2*touch(new Decor(10*40,10*40,rock)));
+	setXPos(xPos + 2*touch(decor));
 	direction = 1;
 	tick(getIAD(),5);
 }
 
-public void moveLeft ()
+public void moveLeft (ArrayList<ArrayList<int[]>> decor)
 {
-	setXPos(xPos - 2*touch(new Decor(10*40,10*40,rock)));
+	setXPos(xPos - 2*touch(decor));
 	direction = 0;
 	tick(getIAD(),5);
 }

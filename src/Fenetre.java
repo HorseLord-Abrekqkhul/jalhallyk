@@ -39,6 +39,8 @@ public class Fenetre extends JFrame implements KeyListener {
 	boolean hautEnfoncee = false;
 	boolean tireFleche = false;
 	boolean setBomb = false;
+
+	private ArrayList<ArrayList<int[]>> listHitBoxDecor;
 	
 	
 	
@@ -70,6 +72,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		//rajouteLink(liste,200,250);
 		//rajouteDecor(d,0,0, rock);
 		rajouteDecor(d,40*10,40*10, rock);
+		listHitBoxDecor=listAllAroundPixel(d);
 		//rajouteDecor(d,40*7,40*2, bigTree);
 		//rajouteDecor(d,40*9,40*9, rocks);
 		//l = new ArrayList<Link>();
@@ -96,6 +99,23 @@ public class Fenetre extends JFrame implements KeyListener {
 		timer.start();
 		
 	}
+	
+	public ArrayList<ArrayList<int[]>> listAllAroundPixel(List<Decor> list) {
+		ArrayList<ArrayList<int[]>> listAllAroundPixel = new ArrayList<ArrayList<int[]>>();
+		for(Decor decor : list) {
+			if (decor.getClass()== Floor.class){
+				
+			}
+			else{
+			listAllAroundPixel.add(decor.listAroundPixel());
+		}
+		}
+		return listAllAroundPixel;
+			
+	}
+
+	
+	
 	
 	private List<Link> rajouteLink(List<Link> liste,int x,int y){
 		
@@ -138,22 +158,44 @@ public class Fenetre extends JFrame implements KeyListener {
 		*/
 		if(droiteEnfoncee){
 			liste.get(0).setIAD(linkRun);
-	    	liste.get(0).moveRight();
+			if(liste.get(0).getDirection()!=1) {
+				liste.get(0).setDirection(1);
+			}
+			else{
+	    	liste.get(0).moveRight(listHitBoxDecor);
 			
+		}
 		}
 		if(gaucheEnfoncee){
 			liste.get(0).setIAD(linkRun);
-	    	liste.get(0).moveLeft();
+			if(liste.get(0).getDirection()!=0) {
+				liste.get(0).setDirection(0);
+			}
+			else{
+	    	liste.get(0).moveLeft(listHitBoxDecor);
+		}
 		}
 		
 		if(basEnfoncee){
 			liste.get(0).setIAD(linkRun);
-	    	liste.get(0).moveDown();
+			if(liste.get(0).getDirection()!=3) {
+				liste.get(0).setDirection(3);
+			}
+			else{
+	    	liste.get(0).moveDown(listHitBoxDecor);
 		}
+		}
+		
 		if(hautEnfoncee){
 			liste.get(0).setIAD(linkRun);
-	    	liste.get(0).moveUp();
+			if(liste.get(0).getDirection()!=2) {
+				liste.get(0).setDirection(2);
+			}
+			else{
+	    	liste.get(0).moveUp(listHitBoxDecor);
 		}
+		}
+		
 		if(tireFleche){
 			liste.get(0).setIAD(linkArrow);
 			liste.get(0).fireArrow(ar,arrow);
