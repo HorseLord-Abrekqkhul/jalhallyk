@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Item {
 	private int xPos;
@@ -67,5 +70,64 @@ public class Item {
 	public void setIAD(ImageAnimeDirection IAD)
 	{
 		this.IAD = IAD;
+	}
+	
+	public ArrayList<ArrayList<int[]>> touchList(List<Decor> d,List<Bomb> b, List<Monster> monster){
+		ArrayList<int[]> listeDecor = new ArrayList<int[]>();
+		ArrayList<int[]> listeItem = new ArrayList<int[]>();
+		ArrayList<int[]> listeChar = new ArrayList<int[]>();
+		ArrayList<ArrayList<int[]>> listeAll = new ArrayList<ArrayList<int[]>>();
+		for(int i = 0; i< d.size(); i++){
+			//System.out.println(this.xPos + " " + this.yPos + " " + d.get(i).getXPos() + " " +d.get(i).getYPos());
+			//System.out.println(touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos()));
+			if(touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos()) != -1
+					&& d.get(i).getClass() != Floor.class){
+				int pos[] = {i,touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos())};
+				listeDecor.add(pos);
+			}
+		}
+		for(int i = 0; i< b.size(); i++){
+			if(touch2(this.xPos,this.yPos,b.get(i).getXPos(),b.get(i).getYPos()) != -1){
+				int pos[] = {i,touch2(this.xPos,this.yPos,b.get(i).getXPos(),b.get(i).getYPos())};
+				listeItem.add(pos);
+			}
+		}
+		for(int i = 0; i< monster.size(); i++){
+			if(touch2(this.xPos,this.yPos,monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+				int pos[] = {i,touch2(this.xPos,this.yPos,monster.get(i).getXPos(),monster.get(i).getYPos())};
+				listeChar.add(pos);
+			}
+		}
+		listeAll.add(listeDecor);
+		listeAll.add(listeItem);
+		listeAll.add(listeChar);
+		return listeAll;
+	}
+	
+	public int touch2(int x1, int y1, int x2, int y2){ //coin supérieur gauche
+		if(Math.abs(x1-x2)<30 && Math.abs(y1-y2)<20){
+			if(x1-x2 < 0){
+				//System.out.println("pd");
+				return 0; //GAUCHE
+			}
+			else{
+				//System.out.println("pd");
+				return 1; //DROITE
+			}
+		}
+		else if(Math.abs(x1-x2)<20 && 30>Math.abs(y1-y2)){
+			if(y1-y2 < 0){
+				//System.out.println("pd");
+				return 2; //HAUT
+			}
+			else{
+				//System.out.println("pd");
+				return 3; //BAS
+			}
+		}
+		else{
+			//System.out.println("hihihihi");
+			return -1;
+		}
 	}
 }

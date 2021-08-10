@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Character {
@@ -104,7 +105,7 @@ public class Character {
 	public ArrayList<int[]> virtualMovement() {
 		ArrayList<int[]> virtualMovement = new ArrayList<int[]>() ; // 0 GAUCHE, 1 DROITE, 2 HAUT, 3 BAS
 		if(direction==0) {
-			for(int i=10;i<30;i++) {
+			for(int i=4;i<36;i++) {
 				int posPixel[] ={xPos-1,yPos+i};
 				int posPixel2[]={xPos-2,yPos+i};
 				virtualMovement.add(posPixel);
@@ -112,15 +113,15 @@ public class Character {
 			}
 		}
 		if(direction==1) {
-			for(int i=10;i<30;i++) {
+			for(int i=4;i<36;i++) {
 				int posPixel[] ={xPos+41,yPos+i};
 				int posPixel2[]={xPos+42,yPos+i};
 				virtualMovement.add(posPixel);
 				virtualMovement.add(posPixel2);
 			}
 		}
-		if(direction==02) {
-			for(int i=10;i<30;i++){
+		if(direction==2) {
+			for(int i=4;i<36;i++){
 				int posPixel[] ={xPos+i,yPos-1};
 				int posPixel2[]={xPos+i,yPos-2};
 				virtualMovement.add(posPixel);
@@ -128,7 +129,7 @@ public class Character {
 			}
 		}
 		if(direction==3) {
-			for(int i=10;i<30;i++) {
+			for(int i=4;i<36;i++) {
 				int posPixel[] ={xPos+i,yPos+41};
 				int posPixel2[]={xPos+i,yPos+42};
 				virtualMovement.add(posPixel);
@@ -137,6 +138,65 @@ public class Character {
 		}
 		return virtualMovement;
 		
+	}
+	
+	public ArrayList<ArrayList<int[]>> touchList(List<Decor> d,List<Bomb> b, List<Monster> monster){
+		ArrayList<int[]> listeDecor = new ArrayList<int[]>();
+		ArrayList<int[]> listeItem = new ArrayList<int[]>();
+		ArrayList<int[]> listeChar = new ArrayList<int[]>();
+		ArrayList<ArrayList<int[]>> listeAll = new ArrayList<ArrayList<int[]>>();
+		for(int i = 0; i< d.size(); i++){
+			//System.out.println(this.xPos + " " + this.yPos + " " + d.get(i).getXPos() + " " +d.get(i).getYPos());
+			//System.out.println(touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos()));
+			if(touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos()) != -1
+					&& d.get(i).getClass() != Floor.class){
+				int pos[] = {i,touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos())};
+				listeDecor.add(pos);
+			}
+		}
+		for(int i = 0; i< b.size(); i++){
+			if(touch2(this.xPos,this.yPos,b.get(i).getXPos(),b.get(i).getYPos()) != -1){
+				int pos[] = {i,touch2(this.xPos,this.yPos,b.get(i).getXPos(),b.get(i).getYPos())};
+				listeItem.add(pos);
+			}
+		}
+		for(int i = 0; i< monster.size(); i++){
+			if(touch2(this.xPos,this.yPos,monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+				int pos[] = {i,touch2(this.xPos,this.yPos,monster.get(i).getXPos(),monster.get(i).getYPos())};
+				listeChar.add(pos);
+			}
+		}
+		listeAll.add(listeDecor);
+		listeAll.add(listeItem);
+		listeAll.add(listeChar);
+		return listeAll;
+	}
+	
+	public int touch2(int x1, int y1, int x2, int y2){ //coin supérieur gauche
+		if(Math.abs(x1-x2)<40 && Math.abs(y1-y2)<30){
+			if(x1-x2 < 0){
+				//System.out.println("pd");
+				return 0; //GAUCHE
+			}
+			else{
+				//System.out.println("pd");
+				return 1; //DROITE
+			}
+		}
+		else if(Math.abs(x1-x2)<30 && 40>Math.abs(y1-y2)){
+			if(y1-y2 < 0){
+				//System.out.println("pd");
+				return 2; //HAUT
+			}
+			else{
+				//System.out.println("pd");
+				return 3; //BAS
+			}
+		}
+		else{
+			//System.out.println("hihihihi");
+			return -1;
+		}
 	}
 	
 	public int touch(ArrayList<ArrayList<int[]>> list) {

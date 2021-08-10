@@ -58,6 +58,8 @@ public class Fenetre extends JFrame implements KeyListener {
 	
 	
 	public Fenetre(List<Decor> d,List<Monster> monster) {
+		this.d = d;
+		this.monster = monster;
 	    setVisible(true) ;
 		setSize(15*40, 15*40);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -114,12 +116,21 @@ public class Fenetre extends JFrame implements KeyListener {
 			
 	}
 
-	
-	
+	private int isTouched(List<Decor> d,int x, int y){
+		int i;
+		if(d == null)
+			System.out.println("bug");
+		for(i = 0; i< d.size();i++){
+			if(Math.abs(d.get(i).getXPos()-x) < 3 && Math.abs(d.get(i).getYPos()-y)<3){
+				return i;
+			}
+		}
+		return 0;
+	}
 	
 	private List<Link> rajouteLink(List<Link> liste,int x,int y){
 		
-	  Link link = new Link(0,x,y,0,1,linkRun,5,2,0,false,false);
+	  Link link = new Link(0,x,y,2,1,linkRun,5,2,0,false,false);
 	  liste.add(link);
 	  return liste;
 	  
@@ -156,13 +167,14 @@ public class Fenetre extends JFrame implements KeyListener {
 			
 		}
 		*/
+		//System.out.println(liste.get(0).touch2(liste.get(0).getXPos(), liste.get(0).getYPos(), 40, 40));
 		if(droiteEnfoncee){
 			liste.get(0).setIAD(linkRun);
 			if(liste.get(0).getDirection()!=1) {
 				liste.get(0).setDirection(1);
 			}
 			else{
-	    	liste.get(0).moveRight(listHitBoxDecor);
+	    	liste.get(0).moveRight(d,b,monster);
 			
 		}
 		}
@@ -172,7 +184,7 @@ public class Fenetre extends JFrame implements KeyListener {
 				liste.get(0).setDirection(0);
 			}
 			else{
-	    	liste.get(0).moveLeft(listHitBoxDecor);
+	    	liste.get(0).moveLeft(d,b,monster);
 		}
 		}
 		
@@ -182,7 +194,7 @@ public class Fenetre extends JFrame implements KeyListener {
 				liste.get(0).setDirection(3);
 			}
 			else{
-	    	liste.get(0).moveDown(listHitBoxDecor);
+	    	liste.get(0).moveDown(d,b,monster);
 		}
 		}
 		
@@ -192,7 +204,7 @@ public class Fenetre extends JFrame implements KeyListener {
 				liste.get(0).setDirection(2);
 			}
 			else{
-	    	liste.get(0).moveUp(listHitBoxDecor);
+	    	liste.get(0).moveUp(d,b,monster);
 		}
 		}
 		
@@ -206,10 +218,11 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		if(ar.size()>0){
 			for(int p = 0; p < ar.size(); p++){
-				ar.get(p).move();
-				if(ar.get(p).getXPos() > 1600 || ar.get(p).getXPos() < 0 ||
-						ar.get(p).getYPos() > 400 || ar.get(p).getYPos() < 0){
-					ar.remove(p);
+				if(ar.get(p).move(d,b,monster) == 0){
+					ar.get(p).tick();
+					if(ar.get(p).getTime() == 15){
+						ar.remove(p);
+					}
 				}
 			}
 		}
@@ -225,7 +238,7 @@ public class Fenetre extends JFrame implements KeyListener {
 				b.get(p).tick();
 				if(b.get(p).getTime() == 10){
 					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
-					feu.add(new FireBall1(b.get(p).getXPos(),b.get(p).getYPos(),kirby,2,2,2,liste.get(0).getXPos(), liste.get(0).getYPos(), 15*40, 15*40));
+					//feu.add(new FireBall1(b.get(p).getXPos(),b.get(p).getYPos(),kirby,2,2,2,liste.get(0).getXPos(), liste.get(0).getYPos(), 15*40, 15*40));
 					b.remove(p);
 				}
 			}
@@ -234,7 +247,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			for(int p = 0; p < bombDeflagration.size(); p++){
 				bombDeflagration.get(p).tick();
 				if(bombDeflagration.get(p).getPortee() < liste.get(0).getRangeBomb()*4+2){
-					bombDeflagration.get(p).appear(liste.get(0).getRangeBomb());
+					bombDeflagration.get(p).appear(liste.get(0).getRangeBomb(),d);
 				}
 				else{
 					bombDeflagration.remove(p);

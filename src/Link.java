@@ -76,32 +76,60 @@ public void setKey(boolean key)
 	
 }
 
-public void moveUp (ArrayList<ArrayList<int[]>> decor)
+public void moveUp (List<Decor> d,List<Bomb> b, List<Monster> monster)
 
 {
-	setYPos(yPos - 2*touch(decor)); //panel 
 	direction = 2;
+	int k = 1;
+	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
+		if(touchList(d,b,monster).get(0).get(j)[1] == 3){
+			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			k = 0;
+		}
+	}
+	setYPos(yPos - k*speed); //panel 
 	tick(getIAD(),5);
 }
 
-public void moveDown (ArrayList<ArrayList<int[]>> decor)
+public void moveDown (List<Decor> d,List<Bomb> b, List<Monster> monster)
 {
-	setYPos(yPos + 2*touch(decor)); //panel
 	direction = 3;
+	int k = 1;
+	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
+		if(touchList(d,b,monster).get(0).get(j)[1] == 2){
+			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			k = 0;
+		}
+	}
+	setYPos(yPos + k*speed); //panel
 	tick(getIAD(),5);
 }
 
-public void moveRight (ArrayList<ArrayList<int[]>> decor)
+public void moveRight (List<Decor> d,List<Bomb> b, List<Monster> monster)
 {
-	setXPos(xPos + 2*touch(decor));
 	direction = 1;
+	int k = 1;
+	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
+		if(touchList(d,b,monster).get(0).get(j)[1] == 0){
+			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			k = 0;
+		}
+	}
+	setXPos(xPos + k*speed);
 	tick(getIAD(),5);
 }
 
-public void moveLeft (ArrayList<ArrayList<int[]>> decor)
+public void moveLeft (List<Decor> d,List<Bomb> b, List<Monster> monster)
 {
-	setXPos(xPos - 2*touch(decor));
 	direction = 0;
+	int k = 1;
+	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
+		if(touchList(d,b,monster).get(0).get(j)[1] == 1){
+			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			k = 0;
+		}
+	}
+	setXPos(xPos - k*speed);
 	tick(getIAD(),5);
 }
 

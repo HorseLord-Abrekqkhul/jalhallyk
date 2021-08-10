@@ -5,7 +5,7 @@ import java.util.Random;
 public class Jar extends Decor {
 	
 	private boolean broken;
-	private String brokenSkinName="Inconnu";
+	//private String brokenSkinName="Inconnu";
 	
 	public Jar(int xPos, int yPos, Image name, boolean broken) {
 		super(xPos,yPos,name);

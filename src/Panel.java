@@ -37,9 +37,27 @@ public class Panel extends JPanel{
 				g.drawImage(bg,i*40,j*40,null);				
 			}
 		}
+		for(Decor d : data4) {
+			if(d.getImage()==bigTree && (d.getXPos()==0 || d.getYPos()==0 || d.getXPos()==40*15)) {
+				g.drawImage(d.getImage(), d.getXPos()-40, d.getYPos()-40,null);				
+			}
+			else {
+			g.drawImage(d.getImage(), d.getXPos(), d.getYPos(),null);
+		}
+		}
+		for(Bomb b : data3) {
+			g.drawImage(b.getImage(), b.getXPos(), b.getYPos(),null);
+		}
+		for(Link l : data) {
+			g.drawImage(l.getIAD().getImage(l), l.getXPos(), l.getYPos(),null);
+		}
+		for(Arrow a : data2) {
+			g.drawImage(a.getIAD().getImage(a), a.getXPos(), a.getYPos(),null);
+		}	
+		for(Monster m : data6) {
+			g.drawImage(m.getIAD().getImage(m), m.getXPos(), m.getYPos(),null);
+		}
 		for(BombDeflagration d : data5) {
-			if(d.getUp() == null)
-				System.out.println("UAEBUIEBI");
 			for(int j = 0; j< d.getUp().size(); j++){
 				if(j==d.getUp().size()-1){
 					g.drawImage(d.getIAD().getImage(2).get(1), d.getXPos(), d.getUp().get(j),null);
@@ -73,26 +91,6 @@ public class Panel extends JPanel{
 				}
 			}
 		}
-		for(Decor d : data4) {
-			if(d.getImage()==bigTree && (d.getXPos()==0 || d.getYPos()==0 || d.getXPos()==40*15)) {
-				g.drawImage(d.getImage(), d.getXPos()-40, d.getYPos()-40,null);				
-			}
-			else {
-			g.drawImage(d.getImage(), d.getXPos(), d.getYPos(),null);
-		}
-		}
-		for(Bomb b : data3) {
-			g.drawImage(b.getImage(), b.getXPos(), b.getYPos(),null);
-		}
-		for(Link l : data) {
-			g.drawImage(l.getIAD().getImage(l), l.getXPos(), l.getYPos(),null);
-		}
-		for(Arrow a : data2) {
-			g.drawImage(a.getIAD().getImage(a), a.getXPos(), a.getYPos(),null);
-		}	
-		for(Monster m : data6) {
-			g.drawImage(m.getIAD().getImage(m), m.getXPos(), m.getYPos(),null);
-		}	
 		for(FireBall1 a : data7) {
 			g.drawImage(kirby, a.getXPos(), a.getYPos(),null);
 		}
