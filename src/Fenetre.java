@@ -48,7 +48,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	ImageAnimeDirection linkArrow = new ImageAnimeDirection("res/LinkArrow",6);
 	ImageAnimeDirection arrow = new ImageAnimeDirection("res/Arrow",3);
 	ImageAnimeDirection deflagration = new ImageAnimeDirection("res/Deflagration",2);
-	Image bomb = Toolkit.getDefaultToolkit().getImage("res/2.png");
+	Image bomb = Toolkit.getDefaultToolkit().getImage("res/Bomb.png");
 	Image littleTree = Toolkit.getDefaultToolkit().getImage("res/LittleTree.png");
 	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
 	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock.png");
@@ -61,7 +61,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		this.d = d;
 		this.monster = monster;
 	    setVisible(true) ;
-		setSize(15*40, 15*40);
+		setSize(15*41, 15*42+5);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		liste = new ArrayList<Link>();
 		ar = new ArrayList<Arrow>();
@@ -220,6 +220,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			for(int p = 0; p < ar.size(); p++){
 				if(ar.get(p).move(d,b,monster) == 0){
 					ar.get(p).tick();
+					ar.get(p).setActualFrame(1);
 					if(ar.get(p).getTime() == 15){
 						ar.remove(p);
 					}

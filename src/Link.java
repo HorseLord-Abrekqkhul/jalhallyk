@@ -135,7 +135,7 @@ public void moveLeft (List<Decor> d,List<Bomb> b, List<Monster> monster)
 
 public List<Bomb> setBomb(List<Bomb> liste, Image image)
 {
-	liste.add( new Bomb(xPos, yPos, image, 1)) ;
+	liste.add( new Bomb(xPos+5, yPos+5, image, 1)) ;
 	return liste;
 }
 
