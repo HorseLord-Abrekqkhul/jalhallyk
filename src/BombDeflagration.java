@@ -1,3 +1,5 @@
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,12 @@ public class BombDeflagration extends Damage{
 		
 	}
 	
+	Image brokenJar = Toolkit.getDefaultToolkit().getImage("res/ForestBrokenJar.png");
+	
+	private int U = 1; 
+	private int D = 1;
+	private int L = 1;
+	private int R = 1;
 	private ArrayList<Integer> up;
 	private ArrayList<Integer> down;
 	private ArrayList<Integer> left;
@@ -45,41 +53,51 @@ public class BombDeflagration extends Damage{
 		down = new ArrayList<Integer>();
 		left = new ArrayList<Integer>();
 		right = new ArrayList<Integer>();
-		int U = 1; 
-		int D = 1;
-		int L = 1;
-		int R = 1;
 		for(int j = 0; j < portee;j++){
 			for(int i = 0; i < d.size(); i++){
 				if(touch2(liste[0][j],getYPos(),d.get(i).getXPos(),d.get(i).getYPos()) != -1
 						&& d.get(i).getClass() != Floor.class){
 					if(d.get(i).getClass() == Jar.class && L == 1){
 						left.add(liste[0][j]);
+						left.add(liste[0][j+1]);
+						left.add(liste[0][j+2]);
 						d.remove(i);
+						d.get(i-1).setImage(brokenJar);
 					}
 					L = 0;
 				}
 				if(touch2(liste[1][j],getYPos(),d.get(i).getXPos(),d.get(i).getYPos()) != -1
 						&& d.get(i).getClass() != Floor.class){
 					if(d.get(i).getClass() == Jar.class && R == 1){
-						right.add(liste[0][j]);
+						right.add(liste[1][j]);
+						right.add(liste[1][j+1]);
+						right.add(liste[1][j+2]);
 						d.remove(i);
+						d.get(i-1).setImage(brokenJar);
 					}
 					R = 0;
 				}
 				if(touch2(getXPos(),liste[2][j],d.get(i).getXPos(),d.get(i).getYPos()) != -1
 						&& d.get(i).getClass() != Floor.class){
 					if(d.get(i).getClass() == Jar.class && U == 1){
-						down.add(liste[0][j]);
+						down.add(liste[2][j]);
+						down.add(liste[2][j+1]);
+						down.add(liste[2][j+2]);
 						d.remove(i);
+						d.get(i-1).setImage(brokenJar);
 					}
 					U = 0;
 				}
 				if(touch2(getXPos(),liste[3][j],d.get(i).getXPos(),d.get(i).getYPos()) != -1
 						&& d.get(i).getClass() != Floor.class){
+					//System.out.println("obstacle " + D);
+					//System.out.println("avant " +D + " " + portee);
 					if(d.get(i).getClass() == Jar.class && D == 1){
-						up.add(liste[0][j]);
+						up.add(liste[3][j]);
+						up.add(liste[3][j+1]);
+						up.add(liste[3][j+2]);
 						d.remove(i);
+						d.get(i-1).setImage(brokenJar);
 					}
 					D = 0;
 				}
