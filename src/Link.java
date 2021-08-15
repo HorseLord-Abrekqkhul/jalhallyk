@@ -135,7 +135,28 @@ public void moveLeft (List<Decor> d,List<Bomb> b, List<Monster> monster)
 
 public List<Bomb> setBomb(List<Bomb> liste, Image image)
 {
-	liste.add( new Bomb(xPos+5, yPos+5, image, 1)) ;
+	int x,y;
+	int k = 1;
+	if(xPos%40 <= 20){
+		x = xPos - xPos%40;
+	}
+	else{
+		x = xPos + 40 - xPos%40;
+	}
+	if(yPos%40 <= 20){
+		y = yPos - yPos%40;
+	}
+	else{
+		y = yPos + 40 - yPos%40;
+	}
+	for(int i = 0; i < liste.size(); i++){
+		if(x + 5 == liste.get(i).getXPos() && y + 5 == liste.get(i).getYPos()){
+			k = 0;
+		}
+	}
+	if (k == 1){
+		liste.add( new Bomb(x+5, y+5, image, 1)) ;
+	}
 	return liste;
 }
 
