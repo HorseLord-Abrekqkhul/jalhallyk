@@ -12,7 +12,8 @@ public class Character {
 	private int actualFrame = 1;
 	private int mytick = 0;
 	private ImageAnimeDirection image;
-	
+	private int invincible = 1; // 1 = OFF, 0 = ON
+	private int tickInvicible = 1;
 	
 	public Character(int lifePoint, int xPos, int yPos, int speed, int direction, ImageAnimeDirection image){
 		this.lifePoint =  lifePoint;
@@ -40,6 +41,23 @@ public class Character {
 	public void setActualFrame(int a)
 	{
 		this.actualFrame=a;
+	}
+	
+	public int getInvincible(){
+		return this.invincible;
+	}
+	
+	public void setInvicible(){
+		this.invincible = 0;
+	}
+	
+	public void tickInvicible(){
+		tickInvicible++;
+		if(tickInvicible == 15){
+			this.invincible = 1;
+			this.tickInvicible = 1;
+			System.out.println("INVICIBILITE OFF");
+		}
 	}
 
 	public ImageAnimeDirection getIAD()

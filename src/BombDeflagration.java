@@ -133,35 +133,90 @@ public class BombDeflagration extends Damage{
 		return this.right;
 	}
 	
-	/*
-	public ArrayList<ArrayList<int[]>> touchList(List<Link> l, List<Monster> monster){
-		ArrayList<int[]> listeDecor = new ArrayList<int[]>();
-		ArrayList<int[]> listeItem = new ArrayList<int[]>();
-		ArrayList<int[]> listeChar = new ArrayList<int[]>();
-		ArrayList<ArrayList<int[]>> listeAll = new ArrayList<ArrayList<int[]>>();
-		for(int i = 0; i< d.size(); i++){
-			if(touch2(x,y,d.get(i).getXPos(),d.get(i).getYPos()) != -1
-					&& d.get(i).getClass() != Floor.class){
-				int pos[] = {i,touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos())};
-				listeDecor.add(pos);
+	public void bombInteraction(List<Link> l, List<Monster> monster, List<Bomb> bomb){
+		for(int j = 0; j < up.size(); j++){
+			for(int i = 0; i< l.size(); i++){
+				if(touch2(getXPos(),up.get(j),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
+					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
+					l.get(i).setInvicible();
+					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< monster.size(); i++){
+				if(touch2(getXPos(),up.get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
+					monster.get(i).setInvicible();
+					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< bomb.size(); i++){
+				if(touch2(getXPos(),up.get(j),bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1){
+					bomb.get(i).setTime(15);
+				}
 			}
 		}
-		for(int i = 0; i< b.size(); i++){
-			if(touch2(x,y,b.get(i).getXPos(),b.get(i).getYPos()) != -1){
-				int pos[] = {i,touch2(this.xPos,this.yPos,b.get(i).getXPos(),b.get(i).getYPos())};
-				listeItem.add(pos);
+		for(int j = 0; j < down.size(); j++){
+			for(int i = 0; i< l.size(); i++){
+				if(touch2(getXPos(),down.get(j),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
+					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
+					l.get(i).setInvicible();
+					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< monster.size(); i++){
+				if(touch2(getXPos(),down.get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
+					monster.get(i).setInvicible();
+					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< bomb.size(); i++){
+				if(touch2(getXPos(),down.get(j),bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1){
+					bomb.get(i).setTime(15);
+				}
 			}
 		}
-		for(int i = 0; i< monster.size(); i++){
-			if(touch2(x,y,monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
-				int pos[] = {i,touch2(this.xPos,this.yPos,monster.get(i).getXPos(),monster.get(i).getYPos())};
-				listeChar.add(pos);
+		for(int j = 0; j < left.size(); j++){
+			for(int i = 0; i< l.size(); i++){
+				if(touch2(left.get(j),getYPos(),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
+					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
+					l.get(i).setInvicible();
+					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< monster.size(); i++){
+				if(touch2(left.get(j),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
+					monster.get(i).setInvicible();
+					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< bomb.size(); i++){
+				if(touch2(left.get(j),getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1){
+					bomb.get(i).setTime(15);
+				}
 			}
 		}
-		listeAll.add(listeDecor);
-		listeAll.add(listeItem);
-		listeAll.add(listeChar);
-		return listeAll;
+		for(int j = 0; j < right.size(); j++){
+			for(int i = 0; i< l.size(); i++){
+				if(touch2(right.get(j),getYPos(),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
+					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
+					l.get(i).setInvicible();
+					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< monster.size(); i++){
+				if(touch2(right.get(j),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
+					monster.get(i).setInvicible();
+					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+				}
+			}
+			for(int i = 0; i< bomb.size(); i++){
+				if(touch2(right.get(j),getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1){
+					bomb.get(i).setTime(15);
+				}
+			}
+		}
 	}
-	*/
 }

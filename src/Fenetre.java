@@ -130,7 +130,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	
 	private List<Link> rajouteLink(List<Link> liste,int x,int y){
 		
-	  Link link = new Link(0,x,y,2,1,linkRun,5,2,0,false,false);
+	  Link link = new Link(3,x,y,2,1,linkRun,5,2,0,false,false);
 	  liste.add(link);
 	  return liste;
 	  
@@ -168,6 +168,23 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		*/
 		//System.out.println(liste.get(0).touch2(liste.get(0).getXPos(), liste.get(0).getYPos(), 40, 40));
+		if(liste.get(0).getInvincible() == 0){
+			System.out.println("hihihihi Link est invincible...");
+			liste.get(0).tickInvicible();
+		}
+		if(monster.size() > 0){
+			for(int i = 0; i < monster.size(); i++){
+				if(monster.get(i).getInvincible() == 0){
+					System.out.println("Le monstre n°" + i + " est invincible...");
+					monster.get(i).tickInvicible();
+				}
+				if(monster.get(i).getLifePoint() == 0){
+					monster.remove(i);
+					System.out.println("Le monstre n°" + i +" est mort!");
+				}
+			}
+		}
+		
 		if(droiteEnfoncee){
 			liste.get(0).setIAD(linkRun);
 			if(liste.get(0).getDirection()!=1) {
@@ -237,7 +254,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(b.size()>0){
 			for(int p = 0; p < b.size(); p++){
 				b.get(p).tick();
-				if(b.get(p).getTime() == 10){
+				if(b.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
 					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
 					//feu.add(new FireBall1(b.get(p).getXPos(),b.get(p).getYPos(),kirby,2,2,2,liste.get(0).getXPos(), liste.get(0).getYPos(), 15*40, 15*40));
 					b.remove(p);
@@ -249,6 +266,7 @@ public class Fenetre extends JFrame implements KeyListener {
 				bombDeflagration.get(p).tick();
 				if(bombDeflagration.get(p).getPortee() < liste.get(0).getRangeBomb()*4+2){
 					bombDeflagration.get(p).appear(liste.get(0).getRangeBomb(),d);
+					bombDeflagration.get(p).bombInteraction(liste, monster, b);
 				}
 				else{
 					bombDeflagration.remove(p);

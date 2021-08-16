@@ -27,6 +27,11 @@ public class Bomb extends Decor {
 	public int getTime(){
 		return time;
 	}
+	
+	public void setTime(int time){
+		this.time = time;
+		this.mytick = 1;
+	}
 	/*
 	public BombDeflagration explosion (int xPos, int yPos, String name) {
 		BombDeflagration bombDeflagration = new BombDeflagration(xPos, yPos, 2, name);

@@ -83,7 +83,7 @@ public void moveUp (List<Decor> d,List<Bomb> b, List<Monster> monster)
 	int k = 1;
 	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
 		if(touchList(d,b,monster).get(0).get(j)[1] == 3){
-			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			//System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
 			k = 0;
 		}
 	}
@@ -97,7 +97,7 @@ public void moveDown (List<Decor> d,List<Bomb> b, List<Monster> monster)
 	int k = 1;
 	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
 		if(touchList(d,b,monster).get(0).get(j)[1] == 2){
-			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			//System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
 			k = 0;
 		}
 	}
@@ -111,7 +111,7 @@ public void moveRight (List<Decor> d,List<Bomb> b, List<Monster> monster)
 	int k = 1;
 	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
 		if(touchList(d,b,monster).get(0).get(j)[1] == 0){
-			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			//System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
 			k = 0;
 		}
 	}
@@ -125,7 +125,7 @@ public void moveLeft (List<Decor> d,List<Bomb> b, List<Monster> monster)
 	int k = 1;
 	for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
 		if(touchList(d,b,monster).get(0).get(j)[1] == 1){
-			System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
+			//System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
 			k = 0;
 		}
 	}
