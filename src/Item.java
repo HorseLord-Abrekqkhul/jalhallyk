@@ -72,11 +72,8 @@ public class Item {
 		this.IAD = IAD;
 	}
 	
-	public ArrayList<ArrayList<int[]>> touchList(List<Decor> d,List<Bomb> b, List<Monster> monster){
+	public ArrayList<int[]> touchList(List<Decor> d){ //changer bomb par link pour mode versus
 		ArrayList<int[]> listeDecor = new ArrayList<int[]>();
-		ArrayList<int[]> listeItem = new ArrayList<int[]>();
-		ArrayList<int[]> listeChar = new ArrayList<int[]>();
-		ArrayList<ArrayList<int[]>> listeAll = new ArrayList<ArrayList<int[]>>();
 		for(int i = 0; i< d.size(); i++){
 			//System.out.println(this.xPos + " " + this.yPos + " " + d.get(i).getXPos() + " " +d.get(i).getYPos());
 			//System.out.println(touch2(this.xPos,this.yPos,d.get(i).getXPos(),d.get(i).getYPos()));
@@ -86,22 +83,7 @@ public class Item {
 				listeDecor.add(pos);
 			}
 		}
-		for(int i = 0; i< b.size(); i++){
-			if(touch2(this.xPos,this.yPos,b.get(i).getXPos(),b.get(i).getYPos()) != -1){
-				int pos[] = {i,touch2(this.xPos,this.yPos,b.get(i).getXPos(),b.get(i).getYPos())};
-				listeItem.add(pos);
-			}
-		}
-		for(int i = 0; i< monster.size(); i++){
-			if(touch2(this.xPos,this.yPos,monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
-				int pos[] = {i,touch2(this.xPos,this.yPos,monster.get(i).getXPos(),monster.get(i).getYPos())};
-				listeChar.add(pos);
-			}
-		}
-		listeAll.add(listeDecor);
-		listeAll.add(listeItem);
-		listeAll.add(listeChar);
-		return listeAll;
+		return listeDecor;
 	}
 	
 	public int touch2(int x1, int y1, int x2, int y2){ //coin supérieur gauche

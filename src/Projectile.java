@@ -3,9 +3,14 @@ import java.util.List;
 
 public class Projectile extends Damage {
 	private int direction;
+	private int x;
+	private int y;
+	
 	public Projectile(int xPos, int yPos,ImageAnimeDirection IAD,int c, int damage, int direction){
 		super(xPos,yPos,IAD,c,damage);
 		this.direction = direction;
+		this.x = xPos;
+		this.y = yPos;
 	}
 	
 	
@@ -19,32 +24,55 @@ public class Projectile extends Damage {
 		this.direction = direction;
 	}
 	
-	public int move(List<Decor> d,List<Bomb> b, List<Monster> monster){
-		int k = 1;
-		for(int j = 0; j < touchList(d,b,monster).get(0).size(); j++){
-			if(touchList(d,b,monster).get(0).get(j)[1] != -1){
-				//System.out.println(touchList(d,b,monster).get(0).get(j)[1]);
-				k = 0;
-				//d.remove(touchList(d,b,monster).get(0).get(j)[0]);
-			}
-		}
+	public void move(){
 		if(direction == 0){
-			setXPos(getXPos() - 10*k);
+			setXPos(getXPos() - 10);
 			tick(getIAD(),getC());
 		}
 		if(direction == 1){
-			setXPos(getXPos() + 10*k);
+			setXPos(getXPos() + 10);
 			tick(getIAD(),getC());
 		}
 		if(direction == 2){
-			setYPos(getYPos() - 10*k); //panel 
+			setYPos(getYPos() - 10); //panel 
 			tick(getIAD(),getC());
 		}
 		if(direction == 3){
-			setYPos(getYPos() + 10*k); //panel
+			setYPos(getYPos() + 10); //panel
 			tick(getIAD(),getC());
 		}
-		return k;
+
+	}
+	
+	public int projectileInteraction(List<Link> link, List<Monster> monster, List<Decor> decor){
+		for(int i = 0; i < link.size(); i++){
+			if(((direction == 0 || direction == 1) && (getXPos() > x + 40)) 
+					|| ((direction == 2 || direction == 3) && (getYPos() > y + 40))){
+				if(touch2(getXPos(),getYPos(),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
+					link.get(i).setLifePoint(link.get(i).getLifePoint()-1*link.get(i).getInvincible());
+					link.get(i).setInvicible();
+					System.out.println("Link a perdu une vie, il lui reste "+ link.get(i).getLifePoint() + " vies.");
+					return 1;
+				}
+			}
+		}
+		for(int i = 0; i < monster.size(); i++){
+			if(touch2(getXPos(),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+				monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
+				monster.get(i).setInvicible();
+				System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+				return 1;
+			}
+		}
+		for(int i = 0; i < decor.size(); i++){
+			if(touch2(getXPos(),getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
+					&& decor.get(i).getClass() != Floor.class){
+				System.out.println("hihihi je me suis planté dans un decor");
+				return 2;
+			}
+		}
+		move();
+		return 0;
 	}
 	
 }

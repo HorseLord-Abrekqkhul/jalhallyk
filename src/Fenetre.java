@@ -130,7 +130,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	
 	private List<Link> rajouteLink(List<Link> liste,int x,int y){
 		
-	  Link link = new Link(3,x,y,2,1,linkRun,5,2,0,false,false);
+	  Link link = new Link(3,x,y,2,1,linkRun,5,3,0,false,false);
 	  liste.add(link);
 	  return liste;
 	  
@@ -235,10 +235,17 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		if(ar.size()>0){
 			for(int p = 0; p < ar.size(); p++){
-				if(ar.get(p).move(d,b,monster) == 0){
-					ar.get(p).tick();
-					ar.get(p).setActualFrame(1);
-					if(ar.get(p).getTime() == 15){
+				System.out.println(ar.get(p).getXPos() + " " + ar.get(p).getYPos());
+				int a = ar.get(p).projectileInteraction(liste, monster,d);
+				if(a != 0){
+					if(a == 2){
+						ar.get(p).tick();
+						ar.get(p).setActualFrame(1);
+						if(ar.get(p).getTime() == 15){
+							ar.remove(p);
+						}
+					}
+					else{
 						ar.remove(p);
 					}
 				}
