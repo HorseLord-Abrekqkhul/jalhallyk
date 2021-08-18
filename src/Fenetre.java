@@ -61,7 +61,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		this.d = d;
 		this.monster = monster;
 	    setVisible(true) ;
-		setSize(15*41, 15*42+5);
+		setSize(15*41, 15*42+5+90);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		liste = new ArrayList<Link>();
 		ar = new ArrayList<Arrow>();
@@ -253,8 +253,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		if(setBomb){
 			if(b.size()< liste.get(0).getNumberBomb()){
-				liste.get(0).setBomb(b, bomb);
-				
+				liste.get(0).setBomb(b, bomb);				
 			}
 			setBomb = false;
 		}
