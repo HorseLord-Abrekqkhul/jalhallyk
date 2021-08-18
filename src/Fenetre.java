@@ -185,44 +185,26 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 		}
 		
+		liste.get(0).linkInteraction(d, monster, b);
+		
 		if(droiteEnfoncee){
 			liste.get(0).setIAD(linkRun);
-			if(liste.get(0).getDirection()!=1) {
-				liste.get(0).setDirection(1);
-			}
-			else{
-	    	liste.get(0).moveRight(d,b,monster);
+	    	liste.get(0).moveRight();
 			
-		}
 		}
 		if(gaucheEnfoncee){
 			liste.get(0).setIAD(linkRun);
-			if(liste.get(0).getDirection()!=0) {
-				liste.get(0).setDirection(0);
-			}
-			else{
-	    	liste.get(0).moveLeft(d,b,monster);
-		}
+	    	liste.get(0).moveLeft();
 		}
 		
 		if(basEnfoncee){
 			liste.get(0).setIAD(linkRun);
-			if(liste.get(0).getDirection()!=3) {
-				liste.get(0).setDirection(3);
-			}
-			else{
-	    	liste.get(0).moveDown(d,b,monster);
-		}
+	    	liste.get(0).moveDown();
 		}
 		
 		if(hautEnfoncee){
 			liste.get(0).setIAD(linkRun);
-			if(liste.get(0).getDirection()!=2) {
-				liste.get(0).setDirection(2);
-			}
-			else{
-	    	liste.get(0).moveUp(d,b,monster);
-		}
+	    	liste.get(0).moveUp();
 		}
 		
 		if(tireFleche){
@@ -259,6 +241,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		if(b.size()>0){
 			for(int p = 0; p < b.size(); p++){
+				b.get(p).bombInteraction(d,liste,monster,b);
 				b.get(p).tick();
 				if(b.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
 					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
@@ -272,7 +255,7 @@ public class Fenetre extends JFrame implements KeyListener {
 				bombDeflagration.get(p).tick();
 				if(bombDeflagration.get(p).getPortee() < liste.get(0).getRangeBomb()*4+2){
 					bombDeflagration.get(p).appear(liste.get(0).getRangeBomb(),d);
-					bombDeflagration.get(p).bombInteraction(liste, monster, b);
+					bombDeflagration.get(p).defInteraction(liste, monster, b);
 				}
 				else{
 					bombDeflagration.remove(p);

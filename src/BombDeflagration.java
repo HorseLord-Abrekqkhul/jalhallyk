@@ -133,7 +133,7 @@ public class BombDeflagration extends Damage{
 		return this.right;
 	}
 	
-	public void bombInteraction(List<Link> l, List<Monster> monster, List<Bomb> bomb){
+	public void defInteraction(List<Link> l, List<Monster> monster, List<Bomb> bomb){
 		for(int j = 0; j < up.size(); j++){
 			for(int i = 0; i< l.size(); i++){
 				if(touch2(getXPos(),up.get(j),l.get(i).getXPos(),l.get(i).getYPos()) != -1){

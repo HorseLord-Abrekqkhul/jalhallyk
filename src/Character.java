@@ -53,7 +53,7 @@ public class Character {
 	
 	public void tickInvicible(){
 		tickInvicible++;
-		if(tickInvicible == 15){
+		if(tickInvicible == 40){
 			this.invincible = 1;
 			this.tickInvicible = 1;
 			System.out.println("INVICIBILITE OFF");
@@ -158,6 +158,7 @@ public class Character {
 		
 	}
 	
+	/*
 	public ArrayList<ArrayList<int[]>> touchList(List<Decor> d,List<Bomb> b, List<Monster> monster){
 		ArrayList<int[]> listeDecor = new ArrayList<int[]>();
 		ArrayList<int[]> listeItem = new ArrayList<int[]>();
@@ -189,8 +190,8 @@ public class Character {
 		listeAll.add(listeChar);
 		return listeAll;
 	}
-	
-	public int touch2(int x1, int y1, int x2, int y2){ //coin supérieur gauche
+	*/
+	public int touchDecor(int x1, int y1, int x2, int y2){ //coin supérieur gauche
 		if(Math.abs(x1-x2)<40 && Math.abs(y1-y2)<30){
 			if(x1-x2 < 0){
 				//System.out.println("pd");
@@ -202,6 +203,60 @@ public class Character {
 			}
 		}
 		else if(Math.abs(x1-x2)<30 && 40>Math.abs(y1-y2)){
+			if(y1-y2 < 0){
+				//System.out.println("pd");
+				return 2; //HAUT
+			}
+			else{
+				//System.out.println("pd");
+				return 3; //BAS
+			}
+		}
+		else{
+			//System.out.println("hihihihi");
+			return -1;
+		}
+	}
+	
+	public int touchMonster(int x1, int y1, int x2, int y2){ //coin supérieur gauche
+		if(Math.abs(x1-x2)<30 && Math.abs(y1-y2)<25){
+			if(x1-x2 < 0){
+				//System.out.println("pd");
+				return 0; //GAUCHE
+			}
+			else{
+				//System.out.println("pd");
+				return 1; //DROITE
+			}
+		}
+		else if(Math.abs(x1-x2)<25 && 30>Math.abs(y1-y2)){
+			if(y1-y2 < 0){
+				//System.out.println("pd");
+				return 2; //HAUT
+			}
+			else{
+				//System.out.println("pd");
+				return 3; //BAS
+			}
+		}
+		else{
+			//System.out.println("hihihihi");
+			return -1;
+		}
+	}
+	
+	public int touchBomb(int x1, int y1, int x2, int y2){ //coin supérieur gauche
+		if(Math.abs(x1-x2)<40 && Math.abs(x1-x2)>30 && Math.abs(y1-y2)<25){
+			if(x1-x2 < 0){
+				//System.out.println("pd");
+				return 0; //GAUCHE
+			}
+			else{
+				//System.out.println("pd");
+				return 1; //DROITE
+			}
+		}
+		else if(Math.abs(x1-x2)<30 && 40>Math.abs(y1-y2) && Math.abs(y1-y2)>25){
 			if(y1-y2 < 0){
 				//System.out.println("pd");
 				return 2; //HAUT

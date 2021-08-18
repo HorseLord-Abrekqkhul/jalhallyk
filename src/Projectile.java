@@ -41,7 +41,6 @@ public class Projectile extends Damage {
 			setYPos(getYPos() + 10); //panel
 			tick(getIAD(),getC());
 		}
-
 	}
 	
 	public int projectileInteraction(List<Link> link, List<Monster> monster, List<Decor> decor){
