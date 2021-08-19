@@ -3,17 +3,15 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.lang.Object;
-import java.util.Random;
 
 
 public class Map {
 	
 	private int length;
 	private int width;
-	private int k =0;
 	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/LittleTree.png");
 	Image littleTree = Toolkit.getDefaultToolkit().getImage("res/LittleTree.png");
 	Image bg = Toolkit.getDefaultToolkit().getImage("res/BackgroundForest.png");
@@ -221,5 +219,33 @@ public class Map {
 					}
 	return monster;
 }
-	
+	public static void saveMap(char[][] map,String name){ //oblige de mettre static sinon ca bug, pq?
+		FileOutputStream fos = null;
+		try{
+			fos = new FileOutputStream(new File(name));
+			for(int i = 0; i < map.length;i ++){
+				for(int j = 0; j < map[i].length ;j++){
+					fos.write(map[i][j]);
+					if (j<map[i].length-1)
+						fos.write(' ');
+				}
+				fos.write('\n');
+			}
+				
+		}
+		catch (FileNotFoundException e) {
+	         e.printStackTrace();
+	    } catch (IOException e) {
+	         e.printStackTrace();
+	    } finally {
+	         try {
+	            if (fos != null)
+	               fos.close();
+	         } catch (IOException e) {
+	            e.printStackTrace();
+	         }
+		
+		
+	}
+	}
 }
