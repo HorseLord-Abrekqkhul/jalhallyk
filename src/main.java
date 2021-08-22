@@ -1,9 +1,3 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-
 
 public class main {
 
@@ -11,35 +5,10 @@ public class main {
 		
 		//new Fenetre();
 		
-
-			FileInputStream fis = null;
-			String level = "1";
-			String roomLine = "3";
-			String roomColumn = "1";
-			try{				
-				fis = new FileInputStream(new File("res/niveau"+level+"ligne"+roomLine+"colonne"+roomColumn+".txt"));
-				char tableau[][];
-				Map map = new Map(16,16);
-				tableau = map.loadMap(fis);
-				Map.saveMap(tableau,"res/test2.txt");
-				ArrayList<Decor> decor = map.mapToListDecor(tableau);
-				ArrayList<Monster> monstre = map.mapToListMonster(tableau);
-				new Fenetre(decor,monstre);		
-
-					
-			} catch(FileNotFoundException e){
-				e.printStackTrace();
-			} finally{
-				try{
-					if(fis != null)
-						fis.close();
-				} catch (IOException e){
-					e.printStackTrace();
-				}
-			}
-
-		}  
+			Map.loadGame();
+			
 	}
+}
 	
 	/*	// TODO Auto-generated method stub
 		Fireball1 fire = new Fireball1(25,25,"feu",1,1);

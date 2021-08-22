@@ -86,6 +86,36 @@ public class Map {
 		  }
 		return map;		  
 	  }
+	public static void loadGame(){
+		FileInputStream fis = null;
+		String level = "1";
+		String roomLine = "3";
+		String roomColumn = "1";
+		try{				
+			fis = new FileInputStream(new File("res/niveau"+level+"ligne"+roomLine+"colonne"+roomColumn+".txt"));
+			char tableau[][];
+			Map map = new Map(16,16);
+			tableau = map.loadMap(fis);
+			saveMap(tableau,"res/test2.txt");
+			ArrayList<Decor> decor = map.mapToListDecor(tableau);
+			ArrayList<Monster> monstre = map.mapToListMonster(tableau);
+			new Fenetre(decor,monstre);		
+
+				
+		} catch(FileNotFoundException e){
+			e.printStackTrace();
+		} finally{
+			try{
+				if(fis != null)
+					fis.close();
+			} catch (IOException e){
+				e.printStackTrace();
+			}
+		}
+
+	}  
+	
+	
 	
 	public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 		
@@ -114,7 +144,7 @@ public class Map {
 						break;
 					case '5':
 						decor.add(new Floor(40*i,40*j,bg));
-						decor.add(new Door(40*i,40*j,null,false)); //Door
+						decor.add(new Door(40*i,40*j,null,false,1,1)); //Door
 						break;
 					case '6':
 						decor.add(new Hole(40*i,40*j,null,1)); //Hole
@@ -125,11 +155,11 @@ public class Map {
 						break;
 					case '8':
 						decor.add(new Floor(40*i,40*j,bg));
-						decor.add(new Door(40*i,40*j,null,false)); //Door
+						decor.add(new Door(40*i,40*j,null,false,1,1)); //Door
 						break;
 					case '9':
 						decor.add(new Floor(40*i,40*j,bg));
-						decor.add(new Door(40*i,40*j,null,false)); //Exit
+						decor.add(new Door(40*i,40*j,null,false,1,1)); //Exit
 						break;
 					/*case 'a':
 						decor.add(new Wall(40*i,40*j,null));
