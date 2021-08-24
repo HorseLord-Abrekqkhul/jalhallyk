@@ -6,7 +6,7 @@ public class main {
 		//new Fenetre();
 		
 			Map.loadGame();
-			
+			test
 	}
 }
 	
