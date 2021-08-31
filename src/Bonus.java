@@ -1,16 +1,14 @@
-public class Bonus extends Item {
+import java.awt.Image;
+
+public class Bonus extends Decor {
 	private int number;
 	
-	public Bonus(int xPos, int yPos,ImageAnimeDirection image,int c,int number){
-		super(xPos,yPos,image,c);
+	public Bonus(int xPos, int yPos,Image image,int number){
+		super(xPos,yPos,image);
 		this.number = number;
 	}
 
-public boolean isCaught(){
-	return true;
-}
-
-public void finalyze(Link l){
+public void activation(Link l){
 	switch (this.number){
 	case 0: //Heart
 		l.setLifePoint(l.getLifePoint()+1); //ATTENTION VIE MAXIMUM
@@ -41,19 +39,8 @@ public void finalyze(Link l){
 		//for m in liste monstre
 		//m.setSpeed(m.getSpeed()/2)
 		break;
-	case 9:
-		break;
-	case 10:
-		break;
-	case 11:
-		break;
-	case 12:
-		break;
+
 	}
 }
 
-public void activation(Bonus bonus){
-	bonus = null;
-	System.gc();
-}
 }

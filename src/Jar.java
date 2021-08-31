@@ -1,9 +1,12 @@
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.util.List;
 import java.util.Random;
 
 
 public class Jar extends Decor {
 	
+	Image heart = Toolkit.getDefaultToolkit().getImage("res/Heart.png");
 	private boolean broken;
 	//private String brokenSkinName="Inconnu";
 	
@@ -26,12 +29,10 @@ public class Jar extends Decor {
 		
 	}
 	
-	public String randomBonus() {
-		String bonus[]={"Heart","BombPlus","ArrowPlus","RangeBomb","Gauntlet","FireStaff","IceStaff","Key","Speed"};
-		Random random=new Random();
-		return bonus[random.nextInt(bonus.length)]; 
+	public void randomBonus(List<Bonus> bonus, int x, int y) {
+		//random a faire ici
+		bonus.add(new Bonus(x,y,heart,0));
 	}
-	
 	
 	public void changeSkin(boolean broken) {
 		//if (this.getBroken()) { this.setImage(brokenSkinName);} //NOM A DONNER //pas convaincu /la m�me

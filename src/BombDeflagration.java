@@ -47,7 +47,7 @@ public class BombDeflagration extends Damage{
 		return this.portee;
 	}
 	
-	public void appear(int rangeBomb,List<Decor> d){
+	public void appear(int rangeBomb,List<Decor> d,List<Bonus> b){
 		int liste[][] = listeExplosion(rangeBomb);
 		up = new ArrayList<Integer>();
 		down = new ArrayList<Integer>();
@@ -61,6 +61,7 @@ public class BombDeflagration extends Damage{
 						left.add(liste[0][j]);
 						left.add(liste[0][j+1]);
 						left.add(liste[0][j+2]);
+						((Jar) d.get(i)).randomBonus(b, d.get(i).getXPos(), d.get(i).getYPos());
 						d.remove(i);
 						d.get(i-1).setImage(brokenJar);
 					}
@@ -72,6 +73,7 @@ public class BombDeflagration extends Damage{
 						right.add(liste[1][j]);
 						right.add(liste[1][j+1]);
 						right.add(liste[1][j+2]);
+						((Jar) d.get(i)).randomBonus(b, d.get(i).getXPos(), d.get(i).getYPos());
 						d.remove(i);
 						d.get(i-1).setImage(brokenJar);
 					}
@@ -83,8 +85,10 @@ public class BombDeflagration extends Damage{
 						down.add(liste[2][j]);
 						down.add(liste[2][j+1]);
 						down.add(liste[2][j+2]);
+						((Jar) d.get(i)).randomBonus(b, d.get(i).getXPos(), d.get(i).getYPos());
 						d.remove(i);
 						d.get(i-1).setImage(brokenJar);
+						
 					}
 					U = 0;
 				}
@@ -96,6 +100,7 @@ public class BombDeflagration extends Damage{
 						up.add(liste[3][j]);
 						up.add(liste[3][j+1]);
 						up.add(liste[3][j+2]);
+						((Jar) d.get(i)).randomBonus(b, d.get(i).getXPos(), d.get(i).getYPos());
 						d.remove(i);
 						d.get(i-1).setImage(brokenJar);
 					}
@@ -146,7 +151,7 @@ public class BombDeflagration extends Damage{
 				if(touch2(getXPos(),up.get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					System.out.println("Monstre nï¿½" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -167,7 +172,7 @@ public class BombDeflagration extends Damage{
 				if(touch2(getXPos(),down.get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					System.out.println("Monstre nï¿½" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -188,7 +193,7 @@ public class BombDeflagration extends Damage{
 				if(touch2(left.get(j),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					System.out.println("Monstre nï¿½" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -209,7 +214,7 @@ public class BombDeflagration extends Damage{
 				if(touch2(right.get(j),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					System.out.println("Monstre nï¿½" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){

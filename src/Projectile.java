@@ -43,7 +43,7 @@ public class Projectile extends Damage {
 		}
 	}
 	
-	public int projectileInteraction(List<Link> link, List<Monster> monster, List<Decor> decor){
+	public int projectileInteraction(List<Link> link, List<Monster> monster, List<Decor> decor, List<Bomb> bomb){
 		for(int i = 0; i < link.size(); i++){
 			if(((direction == 0 || direction == 1) && (getXPos() > x + 40)) 
 					|| ((direction == 2 || direction == 3) && (getYPos() > y + 40))){
@@ -59,15 +59,21 @@ public class Projectile extends Damage {
 			if(touch2(getXPos(),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 				monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 				monster.get(i).setInvicible();
-				System.out.println("Monstre n°" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+				System.out.println("Monstre nï¿½" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				return 1;
 			}
 		}
 		for(int i = 0; i < decor.size(); i++){
 			if(touch2(getXPos(),getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
 					&& decor.get(i).getClass() != Floor.class){
-				System.out.println("hihihi je me suis planté dans un decor");
+				System.out.println("hihihi je me suis plantï¿½ dans un decor");
 				return 2;
+			}
+		}
+		for(int i = 0; i < bomb.size(); i++){
+			if(touch2(getXPos(),getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1){
+				bomb.get(i).setTime(15);
+				return 3;
 			}
 		}
 		move();

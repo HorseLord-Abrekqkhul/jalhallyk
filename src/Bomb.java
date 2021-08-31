@@ -59,18 +59,80 @@ public class Bomb extends Decor {
 	}
 	
 	public void bombInteraction(List<Decor> decor, List<Link> link, List<Monster> monster, List<Bomb> bomb){
-		for(int i = 0; i < decor.size(); i++){
-			if(touch2(getXPos(),getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
-					&& decor.get(i).getClass() != Floor.class){
-				System.out.println("je me suis planté dans un décor hihi");
+		for(int i = 0; i < bomb.size(); i++){
+			if(direction == 0){
+				if(touchDecor(getXPos()-15,getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1
+						&& bomb.get(i).getXPos() != getXPos()){ //&& bomb.get(i).getYPos() != getYPos()){
+					System.out.println("mur a gauche");
+					setXPos(bomb.get(i).getXPos()+40);
+					direction = -1;
+				}
+			}
+			if(direction == 1){
+				if(touchDecor(getXPos()+15,getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1
+						&& bomb.get(i).getXPos() != getXPos()){
+					setXPos(bomb.get(i).getXPos()-40);
+					System.out.println("mur a droite");
+					direction = -1;
+				}
+			}
+			if(direction == 2){
+				if(touchDecor(getXPos(),getYPos()-15,bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1
+						&& bomb.get(i).getYPos() != getYPos()){
+					setYPos(bomb.get(i).getYPos()+40);
+					System.out.println("mur en haut"); 
+					direction = -1;
+				}
+			}
+			if(direction == 3){
+				if(touchDecor(getXPos(),getYPos()+15,bomb.get(i).getXPos(),bomb.get(i).getYPos()) != -1
+						&& bomb.get(i).getYPos() != getYPos()){
+					setYPos(bomb.get(i).getYPos()-40);
+					System.out.println("mur en bas");
+					direction = -1;
+				}
+			}
+		}
+		for(int i = 0; i < monster.size(); i++){
+			if(touchDecor(getXPos(),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 				direction = -1;
+			}
+		}
+		for(int i = 0; i < decor.size(); i++){
+			if(direction == 0){
+				if(touchDecor(getXPos()-15,getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
+						&& decor.get(i).getClass() != Floor.class){
+					setXPos(decor.get(i).getXPos()+45);
+					direction = -1;
+				}
+			}
+			if(direction == 1){
+				if(touchDecor(getXPos()+5,getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
+						&& decor.get(i).getClass() != Floor.class){
+					setXPos(decor.get(i).getXPos()-35);
+					direction = -1;
+				}
+			}
+			if(direction == 2){
+				if(touchDecor(getXPos(),getYPos()-15,decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
+						&& decor.get(i).getClass() != Floor.class){
+					setYPos(decor.get(i).getYPos()+45);
+					direction = -1;
+				}
+			}
+			if(direction == 3){
+				if(touchDecor(getXPos(),getYPos()+5,decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
+						&& decor.get(i).getClass() != Floor.class){
+					setYPos(decor.get(i).getYPos()-35);
+					direction = -1;
+				}
 			}
 		}
 		move();
 	}
 	
-	public int touch2(int x1, int y1, int x2, int y2){ //coin supÃ©rieur gauche
-		if(Math.abs(x1-x2)<35 && Math.abs(y1-y2)<20){
+	public int touchDecor(int x1, int y1, int x2, int y2){ //coin supÃ©rieur gauche
+		if(Math.abs(x1-x2)<35 && Math.abs(y1-y2)<25){
 			if(x1-x2 < 0){
 				//System.out.println("pd");
 				return 0; //GAUCHE
@@ -80,7 +142,7 @@ public class Bomb extends Decor {
 				return 1; //DROITE
 			}
 		}
-		else if(Math.abs(x1-x2)<20 && 35>Math.abs(y1-y2)){
+		else if(Math.abs(x1-x2)<25 && 35>Math.abs(y1-y2)){
 			if(y1-y2 < 0){
 				//System.out.println("pd");
 				return 2; //HAUT

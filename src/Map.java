@@ -88,7 +88,7 @@ public class Map {
 	  }
 	public static void loadGame(){
 		FileInputStream fis = null;
-		String level = "1";
+		String level = "2";
 		String roomLine = "3";
 		String roomColumn = "1";
 		try{				

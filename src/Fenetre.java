@@ -29,6 +29,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	private ArrayList<Arrow> ar;
 	private List<Bomb> b;
 	private List<Decor> d;
+	private List<Bonus> bonus;
 	private List<BombDeflagration> bombDeflagration;
 	private List<Monster> monster;
 	private List<FireBall1> feu;
@@ -66,6 +67,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		liste = new ArrayList<Link>();
 		ar = new ArrayList<Arrow>();
 		b = new ArrayList<Bomb>();
+		bonus = new ArrayList<Bonus>();
 		//d = new ArrayList<Decor>();
 		bombDeflagration = new ArrayList<BombDeflagration>();
 		feu = new ArrayList<FireBall1>();
@@ -85,7 +87,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		
 		
 		
-		link = new Panel(liste,ar,b,d,bombDeflagration,monster,feu);
+		link = new Panel(liste,ar,b,d,bombDeflagration,monster,feu,bonus);
 		getContentPane().add(link);
 		addKeyListener(this);
 		
@@ -130,7 +132,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	
 	private List<Link> rajouteLink(List<Link> liste,int x,int y){
 		
-	  Link link = new Link(3,x,y,2,1,linkRun,5,3,0,false,false);
+	  Link link = new Link(3,x,y,2,1,linkRun,5,3,0,true,true);
 	  liste.add(link);
 	  return liste;
 	  
@@ -168,6 +170,12 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		*/
 		//System.out.println(liste.get(0).touch2(liste.get(0).getXPos(), liste.get(0).getYPos(), 40, 40));
+		if(k == 0){
+			monster.get(0).setXPos(monster.get(0).getXPos() - 10);
+			monster.get(1).setXPos(monster.get(1).getXPos() + 20);
+		}
+		k++;
+		
 		if(liste.get(0).getInvincible() == 0){
 			System.out.println("hihihihi Link est invincible...");
 			liste.get(0).tickInvicible();
@@ -185,7 +193,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 		}
 		
-		liste.get(0).linkInteraction(d, monster, b);
+		liste.get(0).linkInteraction(d, monster, b,bonus);
 		
 		if(droiteEnfoncee){
 			liste.get(0).setIAD(linkRun);
@@ -218,7 +226,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		if(ar.size()>0){
 			for(int p = 0; p < ar.size(); p++){
 				System.out.println(ar.get(p).getXPos() + " " + ar.get(p).getYPos());
-				int a = ar.get(p).projectileInteraction(liste, monster,d);
+				int a = ar.get(p).projectileInteraction(liste, monster,d,b);
 				if(a != 0){
 					if(a == 2){
 						ar.get(p).tick();
@@ -254,7 +262,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			for(int p = 0; p < bombDeflagration.size(); p++){
 				bombDeflagration.get(p).tick();
 				if(bombDeflagration.get(p).getPortee() < liste.get(0).getRangeBomb()*4+2){
-					bombDeflagration.get(p).appear(liste.get(0).getRangeBomb(),d);
+					bombDeflagration.get(p).appear(liste.get(0).getRangeBomb(),d,bonus);
 					bombDeflagration.get(p).defInteraction(liste, monster, b);
 				}
 				else{

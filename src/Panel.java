@@ -13,6 +13,7 @@ public class Panel extends JPanel{
 	public List<BombDeflagration> data5;
 	public List<Monster> data6;
 	public List<FireBall1> data7;
+	public List<Bonus> data8;
 	private int dec = 90;
 	
 	Image bigTree = Toolkit.getDefaultToolkit().getImage("res/BigTree.png");
@@ -34,7 +35,8 @@ public class Panel extends JPanel{
 
 	private Image charNumber[]={Char0,Char1,Char2,Char3,Char4,Char5,Char6,Char7,Char8,Char9};
 	
-	public Panel(List<Link> l, List<Arrow> a, List<Bomb> b, List<Decor> d, List<BombDeflagration> bombDeflagration, List<Monster> monster, List<FireBall1> f) {
+	public Panel(List<Link> l, List<Arrow> a, List<Bomb> b, List<Decor> d, List<BombDeflagration> bombDeflagration, 
+			List<Monster> monster, List<FireBall1> f, List<Bonus> bonus) {
 		data = l;
 		data2 = a;
 		data3 = b;
@@ -42,6 +44,7 @@ public class Panel extends JPanel{
 		data5 = bombDeflagration;
 		data6 = monster;
 		data7 = f;
+		data8 = bonus;
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -60,10 +63,13 @@ public class Panel extends JPanel{
 			}
 			else {
 			g.drawImage(d.getImage(), d.getXPos(), d.getYPos()+dec,null);
-		}
+			}
 		}
 		for(Bomb b : data3) {
 			g.drawImage(b.getImage(), b.getXPos(), b.getYPos()+dec,null);
+		}
+		for(Bonus b : data8){
+			g.drawImage(b.getImage(), b.getXPos()+10, b.getYPos()+dec+10,null);
 		}
 		for(Link l : data) {
 			g.drawImage(l.getIAD().getImage(l), l.getXPos(), l.getYPos()+dec,null);
@@ -79,6 +85,7 @@ public class Panel extends JPanel{
 		for(Monster m : data6) {
 			g.drawImage(m.getIAD().getImage(m), m.getXPos(), m.getYPos()+dec,null);
 		}
+		
 		for(BombDeflagration d : data5) {
 			for(int j = 0; j< d.getUp().size(); j++){
 				if(j==d.getUp().size()-1){

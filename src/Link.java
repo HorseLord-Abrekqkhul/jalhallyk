@@ -135,26 +135,6 @@ public List<Bomb> setBomb(List<Bomb> liste, Image image)
 	return liste;
 }
 
-public void pushBombUp(Bomb bomb)
-{
-	bomb.setYPos(bomb.getYPos() + 1);
-}
-
-public void pushBombDown(Bomb bomb)
-{
-	bomb.setYPos(bomb.getYPos() - 1);
-}
-
-public void pushBombRight(Bomb bomb)
-{
-	bomb.setXPos(bomb.getXPos() + 1);
-}
-
-public void pushBombLeft(Bomb bomb)
-{
-	bomb.setXPos(bomb.getXPos() - 1);
-}
-
 public List<Arrow> fireArrow(List<Arrow> liste, ImageAnimeDirection IAD){
 	tick(getIAD(),5);
 	if(getActualFrame() == 6){
@@ -164,7 +144,7 @@ public List<Arrow> fireArrow(List<Arrow> liste, ImageAnimeDirection IAD){
 	 
 	}
 
-public void linkInteraction(List<Decor> decor, List<Monster> monster, List<Bomb> bomb){
+public void linkInteraction(List<Decor> decor, List<Monster> monster, List<Bomb> bomb, List<Bonus> bonus){
 	R = 1;
 	L = 1;
 	D = 1;
@@ -245,27 +225,33 @@ public void linkInteraction(List<Decor> decor, List<Monster> monster, List<Bomb>
 		int a = touchBomb(getXPos(),getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos());
 		if(a == 0){
 			R = 0;
-			if(direction == 1){
+			if(direction == 1 && gauntlet == true){
 				bomb.get(i).setDirection(direction);
 			}
 		}
 		if(a == 1){
 			L = 0;
-			if(direction == 0){
+			if(direction == 0 && gauntlet == true){
 				bomb.get(i).setDirection(direction);
 			}
 		}
 		if(a == 2){
 			D = 0;
-			if(direction == 3){
+			if(direction == 3 && gauntlet == true){
 				bomb.get(i).setDirection(direction);
 			}
 		}
 		if(a == 3){
 			U = 0;
-			if(direction == 2){
+			if(direction == 2 && gauntlet == true){
 				bomb.get(i).setDirection(direction);
 			}
+		}
+	}
+	for(int i = 0; i < bonus.size(); i++){
+		if(touchMonster(getXPos(),getYPos(),bonus.get(i).getXPos(),bonus.get(i).getYPos()) != -1){
+			bonus.get(i).activation(this);
+			bonus.remove(i);
 		}
 	}
 }
