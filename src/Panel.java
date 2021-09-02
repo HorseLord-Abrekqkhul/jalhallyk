@@ -76,7 +76,7 @@ public class Panel extends JPanel{
 			for(int i=0; i<l.getLifePoint();i++) {
 				g.drawImage(heart,180+i*15,45,null);				
 			}
-			g.drawImage(charNumber[l.getNumberBomb()-data3.size()],485,42,null);
+			g.drawImage(charNumber[l.getNumberBomb()],485,42,null);
 			//g.drawImage(charNumber[l.getNumberArrow()-data2.size()],0,0,null);
 		}
 		for(Arrow a : data2) {
