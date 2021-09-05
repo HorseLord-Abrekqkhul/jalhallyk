@@ -23,6 +23,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	private int j =0;
 	private int k =0;
 	private int h =0;
+	private Map map;
 	
 	private List<Link> l;
 	private ArrayList<Link> liste;
@@ -58,8 +59,9 @@ public class Fenetre extends JFrame implements KeyListener {
 	ImageAnimeDirection kirby = new ImageAnimeDirection("res/Deflagration.png",1);
 	
 	
-	public Fenetre(List<Decor> d,List<Monster> monster) {
+	public Fenetre(List<Decor> d,List<Monster> monster, Map map) {
 		this.d = d;
+		this.map = map;
 		this.monster = monster;
 	    setVisible(true) ;
 		setSize(15*41, 15*42+5+90);
@@ -193,7 +195,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 		}
 		
-		liste.get(0).linkInteraction(d, monster, b,bonus);
+		liste.get(0).linkInteraction(d, monster, b,bonus,map);
 		
 		if(droiteEnfoncee){
 			liste.get(0).setIAD(linkRun);

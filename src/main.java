@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class main {
 
@@ -5,7 +6,12 @@ public class main {
 		
 		//new Fenetre();
 		
-			Map.loadGame();
+		Map map = new Map(16,16,"1","3","1");
+		char[][] tableau = new char[16][16];
+		tableau = map.loadRoom();
+		ArrayList<Decor> decor = map.mapToListDecor(tableau);
+		ArrayList<Monster> monstre = map.mapToListMonster(tableau);
+		new Fenetre(decor,monstre,map);
 			}
 }
 	

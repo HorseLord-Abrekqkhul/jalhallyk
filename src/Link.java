@@ -144,12 +144,42 @@ public List<Arrow> fireArrow(List<Arrow> liste, ImageAnimeDirection IAD){
 	 
 	}
 
-public void linkInteraction(List<Decor> decor, List<Monster> monster, List<Bomb> bomb, List<Bonus> bonus){
+public void linkInteraction(List<Decor> decor, List<Monster> monster, List<Bomb> bomb, List<Bonus> bonus, Map map){
 	R = 1;
 	L = 1;
 	D = 1;
 	U = 1;
 	for(int i = 0; i < decor.size(); i++){
+		if(touchDecor(getXPos(),getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1 && decor.get(i).getClass() == Door.class){
+			int line = ((Door) decor.get(i)).getLine();
+			int column = ((Door) decor.get(i)).getColumn();
+			int level = ((Door) decor.get(i)).getLevel();
+			char[][] tableau = new char[16][16];
+			int n = decor.size();
+
+			map.saveMap(map.listToMap(decor, monster));
+			map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
+			map.setRoomLine(Integer.toString(Integer.parseInt(map.getRoomLine()) - line));
+			map.setRoomColumn(Integer.toString(Integer.parseInt(map.getRoomColumn()) - column));
+			tableau = map.loadRoom();
+
+			decor.removeAll(decor);
+			List<Decor> decor2 = map.mapToListDecor(tableau);
+			for(int j = 0; j < decor2.size();j++){
+				decor.add(decor2.get(j));
+			}
+			
+			monster.removeAll(monster);
+			List<Monster> monster2 = map.mapToListMonster(tableau);
+			for(int j = 0; j < monster2.size(); j++){
+				monster.add(monster2.get(j));
+			}
+			
+			this.setXPos(40*8);
+			this.setYPos(40*8);
+			break;
+		}
+		
 		if(decor.get(i).getClass() != Floor.class){
 			int a = touchDecor(getXPos(),getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos());
 			if(a == 0)

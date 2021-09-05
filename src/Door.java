@@ -6,12 +6,14 @@ public class Door extends Decor{
 	private boolean open;
 	private int line;
 	private int column;
+	private int level;
 	
-	public Door(int xPos, int yPos, Image name, boolean open,int line,int column) {
+	public Door(int xPos, int yPos, Image name, boolean open,int line,int column, int level) {
 		super(xPos,yPos,name);
 		this.open =open;
 		this.line = line;
 		this.column = column;
+		this.level = level;
 	}
 	
 	public void setOpen(boolean open) {
@@ -34,6 +36,13 @@ public class Door extends Decor{
 	
 	public int getColumn() {
 		return this.column;
+	}
+	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+		public int getLevel() {
+		return this.level;
 	}
 
 }
