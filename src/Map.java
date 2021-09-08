@@ -363,6 +363,7 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getColumn() == -1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = ':';
+		
 		//else if(decor.get(i).getClass() == Wall)
 		//map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'r';
 		/*else if(decor.get(i).getClass() == Floor.class)

@@ -12,6 +12,7 @@ public class main {
 		ArrayList<Decor> decor = map.mapToListDecor(tableau);
 		ArrayList<Monster> monstre = map.mapToListMonster(tableau);
 		new Fenetre(decor,monstre,map);
+		System.out.println("yolo");
 			}
 }
 	
