@@ -20,7 +20,7 @@ public class FireBall1 extends Projectile {
 				}
 			}
 		}
-		int i; int c = 0; int d = 0;
+		int i; int c = 0; 
 		for(i = 0; i < list.size(); i++){
 			//if(Math.abs(list.get(i)[0] - getXPos()) < 0.5 && Math.abs(list.get(i)[1] - getYPos()) < 0.5){
 			if(list.get(i)[0] == getXPos() && list.get(i)[1] == getYPos()){

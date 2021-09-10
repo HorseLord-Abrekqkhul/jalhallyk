@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +7,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import java.awt.Image;
@@ -120,18 +118,6 @@ public class Fenetre extends JFrame implements KeyListener {
 			
 	}
 
-	private int isTouched(List<Decor> d,int x, int y){
-		int i;
-		if(d == null)
-			System.out.println("bug");
-		for(i = 0; i< d.size();i++){
-			if(Math.abs(d.get(i).getXPos()-x) < 3 && Math.abs(d.get(i).getYPos()-y)<3){
-				return i;
-			}
-		}
-		return 0;
-	}
-	
 	private List<Link> rajouteLink(List<Link> liste,int x,int y){
 		
 	  Link link = new Link(3,x,y,2,1,linkRun,5,3,0,true,true);

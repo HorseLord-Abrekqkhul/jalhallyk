@@ -155,7 +155,6 @@ public void linkInteraction(List<Decor> decor, List<Monster> monster, List<Bomb>
 			int column = ((Door) decor.get(i)).getColumn();
 			int level = ((Door) decor.get(i)).getLevel();
 			char[][] tableau = new char[16][16];
-			int n = decor.size();
 
 			map.saveMap(map.listToMap(decor, monster));
 			map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));

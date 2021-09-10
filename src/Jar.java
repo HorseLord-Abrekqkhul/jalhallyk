@@ -1,7 +1,6 @@
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.List;
-import java.util.Random;
 
 
 public class Jar extends Decor {
