@@ -15,15 +15,9 @@ import java.awt.Image;
 public class Fenetre extends JFrame implements KeyListener {
 	
 	private Panel link;
-	private long dephasage;
-	private long time;
-	private int i =0;
-	private int j =0;
 	private int k =0;
-	private int h =0;
 	private Map map;
 	
-	private List<Link> l;
 	private ArrayList<Link> liste;
 	private ArrayList<Arrow> ar;
 	private List<Bomb> b;
@@ -296,7 +290,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		i = 0;
+		int i = 0;
 		liste.get(0).setActualFrame(1);
 	    int keyCode = e.getKeyCode();
 	    if (keyCode == KeyEvent.VK_RIGHT){
