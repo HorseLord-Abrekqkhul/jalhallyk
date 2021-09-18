@@ -334,6 +334,9 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		if(decor.get(i).getClass() == Floor.class)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '0';
 		
+		else if(decor.get(i).getClass() == Wall.class && (decor.get(i).getImage() == root || decor.get(i).getImage() == rock || decor.get(i).getImage() == rocks))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'r';		
+		
 		else if(decor.get(i).getClass() == Wall.class)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '1';
 		
@@ -368,9 +371,9 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getColumn() == -1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = ':';
 		
-		//else if(decor.get(i).getClass() == Wall)
-		//map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'r';
+		
 		/*else if(decor.get(i).getClass() == Floor.class)
+		 * 
 		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'e';
 		else if(decor.get(i).getClass() == Floor.class)
 		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'b';
