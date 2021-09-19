@@ -25,17 +25,12 @@ public class Button extends JButton implements MouseListener{
   public void paintComponent(Graphics g){
     Graphics2D g2d = (Graphics2D)g;
     g2d.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-   
-
-    //On calcule alors la position du texte, et le tour est joué
   }
 
   public void mouseClicked(MouseEvent event) {
-    //Inutile d'utiliser cette méthode ici       
   }
 
-  public void mouseEntered(MouseEvent event) {    
-    //Nous changeons le fond de notre image pour le jaune lors du survol, avec le fichier fondBoutonHover.png
+  public void mouseEntered(MouseEvent event) {    //change l image du bouton (surbrillance ou quoi
     try {
       img = ImageIO.read(new File("2.png"));   
     } catch (IOException e) {
@@ -43,8 +38,7 @@ public class Button extends JButton implements MouseListener{
     }    
   }
 
-  public void mouseExited(MouseEvent event) {
-    //Nous changeons le fond de notre image pour le vert lorsque nous quittons le bouton, avec le fichier fondBouton.png
+  public void mouseExited(MouseEvent event) { // remet l image de base
     try {
       img = ImageIO.read(new File("1.png"));
     } catch (IOException e) {
@@ -52,8 +46,7 @@ public class Button extends JButton implements MouseListener{
     }    
   }
 
-  public void mousePressed(MouseEvent event) {
-    //Nous changeons le fond de notre image pour le jaune lors du clic gauche, avec le fichier fondBoutonClic.png
+  public void mousePressed(MouseEvent event) { // jcrois qu on pourrais faire le action listener directement ici, a voir
     try {
       img = ImageIO.read(new File("fondBoutonClic.png"));
     } catch (IOException e) {
@@ -61,16 +54,17 @@ public class Button extends JButton implements MouseListener{
     }    
   }
 
-  public void mouseReleased(MouseEvent event) {
-    //Nous changeons le fond de notre image pour l'orange lorsque nous relâchons le clic avec le fichier fondBoutonHover.png si la souris est toujours sur le bouton
-    if((event.getY() > 0 && event.getY() < this.getHeight()) && (event.getX() > 0 && event.getX() < this.getWidth())){
+ // public void mouseReleased(MouseEvent event) {
+ /*
+
+     if((event.getY() > 0 && event.getY() < this.getHeight()) && (event.getX() > 0 && event.getX() < this.getWidth())){
+
       try {
         img = ImageIO.read(new File("1.png"));
       } catch (IOException e) {
         e.printStackTrace();
       }
     }
-    //Si on se trouve à l'extérieur, on dessine le fond par défaut
     else{
       try {
         img = ImageIO.read(new File("1.png")); 
@@ -78,5 +72,7 @@ public class Button extends JButton implements MouseListener{
         e.printStackTrace();
       }
     }   
-  }   
+  }  
+  */
+
 }

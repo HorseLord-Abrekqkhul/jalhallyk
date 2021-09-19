@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 public class Menu {
+	private JFrame frame;
 	private JPanel panel;
 	
 public Menu(){
@@ -9,15 +10,14 @@ public Menu(){
 }
 
 private void initializeControls(){
-	Fenetre fenetre = new Fenetre(null,null,null);
-
+	frame = new JFrame("TLOB");
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	panel = new JPanel();
-	panel.setSize(500,500);
-	fenetre.setContentPane(panel);
+	frame.getContentPane().add(panel);
 	Button button = new Button ();
 	button.addActionListener(new SoloActionListener());
 	panel.add(button);
-	fenetre.pack();
-	fenetre.setVisible(true);
+	frame.pack();
+	frame.setVisible(true);
 }
 }
