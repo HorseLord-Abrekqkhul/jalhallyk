@@ -10,6 +10,7 @@ private int rangeBomb;
 private int numberArrow;
 private boolean gauntlet;
 private boolean key;
+private int numberCoin;
 private int U = 1;
 private int D = 1;
 private int L = 1;
@@ -17,7 +18,7 @@ private int R = 1;
 
 Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock.png");
 
-public Link (int lifePoint, int xPos, int yPos, int speed,int direction, ImageAnimeDirection image,int numberBomb, int rangeBomb, int numberArrow, boolean gauntlet, boolean key)
+public Link (int lifePoint, int xPos, int yPos, int speed,int direction, ImageAnimeDirection image,int numberBomb, int rangeBomb, int numberArrow, boolean gauntlet, boolean key,int numberCoin)
 {
 	super(lifePoint, xPos, yPos, speed, direction, image);
 	this.numberBomb = numberBomb;
@@ -25,6 +26,7 @@ public Link (int lifePoint, int xPos, int yPos, int speed,int direction, ImageAn
 	this.numberArrow = numberArrow;
 	this.gauntlet = gauntlet;
 	this.key = key;	
+	this.numberCoin=numberCoin;
 }
 
 
@@ -77,6 +79,14 @@ public void setKey(boolean key)
 {
 	this.key = key;
 	
+}
+
+public int getNumberCoin() {
+	return numberCoin;
+}
+
+public void setNumberCoin(int numberCoin) {
+	this.numberCoin=numberCoin;
 }
 
 public void moveUp ()

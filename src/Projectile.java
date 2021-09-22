@@ -50,7 +50,7 @@ public class Projectile extends Damage {
 				if(touch2(getXPos(),getYPos(),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
 					link.get(i).setLifePoint(link.get(i).getLifePoint()-1*link.get(i).getInvincible());
 					link.get(i).setInvicible();
-					System.out.println("Link a perdu une vie, il lui reste "+ link.get(i).getLifePoint() + " vies.");
+					//System.out.println("Link a perdu une vie, il lui reste "+ link.get(i).getLifePoint() + " vies.");
 					return 1;
 				}
 			}
@@ -59,14 +59,14 @@ public class Projectile extends Damage {
 			if(touch2(getXPos(),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 				monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 				monster.get(i).setInvicible();
-				System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+				//System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				return 1;
 			}
 		}
 		for(int i = 0; i < decor.size(); i++){
 			if(touch2(getXPos(),getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
 					&& decor.get(i).getClass() != Floor.class){
-				System.out.println("hihihi je me suis plant� dans un decor");
+				//System.out.println("hihihi je me suis plant� dans un decor");
 				return 2;
 			}
 		}

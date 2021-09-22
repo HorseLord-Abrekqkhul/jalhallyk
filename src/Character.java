@@ -55,7 +55,7 @@ public class Character {
 		if(tickInvicible == 40){
 			this.invincible = 1;
 			this.tickInvicible = 1;
-			System.out.println("INVICIBILITE OFF");
+			//System.out.println("INVICIBILITE OFF");
 		}
 	}
 
@@ -277,14 +277,14 @@ public class Character {
 			for (ArrayList<int[]> liste : list) {
 				for(int[] posDecor : liste) {
 					if(posLink[0]==posDecor[0] && posLink[1]==posDecor[1]) {
-						System.out.println("Ca touche");
-						System.out.println(posDecor[0] + " " + posDecor[1]);
+						//System.out.println("Ca touche");
+						//System.out.println(posDecor[0] + " " + posDecor[1]);
 						return 0;
 					}
 				}
 			}			
 		}
-		System.out.println("Ca touche pas hihihi");
+		//System.out.println("Ca touche pas hihihi");
 		return 1;
 	}
 	

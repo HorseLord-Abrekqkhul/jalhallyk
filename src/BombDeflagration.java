@@ -144,14 +144,14 @@ public class BombDeflagration extends Damage{
 				if(touch2(getXPos(),up.get(j),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
 					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
 					l.get(i).setInvicible();
-					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+					//System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touch2(getXPos(),up.get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					//System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -165,14 +165,14 @@ public class BombDeflagration extends Damage{
 				if(touch2(getXPos(),down.get(j),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
 					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
 					l.get(i).setInvicible();
-					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+					//System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touch2(getXPos(),down.get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					//System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -186,14 +186,14 @@ public class BombDeflagration extends Damage{
 				if(touch2(left.get(j),getYPos(),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
 					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
 					l.get(i).setInvicible();
-					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+					//System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touch2(left.get(j),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					//System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -207,14 +207,14 @@ public class BombDeflagration extends Damage{
 				if(touch2(right.get(j),getYPos(),l.get(i).getXPos(),l.get(i).getYPos()) != -1){
 					l.get(i).setLifePoint(l.get(i).getLifePoint()-1*l.get(i).getInvincible());
 					l.get(i).setInvicible();
-					System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
+					//System.out.println("Link a perdu une vie, il lui reste "+ l.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touch2(right.get(j),getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
 					monster.get(i).setLifePoint(monster.get(i).getLifePoint()-1*monster.get(i).getInvincible());
 					monster.get(i).setInvicible();
-					System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
+					//System.out.println("Monstre n�" + i + " a perdu une vie, il lui reste "+ monster.get(i).getLifePoint() + " vies.");
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
