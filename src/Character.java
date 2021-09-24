@@ -13,6 +13,8 @@ public class Character {
 	private ImageAnimeDirection image;
 	private int invincible = 1; // 1 = OFF, 0 = ON
 	private int tickInvicible = 1;
+	private int frozen=1;
+	private int tickFrozen=1;
 	
 	public Character(int lifePoint, int xPos, int yPos, int speed, int direction, ImageAnimeDirection image){
 		this.lifePoint =  lifePoint;
@@ -32,6 +34,7 @@ public class Character {
 				this.actualFrame = 1;
 		}
 	}
+	
 	
 	public int getActualFrame(){
 		return this.actualFrame;
@@ -57,6 +60,27 @@ public class Character {
 			this.tickInvicible = 1;
 			//System.out.println("INVICIBILITE OFF");
 		}
+	}
+	
+	public void tickFrozen() {
+		tickFrozen++;
+		System.out.println("hihihi je suis gelé");
+		if(tickFrozen==50) {
+			this.frozen=1;
+			this.tickFrozen=1;
+			System.out.println("hihihi je suis plus gelé");
+		}
+	}
+	
+	public int getFrozen() {
+		
+		return frozen;
+	}
+	
+	public void setFrozen() {
+		
+		this.frozen=0;
+		
 	}
 
 	public ImageAnimeDirection getIAD()

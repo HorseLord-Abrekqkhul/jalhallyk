@@ -10,6 +10,7 @@ private int rangeBomb;
 private int numberArrow;
 private boolean gauntlet;
 private boolean key;
+private int staff=-1; //0=fire //1=ice
 private int numberCoin;
 private int U = 1;
 private int D = 1;
@@ -29,6 +30,15 @@ public Link (int lifePoint, int xPos, int yPos, int speed,int direction, ImageAn
 	this.numberCoin=numberCoin;
 }
 
+public int getStaff() {
+	
+	return staff;
+}
+
+public void setStaff(int staff) {
+	
+	this.staff=staff;
+}
 
 public int getNumberBomb()
 {
@@ -93,28 +103,28 @@ public void moveUp ()
 
 {
 	direction = 2;
-	setYPos(yPos - U*speed); //panel 
+	setYPos(yPos - getFrozen()*U*speed); //panel 
 	tick(getIAD(),5);
 }
 
 public void moveDown ()
 {
 	direction = 3;
-	setYPos(yPos + D*speed); //panel
+	setYPos(yPos + getFrozen()*D*speed); //panel
 	tick(getIAD(),5);
 }
 
 public void moveRight ()
 {
 	direction = 1;
-	setXPos(xPos + R*speed);
+	setXPos(xPos + getFrozen()*R*speed);
 	tick(getIAD(),5);
 }
 
 public void moveLeft ()
 {
 	direction = 0;
-	setXPos(xPos - L*speed);
+	setXPos(xPos - getFrozen()*L*speed);
 	tick(getIAD(),5);
 }
 
@@ -165,11 +175,11 @@ public void linkInteraction(List<Decor> decor, List<Monster> monster, List<Bomb>
 			int column = ((Door) decor.get(i)).getColumn();
 			int level = ((Door) decor.get(i)).getLevel();
 			char[][] tableau = new char[16][16];
-
+			
 			map.saveMap(map.listToMap(decor, monster));
 			map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
 			map.setRoomLine(Integer.toString(Integer.parseInt(map.getRoomLine()) - line));
-			map.setRoomColumn(Integer.toString(Integer.parseInt(map.getRoomColumn()) - column));
+			map.setRoomColumn(Integer.toString(Integer.parseInt(map.getRoomColumn()) + column));
 			tableau = map.loadRoom();
 
 			decor.removeAll(decor);

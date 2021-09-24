@@ -27,7 +27,7 @@ public void activation(Link l){
 	case 3: //ArrowPlus
 		if(l.getNumberArrow()<99) {
 		l.setNumberArrow(l.getNumberArrow()+1); //
-		System.out.println("Flèche");
+		System.out.println("Flï¿½che");
 		break;
 		}
 	case 4: //Speed
@@ -44,11 +44,13 @@ public void activation(Link l){
 	case 7: //FireStaff
 		//for m in liste monstre
 		//m.setLifePoint(m.getLifePoint()-1)
+		l.setStaff(0);
 		System.out.println("FireStaff");
 		break;
 	case 8: //IceStaff
 		//for m in liste monstre
 		//m.setSpeed(m.getSpeed()/2)
+		l.setStaff(1);
 		System.out.println("IceStaff");
 		break;
 	case 9: //Coin

@@ -33,6 +33,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	boolean hautEnfoncee = false;
 	boolean tireFleche = false;
 	boolean setBomb = false;
+	boolean useStaff=false;
 
 	private ArrayList<ArrayList<int[]>> listHitBoxDecor;
 	
@@ -262,6 +263,28 @@ public class Fenetre extends JFrame implements KeyListener {
 					}
 			}
 		}
+		
+		
+		if(useStaff==true && liste.get(0).getStaff()!=-1) {
+			if(liste.get(0).getStaff()==0) {
+			for (Monster m : monster) {
+				m.setLifePoint(m.getLifePoint()-1);
+				System.out.println("monstre hihihi a"+" "+m.getLifePoint());				
+			}
+			useStaff=false; liste.get(0).setStaff(-1); System.out.println("firestaff off");
+		}
+			else if(liste.get(0).getStaff()==1) {
+				for (Monster m : monster) {
+					m.setFrozen();
+					m.tickFrozen();	
+					if(m.getFrozen()==1) {
+						useStaff=false; liste.get(0).setStaff(-1); System.out.println("icestaff off");
+					
+				}
+				
+			}
+		}
+		}
 		repaint();
 	}
 
@@ -284,6 +307,9 @@ public class Fenetre extends JFrame implements KeyListener {
     	}
     	else if(keyCode == KeyEvent.VK_SPACE){
     		setBomb = true;
+    	}
+    	else if(keyCode == KeyEvent.VK_C) {
+    		useStaff = true;
     	}
 	}
 
