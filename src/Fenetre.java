@@ -57,7 +57,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		this.map = map;
 		this.monster = monster;
 	    setVisible(true) ;
-		setSize(15*41, 15*42+5+90);
+		setSize(15*41+200, 15*42+8+120);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		liste = new ArrayList<Link>();
 		ar = new ArrayList<Arrow>();
