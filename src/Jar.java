@@ -46,7 +46,6 @@ public class Jar extends Decor {
 		java.util.Random r=new java.util.Random( ) ; 
 		int random = r.nextInt(100);
 		int random2=r.nextInt(3);
-		random=20;
 		if(random%2==0) {
 			bonusType=9;
 		}
