@@ -153,12 +153,6 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		*/
 		//System.out.println(liste.get(0).touch2(liste.get(0).getXPos(), liste.get(0).getYPos(), 40, 40));
-		if(k == 0){
-			monster.get(0).setXPos(monster.get(0).getXPos() - 10);
-			monster.get(1).setXPos(monster.get(1).getXPos() + 20);
-		}
-		k++;
-		
 		if(liste.get(0).getInvincible() == 0){
 			//System.out.println("hihihihi Link est invincible...");
 			liste.get(0).tickInvicible();
@@ -235,6 +229,7 @@ public class Fenetre extends JFrame implements KeyListener {
 				b.get(p).bombInteraction(d,liste,monster,b);
 				b.get(p).tick();
 				if(b.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
+					Sound.playSound("bomb");
 					bombDeflagration.add(new BombDeflagration(b.get(p).getXPos(),b.get(p).getYPos(),deflagration,2,2));
 					//feu.add(new FireBall1(b.get(p).getXPos(),b.get(p).getYPos(),kirby,2,2,2,liste.get(0).getXPos(), liste.get(0).getYPos(), 15*40, 15*40));
 					b.remove(p);
