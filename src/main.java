@@ -11,7 +11,7 @@ public class main {
 		tableau = map.loadRoom();
 		ArrayList<Decor> decor = map.mapToListDecor(tableau);
 		ArrayList<Monster> monstre = map.mapToListMonster(tableau);
-		Sound.playSound("swag");
+		Sound.playSound("yolo");
 		new Fenetre(decor,monstre,map);
 			}
 }
