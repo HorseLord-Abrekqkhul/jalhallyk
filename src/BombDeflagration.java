@@ -63,6 +63,7 @@ public class BombDeflagration extends Damage{
 						left.add(liste[0][j+2]);
 						((Jar) d.get(i)).randomBonus(b, d.get(i).getXPos(), d.get(i).getYPos());
 						d.remove(i);
+						Sound.playSound("jarbroken");
 						d.get(i-1).setImage(brokenJar);
 					}
 					L = 0;

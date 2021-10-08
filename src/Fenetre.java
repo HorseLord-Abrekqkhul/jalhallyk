@@ -153,6 +153,9 @@ public class Fenetre extends JFrame implements KeyListener {
 		}
 		*/
 		//System.out.println(liste.get(0).touch2(liste.get(0).getXPos(), liste.get(0).getYPos(), 40, 40));
+		
+		
+		
 		if(liste.get(0).getInvincible() == 0){
 			//System.out.println("hihihihi Link est invincible...");
 			liste.get(0).tickInvicible();
