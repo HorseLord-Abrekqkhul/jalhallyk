@@ -34,6 +34,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	boolean tireFleche = false;
 	boolean setBomb = false;
 	boolean useStaff=false;
+	boolean treasureOpen = false;
 
 	private ArrayList<ArrayList<int[]>> listHitBoxDecor;
 	
@@ -50,6 +51,21 @@ public class Fenetre extends JFrame implements KeyListener {
 	Image rocks = Toolkit.getDefaultToolkit().getImage("res/Rocks.png");
 	ImageAnimeDirection melee = new ImageAnimeDirection("res/MeleeRun",1);
 	ImageAnimeDirection kirby = new ImageAnimeDirection("res/Deflagration.png",1);
+	Image heart = Toolkit.getDefaultToolkit().getImage("res/Heart.png"); 
+	Image rubis = Toolkit.getDefaultToolkit().getImage("res/Rubis.png"); 
+	Image arrowPlus = Toolkit.getDefaultToolkit().getImage("res/ArrowPlus.png"); 
+	Image iceStaff = Toolkit.getDefaultToolkit().getImage("res/IceStaff.png"); 
+	Image key = Toolkit.getDefaultToolkit().getImage("res/Key.png"); 
+	Image speed = Toolkit.getDefaultToolkit().getImage("res/SpeedBonus.png"); 
+	Image gauntlet = Toolkit.getDefaultToolkit().getImage("res/Gauntlet2.png"); 
+	Image fireStaff = Toolkit.getDefaultToolkit().getImage("res/FireStaff.png"); 
+	Image bombRange = Toolkit.getDefaultToolkit().getImage("res/BombRange.png");	
+	Image bombPlus = Toolkit.getDefaultToolkit().getImage("res/BombPlus.png"); 
+	Image treasureChest1 = Toolkit.getDefaultToolkit().getImage("res/TreasureChest1.png");
+	Image treasureChest2 = Toolkit.getDefaultToolkit().getImage("res/TreasureChest2.png");
+	
+	
+	private Image bonusImage[]={heart,bombPlus,bombRange,arrowPlus,speed,gauntlet,key,fireStaff,iceStaff,rubis};
 	
 	
 	public Fenetre(List<Decor> d,List<Monster> monster, Map map) {
@@ -68,6 +84,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		feu = new ArrayList<FireBall1>();
 		//monster = new ArrayList<Monster>();
 		rajouteLink(liste,200,200);
+		d.add(new Treasure(9*40,2*40,treasureChest1,9));
 		//rajouteLink(liste,200,250);
 		//rajouteDecor(d,0,0, rock);
 		rajouteDecor(d,40*10,40*10, rock);
@@ -283,11 +300,37 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 		}
 		}
+		
+		if(treasureOpen) {
+			for(Decor decor : d) {
+				if(decor.getClass() == Treasure.class && ((decor.getXPos()-liste.get(0).getXPos())<=20 && (decor.getXPos()-liste.get(0).getXPos())>=-20 && liste.get(0).getYPos() - decor.getYPos()<40) && decor.getImage() == treasureChest1) {
+					 decor.setImage(treasureChest2);
+					 bonus.add(new Bonus(decor.getXPos(),decor.getYPos(),bonusImage[((Treasure)decor).getBonusType()],((Treasure)decor).getBonusType()));		
+					 treasureOpen=false; 
+				}
+				else if(decor.getClass() == Treasure.class && ((decor.getXPos()-liste.get(0).getXPos())<=20 && (decor.getXPos()-liste.get(0).getXPos())>=-20 && liste.get(0).getYPos() - decor.getYPos()<40) && decor.getImage() == treasureChest2) {
+					for(int i = 0; i < bonus.size(); i++) {
+						if (bonus.get(i).getXPos() == decor.getXPos() && bonus.get(i).getYPos() == decor.getYPos()) {
+							bonus.get(i).activation(liste.get(0));
+							bonus.remove(i);
+							treasureOpen = false;
+			
+						}
+					}
+				}
+				
+				else { treasureOpen=false;}
+				
+			}
+		}
+
+
 		repaint();
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+
+public void keyPressed(KeyEvent e) {
 	    int keyCode = e.getKeyCode();
 	    if (keyCode == KeyEvent.VK_RIGHT)
 	    	droiteEnfoncee = true;
@@ -309,7 +352,11 @@ public class Fenetre extends JFrame implements KeyListener {
     	else if(keyCode == KeyEvent.VK_C) {
     		useStaff = true;
     	}
+    	else if(keyCode == KeyEvent.VK_ENTER) {
+    		treasureOpen = true;
+    	}
 	}
+
 
 	@Override
 	public void keyReleased(KeyEvent e) {
